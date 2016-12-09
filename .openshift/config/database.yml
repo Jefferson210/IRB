@@ -20,17 +20,26 @@ postgresql: &postgresql
   min_messages: ERROR
   reconnect: false
 
+#defaults: &defaults
+#  pool: 5
+#  timeout: 5000
+#  encoding: utf8
+#  <<: *<%= ENV['RAILS_DB'] || "sqlite" %>
+  
 defaults: &defaults
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
   encoding: utf8
-  <<: *<%= ENV['RAILS_DB'] || "sqlite" %>
+  pool: 5
+  username: root
+  password:
+  socket: /opt/lampp/var/mysql/mysql.sock
 
 development:
   <<: *defaults
+  database: IRBDB
 
 test: &test
   <<: *defaults
 
 production:
-  <<: *defaults
+  <<: *mysql

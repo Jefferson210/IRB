@@ -1,0 +1,81 @@
+<%= form_for(@genetic_bank) do |f| %>
+  <% if @genetic_bank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@genetic_bank.errors.count, "error") %> prohibited this genetic_bank from being saved:</h2>
+
+      <ul>
+      <% @genetic_bank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :trademark %><br>
+    <%= f.text_field :trademark %>
+  </div>
+  <div class="field">
+    <%= f.label :denomination %><br>
+    <%= f.text_field :denomination %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.date_select :year %>
+  </div>
+  <div class="field">
+    <%= f.label :breeder %><br>
+    <%= f.text_field :breeder %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :numPlants %><br>
+    <%= f.number_field :numPlants %>
+  </div>
+  <div class="field">
+    <%= f.label :scent %><br>
+    <%= f.text_field :scent %>
+  </div>
+  <div class="field">
+    <%= f.label :headSize %><br>
+    <%= f.text_field :headSize %>
+  </div>
+  <div class="field">
+    <%= f.label :numPetals %><br>
+    <%= f.number_field :numPetals %>
+  </div>
+  <div class="field">
+    <%= f.label :steamLenght %><br>
+    <%= f.text_field :steamLenght %>
+  </div>
+  <div class="field">
+    <%= f.label :production %><br>
+    <%= f.text_field :production %>
+  </div>
+  <div class="field">
+    <%= f.label :opening %><br>
+    <%= f.text_field :opening %>
+  </div>
+  <div class="field">
+    <%= f.label :abnormality %><br>
+    <%= f.text_area :abnormality %>
+  </div>
+  <div class="field">
+    <%= f.label :remarks %><br>
+    <%= f.text_area :remarks %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

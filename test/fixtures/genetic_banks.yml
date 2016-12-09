@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  location: MyString
+  trademark: MyString
+  denomination: MyString
+  year: 2016-12-09
+  breeder: MyString
+  status: MyString
+  numPlants: 1
+  scent: MyString
+  headSize: MyString
+  numPetals: 1
+  steamLenght: 9.99
+  production: MyString
+  opening: MyString
+  abnormality: MyText
+  remarks: MyText
+
+two:
+  code: MyString
+  location: MyString
+  trademark: MyString
+  denomination: MyString
+  year: 2016-12-09
+  breeder: MyString
+  status: MyString
+  numPlants: 1
+  scent: MyString
+  headSize: MyString
+  numPetals: 1
+  steamLenght: 9.99
+  production: MyString
+  opening: MyString
+  abnormality: MyText
+  remarks: MyText
