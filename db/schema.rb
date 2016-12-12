@@ -11,14 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209221222) do
+ActiveRecord::Schema.define(version: 20161212201224) do
 
-  create_table "genetic_banks", force: true do |t|
-    t.string   "code",                                  null: false
+  create_table "colors", force: true do |t|
+    t.string   "colorName"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "crossings", primary_key: "crossCode", force: true do |t|
+    t.integer  "year"
+    t.string   "status"
+    t.string   "father"
+    t.string   "mother"
+    t.integer  "crossWeek"
+    t.integer  "numCrossings"
+    t.integer  "goodCrossings"
+    t.integer  "badCrossings"
+    t.string   "effective"
+    t.decimal  "percentageEffective", precision: 5, scale: 2
+    t.date     "dateHarvest"
+    t.integer  "weekHarvest"
+    t.integer  "numSeeds"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genetic_banks", primary_key: "code", force: true do |t|
     t.string   "location"
     t.string   "trademark"
     t.string   "denomination"
-    t.date     "year"
+    t.integer  "year"
     t.string   "breeder"
     t.string   "status"
     t.integer  "numPlants"
@@ -32,6 +55,9 @@ ActiveRecord::Schema.define(version: 20161209221222) do
     t.text     "remarks"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "color_id"
   end
+
+  add_index "genetic_banks", ["color_id"], name: "index_genetic_banks_on_color_id", using: :btree
 
 end

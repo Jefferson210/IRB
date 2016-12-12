@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Crosscode:</strong>
+  <%= @crossing.crossCode %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @crossing.year %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @crossing.status %>
+</p>
+
+<p>
+  <strong>Father:</strong>
+  <%= @crossing.father %>
+</p>
+
+<p>
+  <strong>Mother:</strong>
+  <%= @crossing.mother %>
+</p>
+
+<p>
+  <strong>Crossweek:</strong>
+  <%= @crossing.crossWeek %>
+</p>
+
+<p>
+  <strong>Numcrossings:</strong>
+  <%= @crossing.numCrossings %>
+</p>
+
+<p>
+  <strong>Goodcrossings:</strong>
+  <%= @crossing.goodCrossings %>
+</p>
+
+<p>
+  <strong>Badcrossings:</strong>
+  <%= @crossing.badCrossings %>
+</p>
+
+<p>
+  <strong>Effective:</strong>
+  <%= @crossing.effective %>
+</p>
+
+<p>
+  <strong>Percentageeffective:</strong>
+  <%= @crossing.percentageEffective %>
+</p>
+
+<p>
+  <strong>Dateharvest:</strong>
+  <%= @crossing.dateHarvest %>
+</p>
+
+<p>
+  <strong>Weekharvest:</strong>
+  <%= @crossing.weekHarvest %>
+</p>
+
+<p>
+  <strong>Numseeds:</strong>
+  <%= @crossing.numSeeds %>
+</p>
+
+<%= link_to 'Edit', edit_crossing_path(@crossing) %> |
+<%= link_to 'Back', crossings_path %>

@@ -1,53 +1,55 @@
 <h1>Listing genetic_banks</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Location</th>
-      <th>Trademark</th>
-      <th>Denomination</th>
-      <th>Year</th>
-      <th>Breeder</th>
-      <th>Status</th>
-      <th>Numplants</th>
-      <th>Scent</th>
-      <th>Headsize</th>
-      <th>Numpetals</th>
-      <th>Steamlenght</th>
-      <th>Production</th>
-      <th>Opening</th>
-      <th>Abnormality</th>
-      <th>Remarks</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Location</th>
+            <th>Trademark</th>
+            <th>Denomination</th>
+            <th>Year</th>
+            <th>Breeder</th>
+            <th>Status</th>
+            <th>Numplants</th>
+            <th>Scent</th>
+            <th>Headsize</th>
+            <th>Numpetals</th>
+            <th>Color</th>
+            <th>Steamlenght</th>
+            <th>Production</th>
+            <th>Opening</th>
+            <th>Abnormality</th>
+            <th>Remarks</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @genetic_banks.each do |genetic_bank| %>
-      <tr>
-        <td><%= genetic_bank.code %></td>
-        <td><%= genetic_bank.location %></td>
-        <td><%= genetic_bank.trademark %></td>
-        <td><%= genetic_bank.denomination %></td>
-        <td><%= genetic_bank.year %></td>
-        <td><%= genetic_bank.breeder %></td>
-        <td><%= genetic_bank.status %></td>
-        <td><%= genetic_bank.numPlants %></td>
-        <td><%= genetic_bank.scent %></td>
-        <td><%= genetic_bank.headSize %></td>
-        <td><%= genetic_bank.numPetals %></td>
-        <td><%= genetic_bank.steamLenght %></td>
-        <td><%= genetic_bank.production %></td>
-        <td><%= genetic_bank.opening %></td>
-        <td><%= genetic_bank.abnormality %></td>
-        <td><%= genetic_bank.remarks %></td>
-        <td><%= link_to 'Show', genetic_bank %></td>
-        <td><%= link_to 'Edit', edit_genetic_bank_path(genetic_bank) %></td>
-        <td><%= link_to 'Destroy', genetic_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @genetic_banks.each do |genetic_bank| %>
+        <tr>
+            <td><%= genetic_bank.code %></td>
+            <td><%= genetic_bank.location %></td>
+            <td><%= genetic_bank.trademark %></td>
+            <td><%= genetic_bank.denomination %></td>
+            <td><%= genetic_bank.year %></td>
+            <td><%= genetic_bank.breeder %></td>
+            <td><%= genetic_bank.status %></td>
+            <td><%= genetic_bank.numPlants %></td>
+            <td><%= genetic_bank.scent %></td>
+            <td><%= genetic_bank.headSize %></td>
+            <td><%= genetic_bank.numPetals %></td>
+            <td><%= genetic_bank.color_id %></td>
+            <td><%= genetic_bank.steamLenght %></td>
+            <td><%= genetic_bank.production %></td>
+            <td><%= genetic_bank.opening %></td>
+            <td><%= genetic_bank.abnormality %></td>
+            <td><%= genetic_bank.remarks %></td>
+            <td><%= link_to 'Show', genetic_bank %></td>
+            <td><%= link_to 'Edit', edit_genetic_bank_path(genetic_bank) %></td>
+            <td><%= link_to 'Destroy', genetic_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>

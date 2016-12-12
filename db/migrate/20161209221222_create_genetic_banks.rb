@@ -1,6 +1,6 @@
 class CreateGeneticBanks < ActiveRecord::Migration
     def change
-        create_table :genetic_banks do |t|
+        create_table :genetic_banks, id:false do |t|
             t.string :code, null: false
             t.string :location
             t.string :trademark
@@ -20,5 +20,6 @@ class CreateGeneticBanks < ActiveRecord::Migration
 
             t.timestamps
         end
+        execute "ALTER TABLE genetic_banks ADD PRIMARY KEY (code);"
     end
 end

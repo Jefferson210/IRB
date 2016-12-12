@@ -1,0 +1,73 @@
+<%= form_for(@crossing) do |f| %>
+  <% if @crossing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crossing.errors.count, "error") %> prohibited this crossing from being saved:</h2>
+
+      <ul>
+      <% @crossing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :crossCode %><br>
+    <%= f.text_field :crossCode %>
+  </div>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :father %><br>
+    <%= f.text_field :father %>
+  </div>
+  <div class="field">
+    <%= f.label :mother %><br>
+    <%= f.text_field :mother %>
+  </div>
+  <div class="field">
+    <%= f.label :crossWeek %><br>
+    <%= f.number_field :crossWeek %>
+  </div>
+  <div class="field">
+    <%= f.label :numCrossings %><br>
+    <%= f.number_field :numCrossings %>
+  </div>
+  <div class="field">
+    <%= f.label :goodCrossings %><br>
+    <%= f.number_field :goodCrossings %>
+  </div>
+  <div class="field">
+    <%= f.label :badCrossings %><br>
+    <%= f.number_field :badCrossings %>
+  </div>
+  <div class="field">
+    <%= f.label :effective %><br>
+    <%= f.text_field :effective %>
+  </div>
+  <div class="field">
+    <%= f.label :percentageEffective %><br>
+    <%= f.text_field :percentageEffective %>
+  </div>
+  <div class="field">
+    <%= f.label :dateHarvest %><br>
+    <%= f.date_select :dateHarvest %>
+  </div>
+  <div class="field">
+    <%= f.label :weekHarvest %><br>
+    <%= f.number_field :weekHarvest %>
+  </div>
+  <div class="field">
+    <%= f.label :numSeeds %><br>
+    <%= f.number_field :numSeeds %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :crossings
+
+  resources :colors
+
   resources :genetic_banks
 
   # The priority is based upon order of creation: first created -> highest priority.

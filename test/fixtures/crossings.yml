@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  crossCode: MyString
+  year: 1
+  status: MyString
+  father: MyString
+  mother: MyString
+  crossWeek: 1
+  numCrossings: 1
+  goodCrossings: 1
+  badCrossings: 1
+  effective: MyString
+  percentageEffective: 
+  dateHarvest: 2016-12-12
+  weekHarvest: 1
+  numSeeds: 1
+
+two:
+  crossCode: MyString
+  year: 1
+  status: MyString
+  father: MyString
+  mother: MyString
+  crossWeek: 1
+  numCrossings: 1
+  goodCrossings: 1
+  badCrossings: 1
+  effective: MyString
+  percentageEffective: 
+  dateHarvest: 2016-12-12
+  weekHarvest: 1
+  numSeeds: 1

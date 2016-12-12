@@ -1,0 +1,1 @@
+json.extract! @crossing, :id, :crossCode, :year, :status, :father, :mother, :crossWeek, :numCrossings, :goodCrossings, :badCrossings, :effective, :percentageEffective, :dateHarvest, :weekHarvest, :numSeeds, :created_at, :updated_at
