@@ -69,3 +69,4 @@ gem 'spring',        group: :development
 
 gem 'composite_primary_keys'
 gem 'bootstrap-sass'
+gem 'paperclip', '~> 4.0'
