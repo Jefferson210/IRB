@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :spek_selections
-  resources :irb_selections
-  resources :three_offsprings
+    resources :spek_selections
+    resources :irb_selections
+    resources :three_offsprings
     resources :two_offsprings
     resources :one_offsprings
     resources :seeds
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     # See how all your routes lay out with "rake routes".
 
     # You can have the root of your site routed with "root"
-    # root 'welcome#index'
+    root 'genetic_banks#index'
 
     # Example of regular route:
     #   get 'products/:id' => 'catalog#view'

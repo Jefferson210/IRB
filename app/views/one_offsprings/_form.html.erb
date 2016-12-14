@@ -1,49 +1,81 @@
-<%= form_for(@one_offspring) do |f| %>
-<% if @one_offspring.errors.any? %>
-<div id="error_explanation">
-    <h2><%= pluralize(@one_offspring.errors.count, "error") %> prohibited this one_offspring from being saved:</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-offset-1 col-md-10">
+            <%= form_for(@one_offspring,:html=>{:class=>"form-horizontal"}) do |f| %>
+            <% if @one_offspring.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@one_offspring.errors.count, "error") %> prohibited this one_offspring from being saved:</h2>
 
-    <ul>
-        <% @one_offspring.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
+                <ul>
+                    <% @one_offspring.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
 
-<div class="field">
-    <%= f.label :codeCross %><br>
-    <%= f.collection_select(:codeCross,Seed.where(status: 'keep'),:codeCross,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
+            <div class="form-group">
+                <%= f.label :codeCross, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.collection_select(:codeCross,Seed.where(status: 'keep'),:codeCross,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :individual, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.number_field :individual ,:class=>"form-control"%>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :color_id, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.collection_select(:color_id,Color.all,:id,:colorName,{:prompt => "Select Color"},{:class => "form-control"})%> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :status, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"}, {:class => 'form-control'})  %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :headSize, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.text_field :headSize,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :flowering, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.number_field :flowering ,:class=>"form-control"%>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :numPetals, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.number_field :numPetals ,:class=>"form-control"%>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :form, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.select(:form, options_for_select([['Good','good'],['Bad','bad']], :selected => f.object.form), {:prompt => "Select"}, {:class => 'form-control'})  %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="actions">
+                    <%= f.submit %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
 </div>
-<div class="field">
-    <%= f.label :individual %><br>
-    <%= f.number_field :individual %>
-</div>
-<div class="field">
-    <%= f.label :color_id %><br>
-    <%= f.collection_select(:color_id,Color.all,:id,:colorName,{:prompt => "Select Color"},{:class => "form-control"})%> 
-</div>
-<div class="field">
-    <%= f.label :status %><br>
-    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"}, {:class => 'form-control'})  %>
-</div>
-<div class="field">
-    <%= f.label :headSize %><br>
-    <%= f.text_field :headSize %>
-</div>
-<div class="field">
-    <%= f.label :flowering %><br>
-    <%= f.number_field :flowering %>
-</div>
-<div class="field">
-    <%= f.label :numPetals %><br>
-    <%= f.number_field :numPetals %>
-</div>
-<div class="field">
-    <%= f.label :form %><br>
-    <%= f.select(:form, options_for_select([['Good','good'],['Bad','bad']], :selected => f.object.form), {:prompt => "Select"}, {:class => 'form-control'})  %>
-</div>
-<div class="actions">
-    <%= f.submit %>
-</div>
-<% end %>

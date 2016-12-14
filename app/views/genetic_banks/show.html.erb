@@ -1,89 +1,103 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="text-left"><%= @genetic_bank.code %></h2>
+            </div>
 
-<p>
-    <strong>Code:</strong>
-    <%= @genetic_bank.code %>
-</p>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group item">Code:
+                        <span><strong> <%= @genetic_bank.code %></strong></span>
+                    </li>
 
-<p>
-    <strong>Location:</strong>
-    <%= @genetic_bank.location %>
-</p>
+                    <li class="list-group item">Location:
+                        <span><strong><%= @genetic_bank.location %></strong></span>
+                    </li>
 
-<p>
-    <strong>Trademark:</strong>
-    <%= @genetic_bank.trademark %>
-</p>
+                    <li class="list-group item">Trademark:
+                        <span><strong><%= @genetic_bank.trademark %></strong></span>
+                    </li>
 
-<p>
-    <strong>Denomination:</strong>
-    <%= @genetic_bank.denomination %>
-</p>
+                    <li class="list-group item">Denomination:
+                        <span><strong> <%= @genetic_bank.denomination %></strong></span>
+                    </li>
 
-<p>
-    <strong>Year:</strong>
-    <%= @genetic_bank.year %>
-</p>
+                    <li class="list-group item">Year:
+                        <span><strong><%= @genetic_bank.year %></strong></span>
+                    </li>
 
-<p>
-    <strong>Breeder:</strong>
-    <%= @genetic_bank.breeder %>
-</p>
+                    <li class="list-group item">Breeder:
+                        <span><strong> <%= @genetic_bank.breeder %></strong></span>
+                    </li>
 
-<p>
-    <strong>Status:</strong>
-    <%= @genetic_bank.status %>
-</p>
+                    <li class="list-group item">Status:
+                        <span><strong>   <%= @genetic_bank.status %></strong></span>
+                    </li>
 
-<p>
-    <strong>Numplants:</strong>
-    <%= @genetic_bank.numPlants %>
-</p>
+                    <li class="list-group item">Numplants:
+                        <span><strong> <%= @genetic_bank.numPlants %></strong></span>
+                    </li>
 
-<p>
-    <strong>Color:</strong>
-    <%= @genetic_bank.color ? @genetic_bank.color.colorName : 'N/A' %>
-</p>
+                    <li class="list-group item">Color:
+                        <span><strong><%= @genetic_bank.color ? @genetic_bank.color.colorName : 'N/A' %></strong></span>
+                    </li>
 
-<p>
-    <strong>Scent:</strong>
-    <%= @genetic_bank.scent %>
-</p>
+                    <li class="list-group item">Scent:
+                        <span><strong> <%= @genetic_bank.scent %></strong></span>
+                    </li>
 
-<p>
-    <strong>Headsize:</strong>
-    <%= @genetic_bank.headSize %>
-</p>
+                    <li class="list-group item">Headsize:
+                        <span><strong><%= @genetic_bank.headSize %></strong></span>
+                    </li>
 
-<p>
-    <strong>Numpetals:</strong>
-    <%= @genetic_bank.numPetals %>
-</p>
+                    <li class="list-group item">Numpetals:
+                        <span><strong><%= @genetic_bank.numPetals %></strong></span>
+                    </li>
 
-<p>
-    <strong>Steamlenght:</strong>
-    <%= @genetic_bank.steamLenght %>
-</p>
+                    <li class="list-group item">Steamlenght:
+                        <span><strong><%= @genetic_bank.steamLenght %></strong></span>
+                    </li>
 
-<p>
-    <strong>Production:</strong>
-    <%= @genetic_bank.production %>
-</p>
+                    <li class="list-group item">Production:
+                        <span><strong><%= @genetic_bank.production %></strong></span>
+                    </li>
 
-<p>
-    <strong>Opening:</strong>
-    <%= @genetic_bank.opening %>
-</p>
+                    <li class="list-group item">Opening:
+                        <span><strong>  <%= @genetic_bank.opening %></strong></span>
+                    </li>
 
-<p>
-    <strong>Abnormality:</strong>
-    <%= @genetic_bank.abnormality %>
-</p>
+                    <li class="list-group item">Abnormality:
+                        <span><strong><%= @genetic_bank.abnormality %></strong></span>
+                    </li>
 
-<p>
-    <strong>Remarks:</strong>
-    <%= @genetic_bank.remarks %>
-</p>
+                    <li class="list-group item">Remarks:
+                        <span><strong> <%= @genetic_bank.remarks %></strong></span>
+                    </li>
+                </ul>
+            </div>
 
-<%= link_to 'Edit', edit_genetic_bank_path(@genetic_bank) %> |
-<%= link_to 'Back', genetic_banks_path %>
+            <div class="panel-footer">
+                <%= link_to 'Edit', edit_genetic_bank_path(@genetic_bank) %> |
+                <%= link_to 'Back', genetic_banks_path %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

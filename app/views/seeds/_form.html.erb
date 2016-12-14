@@ -1,63 +1,102 @@
-<%= form_for(@seed) do |f| %>
-<% if @seed.errors.any? %>
-<div id="error_explanation">
-    <h2><%= pluralize(@seed.errors.count, "error") %> prohibited this seed from being saved:</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-offset-1 col-md-10">
+            <%= form_for(@seed,:html=>{:class=>"form-horizontal"}) do |f| %>
+            <% if @seed.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@seed.errors.count, "error") %> prohibited this seed from being saved:</h2>
 
-    <ul>
-        <% @seed.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
+                <ul>
+                    <% @seed.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
 
-<div class="field">
-    <%= f.label :codeCross %><br>
-    <%= f.collection_select(:codeCross,Crossing.all,:crossCode,:crossCode,{:prompt => "Select"},{:class => "form-control"})%>
-</div>
-<div class="field">
-    <%= f.label :sowDate %><br>
-    <%= f.date_select :sowDate, {:prompt => "Select"} %>
-</div>
-<div class="field">
-    <%= f.label :origin %><br>
-    <%= f.select(:origin, options_for_select([['Lazo','lazo'],['Tabacundo','tabacundo'],['Cayambe','cayambe']], :selected => f.object.origin), {:prompt => "Select"}, {:class => 'form-control'}) %>
+            <div class="form-group">
+                <%= f.label :codeCross, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.collection_select(:codeCross,Crossing.all,:crossCode,:crossCode,{:prompt => "Select"},{:class => "form-control"})%>
+                </div>
+            </div>
 
+            <div class="form-group">
+                <%= f.label :sowDate, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.date_field :sowDate,:class=>"form-control",value: f.object.sowDate ,:prompt => "Select" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :origin, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.select(:origin, options_for_select([['Lazo','lazo'],['Tabacundo','tabacundo'],['Cayambe','cayambe']], :selected => f.object.origin), {:prompt => "Select"}, {:class => 'form-control'}) %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :numSeeds, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.number_field :numSeeds,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :totalWeight, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.text_field :totalWeight ,:class=>"form-control"%>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :week, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.number_field :week,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :hydratation, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.select(:hydratation, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.hydratation), {:prompt => "Select"},{:class => 'form-control'})  %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :status, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"},{:class => 'form-control'})  %>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <%= f.label :dateOut, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.date_field :dateOut,:class=>"form-control",value: f.object.dateOut ,:prompt => "Select" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :totalGermination, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.number_field :totalGermination,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :percentageGermination, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.text_field :percentageGermination,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="actions">
+                    <%= f.submit %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
 </div>
-<div class="field">
-    <%= f.label :numSeeds %><br>
-    <%= f.number_field :numSeeds %>
-</div>
-<div class="field">
-    <%= f.label :totalWeight %><br>
-    <%= f.text_field :totalWeight %>
-</div>
-<div class="field">
-    <%= f.label :week %><br>
-    <%= f.number_field :week %>
-</div>
-<div class="field">
-    <%= f.label :hydratation %><br>
-    <%= f.select(:hydratation, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.hydratation), {:prompt => "Select"},{:class => 'form-control'})  %>
-</div>
-<div class="field">
-    <%= f.label :status %><br>
-    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"},{:class => 'form-control'})  %>
-    
-</div>
-<div class="field">
-    <%= f.label :dateOut %><br>
-    <%= f.date_select :dateOut, {:prompt => "Select"} %>
-</div>
-<div class="field">
-    <%= f.label :totalGermination %><br>
-    <%= f.number_field :totalGermination %>
-</div>
-<div class="field">
-    <%= f.label :percentageGermination %><br>
-    <%= f.text_field :percentageGermination %>
-</div>
-<div class="actions">
-    <%= f.submit %>
-</div>
-<% end %>

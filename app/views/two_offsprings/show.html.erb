@@ -1,43 +1,60 @@
 <p id="notice"><%= notice %></p>
-<p>
-    <strong>Codecross:</strong>
-    <%= @two_offspring.codeCross %>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="text-left"><%= @two_offspring.codeCross %></h2>
+            </div>
 
-<p>
-    <strong>Individual:</strong>
-    <%= @two_offspring.individual %>
-</p>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">Codecross:
+                        <span><strong><%= @two_offspring.codeCross %></strong></span>
+                    </li>
 
-<p>
-    <strong>Color:</strong>
-    <%= @two_offspring.color ? @two_offspring.color.colorName : 'N/A' %>
-</p>
+                    <li class="list-group-item">Individual:
+                        <span><strong><%= @two_offspring.individual %></strong></span>
+                    </li>
 
-<p>
-    <strong>Status:</strong>
-    <%= @two_offspring.status %>
-</p>
+                    <li class="list-group-item">Color:
+                        <span><strong><%= @two_offspring.color ? @two_offspring.color.colorName : 'N/A' %></strong></span>
+                    </li>
 
-<p>
-    <strong>Headsize:</strong>
-    <%= @two_offspring.headSize %>
-</p>
+                    <li class="list-group-item">Status:
+                        <span><strong><%= @two_offspring.status %></strong></span>
+                    </li>
 
-<p>
-    <strong>Flowering:</strong>
-    <%= @two_offspring.flowering %>
-</p>
+                    <li class="list-group-item">HeadSize
+                        <span><strong><%= @two_offspring.headSize %></strong></span>
+                    </li>
 
-<p>
-    <strong>Numpetals:</strong>
-    <%= @two_offspring.numPetals %>
-</p>
+                    <li class="list-group-item">Flowering:
+                        <span><strong><%= @two_offspring.flowering %></strong></span>
+                    </li>
 
-<p>
-    <strong>Form:</strong>
-    <%= @two_offspring.form %>
-</p>
+                    <li class="list-group-item">NumPetals:
+                        <span><strong><%= @two_offspring.numPetals %></strong></span>
+                    </li>
 
-<%= link_to 'Edit', edit_two_offspring_path(@two_offspring) %> |
-<%= link_to 'Back', two_offsprings_path %>
+                    <li class="list-group-item">Form:
+                        <span><strong><%= @two_offspring.form %></strong></span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="panel-footer">
+                <%= link_to 'Edit', edit_two_offspring_path(@two_offspring) %> |
+                <%= link_to 'Back', two_offsprings_path %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

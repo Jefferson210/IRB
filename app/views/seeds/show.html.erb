@@ -1,59 +1,69 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="text-left"><%= @seed.codeCross %></h2>
+            </div>
 
-<p>
-  <strong>Codecross:</strong>
-  <%= @seed.codeCross %>
-</p>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">CodeCross:
+                        <span><strong><%= @seed.codeCross %></strong></span>
+                    </li>
 
-<p>
-  <strong>Sowdate:</strong>
-  <%= @seed.sowDate %>
-</p>
+                    <li class="list-group-item">SowDate:
+                        <span><strong><%= @seed.sowDate %></strong></span>
+                    </li>
 
-<p>
-  <strong>Origin:</strong>
-  <%= @seed.origin %>
-</p>
+                    <li class="list-group-item">Origin:
+                        <span><strong><%= @seed.origin %></strong></span>
+                    </li>
 
-<p>
-  <strong>Numseeds:</strong>
-  <%= @seed.numSeeds %>
-</p>
+                    <li class="list-group-item">NumSeeds:
+                        <span><strong><%= @seed.numSeeds %></strong></span>
+                    </li>
 
-<p>
-  <strong>Totalweight:</strong>
-  <%= @seed.totalWeight %>
-</p>
+                    <li class="list-group-item">TotalWeight:
+                        <span><strong><%= @seed.totalWeight %> </strong></span>
+                    </li>
 
-<p>
-  <strong>Week:</strong>
-  <%= @seed.week %>
-</p>
+                    <li class="list-group-item">Week:
+                        <span><strong><%= @seed.week %></strong></span>
+                    </li>
 
-<p>
-  <strong>Hydratation:</strong>
-  <%= @seed.hydratation %>
-</p>
+                    <li class="list-group-item">Hydratation:
+                        <span><strong><%= @seed.hydratation %></strong></span>
+                    </li>
 
-<p>
-  <strong>Status:</strong>
-  <%= @seed.status %>
-</p>
+                    <li class="list-group-item">Status:
+                        <span><strong><%= @seed.status %></strong></span>
+                    </li>
 
-<p>
-  <strong>Dateout:</strong>
-  <%= @seed.dateOut %>
-</p>
+                    <li class="list-group-item">DateOut:
+                        <span><strong><%= @seed.dateOut %></strong></span>
+                    </li>
 
-<p>
-  <strong>Totalgermination:</strong>
-  <%= @seed.totalGermination %>
-</p>
+                    <li class="list-group-item">Totalgermination:
+                        <span><strong><%= @seed.totalGermination %></strong></span>
+                    </li>
 
-<p>
-  <strong>Percentagegermination:</strong>
-  <%= @seed.percentageGermination %>
-</p>
+                    <li class="list-group-item">Percentagegermination:
+                        <span><strong><%= @seed.percentageGermination %></strong></span>
+                    </li>
 
-<%= link_to 'Edit', edit_seed_path(@seed) %> |
-<%= link_to 'Back', seeds_path %>
+                </ul>
+            </div>
+
+            <div class="panel-footer">
+                <%= link_to 'Edit', edit_seed_path(@seed) %> |
+                <%= link_to 'Back', seeds_path %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

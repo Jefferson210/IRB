@@ -1,89 +1,103 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="text-left"><%= @irb_selection.code %></h2>
+            </div>
 
-<p>
-    <strong>Codecross:</strong>
-    <%= @irb_selection.codeCross %>
-</p>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group item">CodeCross:
+                        <span><strong> <%= @irb_selection.codeCross %></strong></span>
+                    </li>
 
-<p>
-    <strong>Code:</strong>
-    <%= @irb_selection.code %>
-</p>
+                    <li class="list-group item">Code:
+                        <span><strong> <%= @irb_selection.code %></strong></span>
+                    </li>
 
-<p>
-    <strong>Location:</strong>
-    <%= @irb_selection.location %>
-</p>
+                    <li class="list-group item">Location:
+                        <span><strong><%= @irb_selection.location %></strong></span>
+                    </li>
 
-<p>
-    <strong>Trademark:</strong>
-    <%= @irb_selection.trademark %>
-</p>
+                    <li class="list-group item">Trademark:
+                        <span><strong><%= @irb_selection.trademark %></strong></span>
+                    </li>
 
-<p>
-    <strong>Denomination:</strong>
-    <%= @irb_selection.denomination %>
-</p>
+                    <li class="list-group item">Denomination:
+                        <span><strong> <%= @irb_selection.denomination %></strong></span>
+                    </li>
 
-<p>
-    <strong>Year:</strong>
-    <%= @irb_selection.year %>
-</p>
+                    <li class="list-group item">Year:
+                        <span><strong><%= @irb_selection.year %></strong></span>
+                    </li>
 
-<p>
-    <strong>Status:</strong>
-    <%= @irb_selection.status %>
-</p>
+                    <li class="list-group item">Status:
+                        <span><strong>   <%= @irb_selection.status %></strong></span>
+                    </li>
 
-<p>
-    <strong>Numplants:</strong>
-    <%= @irb_selection.numPlants %>
-</p>
+                    <li class="list-group item">Numplants:
+                        <span><strong> <%= @irb_selection.numPlants %></strong></span>
+                    </li>
 
-<p>
-    <strong>Color:</strong>
-    <%= @irb_selection.color ? @irb_selection.color.colorName : 'N/A' %>
-</p>
+                    <li class="list-group item">Color:
+                        <span><strong><%= @irb_selection.color ? @irb_selection.color.colorName : 'N/A' %></strong></span>
+                    </li>
 
-<p>
-    <strong>Scent:</strong>
-    <%= @irb_selection.scent %>
-</p>
+                    <li class="list-group item">Scent:
+                        <span><strong> <%= @irb_selection.scent %></strong></span>
+                    </li>
 
-<p>
-    <strong>Headsize:</strong>
-    <%= @irb_selection.headSize %>
-</p>
+                    <li class="list-group item">Headsize:
+                        <span><strong><%= @irb_selection.headSize %></strong></span>
+                    </li>
 
-<p>
-    <strong>Numpetals:</strong>
-    <%= @irb_selection.numPetals %>
-</p>
+                    <li class="list-group item">Numpetals:
+                        <span><strong><%= @irb_selection.numPetals %></strong></span>
+                    </li>
 
-<p>
-    <strong>Steamlenght:</strong>
-    <%= @irb_selection.steamLenght %>
-</p>
+                    <li class="list-group item">Steamlenght:
+                        <span><strong><%= @irb_selection.steamLenght %></strong></span>
+                    </li>
 
-<p>
-    <strong>Production:</strong>
-    <%= @irb_selection.production %>
-</p>
+                    <li class="list-group item">Production:
+                        <span><strong><%= @irb_selection.production %></strong></span>
+                    </li>
 
-<p>
-    <strong>Opening:</strong>
-    <%= @irb_selection.opening %>
-</p>
+                    <li class="list-group item">Opening:
+                        <span><strong>  <%= @irb_selection.opening %></strong></span>
+                    </li>
 
-<p>
-    <strong>Abnormality:</strong>
-    <%= @irb_selection.abnormality %>
-</p>
+                    <li class="list-group item">Abnormality:
+                        <span><strong><%= @irb_selection.abnormality %></strong></span>
+                    </li>
 
-<p>
-    <strong>Remarks:</strong>
-    <%= @irb_selection.remarks %>
-</p>
+                    <li class="list-group item">Remarks:
+                        <span><strong> <%= @irb_selection.remarks %></strong></span>
+                    </li>
+                </ul>
+            </div>
 
-<%= link_to 'Edit', edit_irb_selection_path(@irb_selection) %> |
-<%= link_to 'Back', irb_selections_path %>
+            <div class="panel-footer">
+                <%= link_to 'Edit', edit_irb_selection_path(@irb_selection) %> |
+                <%= link_to 'Back', irb_selections_path %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

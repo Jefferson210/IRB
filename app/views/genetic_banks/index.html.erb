@@ -1,6 +1,10 @@
-<h1>Listing genetic_banks</h1>
+<h1 class="alert alert-success text-center">Genetic Bank</h1>
 
-<table>
+<div class="text-center">
+    <h3><%= link_to 'New Genetic bank', new_genetic_bank_path %></h3>
+</div>
+
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Code</th>
@@ -10,7 +14,7 @@
             <th>Year</th>
             <th>Breeder</th>
             <th>Status</th>
-            <th>Numplants</th>
+            <th>#Plants</th>
             <th>Scent</th>
             <th>Headsize</th>
             <th>Numpetals</th>
@@ -54,4 +58,4 @@
 
 <br>
 
-<%= link_to 'New Genetic bank', new_genetic_bank_path %>
+
