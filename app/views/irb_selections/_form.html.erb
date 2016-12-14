@@ -1,0 +1,85 @@
+<%= form_for(@irb_selection) do |f| %>
+<% if @irb_selection.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@irb_selection.errors.count, "error") %> prohibited this irb_selection from being saved:</h2>
+
+    <ul>
+        <% @irb_selection.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="field">
+    <%= f.label :codeCross %><br>
+    <%= f.collection_select(:codeCross,ThreeOffspring .where(status: 'keep'),:codeCross,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
+</div>
+<div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+</div>
+<div class="field">
+    <%= f.label :location %><br>
+    <%= f.select(:location, options_for_select([['S.Tabacundo','S.Tabacundo'],['S.Lazo','S.Lazo'],['S.Cayambe','S.Cayambe'],['Kenia','kenia']], :selected => f.object.location), {:prompt => "Select"}, {:class => 'form-control'})  %>
+</div>
+<div class="field">
+    <%= f.label :trademark %><br>
+    <%= f.text_field :trademark %>
+</div>
+<div class="field">
+    <%= f.label :denomination %><br>
+    <%= f.text_field :denomination %>
+</div>
+<div class="field">
+    <%= f.label :year %><br>
+    <%= f.select :year, (Time.zone.now.year - 16)..(Time.zone.now.year + 10), {:prompt => "Select"},{:class =>"form-control"} %>
+</div>
+<div class="field">
+    <%= f.label :status %><br>
+    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"}, {:class => 'form-control'})  %>
+</div>
+<div class="field">
+    <%= f.label :numPlants %><br>
+    <%= f.number_field :numPlants %>
+</div>
+<div class="field">
+    <%= f.label :color_id %><br>
+    <%= f.collection_select(:color_id,Color.all,:id,:colorName,{:prompt => "Select Color"},{:class => "form-control"})%> 
+</div>
+<div class="field">
+    <%= f.label :scent %><br>
+    <%= f.select(:scent, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.scent), {:prompt => "Select"}, {:class => 'form-control'})  %>
+</div>
+<div class="field">
+    <%= f.label :headSize %><br>
+    <%= f.select(:headSize, options_for_select([['2','2'],['2.5','2.5'],['3','3'],['3.5','3.5'],['4','4'],['4.5','4.5'],['5','5'],['5.5','5.5'],['6','6'],['6.5','6.5'],['7','7']], :selected => f.object.headSize), {:prompt => "Select"}, {:class => 'form-control'})  %>
+</div>
+<div class="field">
+    <%= f.label :numPetals %><br>
+    <%= f.number_field :numPetals %>
+</div>
+<div class="field">
+    <%= f.label :steamLenght %><br>
+    <%= f.text_field :steamLenght %>
+</div>
+<div class="field">
+    <%= f.label :production %><br>
+    <%= f.text_field :production %>
+</div>
+<div class="field">
+    <%= f.label :opening %><br>
+    <%= f.text_field :opening %>
+</div>
+<div class="field">
+    <%= f.label :abnormality %><br>
+    <%= f.text_area :abnormality %>
+</div>
+<div class="field">
+    <%= f.label :remarks %><br>
+    <%= f.text_area :remarks %>
+</div>
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>

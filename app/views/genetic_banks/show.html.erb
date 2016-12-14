@@ -42,7 +42,7 @@
 
 <p>
     <strong>Color:</strong>
-    <%= @genetic_bank.color_id %>
+    <%= @genetic_bank.color ? @genetic_bank.color.colorName : 'N/A' %>
 </p>
 
 <p>

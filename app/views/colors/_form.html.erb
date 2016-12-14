@@ -1,21 +1,31 @@
-<%= form_for(@color) do |f| %>
-  <% if @color.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@color.errors.count, "error") %> prohibited this color from being saved:</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-offset-1 col-md-10">
+            <%= form_for(@color,:html=>{:class=>"form-horizontal"}) do |f| %>
+            <% if @color.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@color.errors.count, "error") %> prohibited this color from being saved:</h2>
 
-      <ul>
-      <% @color.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                <ul>
+                    <% @color.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= f.label :colorName , :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.text_field :colorName %>                    
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="actions">
+                    <%= f.submit %>
+                </div>
+            </div>
+            <% end %>
+        </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :colorName %><br>
-    <%= f.text_field :colorName %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

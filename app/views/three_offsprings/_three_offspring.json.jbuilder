@@ -1,0 +1,2 @@
+json.extract! three_offspring, :id, :codeCross, :individual, :color_id, :status, :headSize, :flowering, :numPetals, :form, :created_at, :updated_at
+json.url three_offspring_url(three_offspring, format: :json)

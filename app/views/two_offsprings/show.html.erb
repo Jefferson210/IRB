@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<p>
+    <strong>Codecross:</strong>
+    <%= @two_offspring.codeCross %>
+</p>
+
+<p>
+    <strong>Individual:</strong>
+    <%= @two_offspring.individual %>
+</p>
+
+<p>
+    <strong>Color:</strong>
+    <%= @two_offspring.color ? @two_offspring.color.colorName : 'N/A' %>
+</p>
+
+<p>
+    <strong>Status:</strong>
+    <%= @two_offspring.status %>
+</p>
+
+<p>
+    <strong>Headsize:</strong>
+    <%= @two_offspring.headSize %>
+</p>
+
+<p>
+    <strong>Flowering:</strong>
+    <%= @two_offspring.flowering %>
+</p>
+
+<p>
+    <strong>Numpetals:</strong>
+    <%= @two_offspring.numPetals %>
+</p>
+
+<p>
+    <strong>Form:</strong>
+    <%= @two_offspring.form %>
+</p>
+
+<%= link_to 'Edit', edit_two_offspring_path(@two_offspring) %> |
+<%= link_to 'Back', two_offsprings_path %>

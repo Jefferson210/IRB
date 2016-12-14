@@ -1,6 +1,5 @@
 class GeneticBanksController < ApplicationController
     before_action :set_genetic_bank, only: [:show, :edit, :update, :destroy]
-    before_action :prepare_colors, only: [:new, :edit]
 
     # GET /genetic_banks
     # GET /genetic_banks.json
@@ -40,7 +39,7 @@ class GeneticBanksController < ApplicationController
 
     # PATCH/PUT /genetic_banks/1
     # PATCH/PUT /genetic_banks/1.json
-    def update
+    def update    
         respond_to do |format|
             if @genetic_bank.update(genetic_bank_params)
                 format.html { redirect_to @genetic_bank, notice: 'Genetic bank was successfully updated.' }
@@ -71,9 +70,5 @@ class GeneticBanksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def genetic_bank_params
         params.require(:genetic_bank).permit(:code, :location, :trademark, :denomination, :year, :breeder, :status, :numPlants, :color_id, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks)
-    end
-
-    def prepare_colors
-        @colors = Color.all
     end
 end

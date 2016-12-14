@@ -1,73 +1,131 @@
-<%= form_for(@crossing) do |f| %>
-  <% if @crossing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@crossing.errors.count, "error") %> prohibited this crossing from being saved:</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-offset-1 col-md-10">
+            <%= form_for(@crossing,:html=>{:class=>"form-horizontal"}) do |f| %>
+            <% if @crossing.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@crossing.errors.count, "error") %> prohibited this crossing from being saved:</h2>
 
-      <ul>
-      <% @crossing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                <ul>
+                    <% @crossing.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+
+            <div class="form-group">
+                <%= f.label :crossCode , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.text_field :crossCode,:class=>"form-control" %>
+                </div>                
+            </div>
+
+            <div class="form-group">
+                <%= f.label :year, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.select :year, (Time.zone.now.year - 16)..(Time.zone.now.year + 10), {:prompt => "Select"},{:class =>"form-control"} %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :status, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"}, {:class => 'form-control'})  %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :father , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.collection_select(:father,GeneticBank.all,:id,:code,{:prompt => "Select"},{:class => "form-control"})%> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :mother, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.collection_select(:mother,GeneticBank.all,:id,:code,{:prompt => "Select"},{:class => "form-control"})%> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :crossWeek, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :numCrossings,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :numCrossings, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :numCrossings,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :goodCrossings, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :goodCrossings,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :badCrossings, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :badCrossings,:class=>"form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :effective , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.select(:effective, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.effective), {:prompt => "Select"},{:class => 'form-control'})  %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :percentageEffective , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.text_field :percentageEffective ,:class=>"form-control"%>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :dateHarvest , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.date_select :dateHarvest ,:class=>"form-control",value: f.object.dateHarvest ,:prompt => "Select"%>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :weekHarvest , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.number_field :weekHarvest, :class=>"form-control"  %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :numSeeds , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">  
+                    <%= f.number_field :numSeeds, :class=>"form-control"  %>                  
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="actions">
+                    <%= f.submit %>
+                </div>
+            </div>
+            <% end %>
+        </div>
     </div>
-  <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :crossCode %><br>
-    <%= f.text_field :crossCode %>
-  </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :father %><br>
-    <%= f.text_field :father %>
-  </div>
-  <div class="field">
-    <%= f.label :mother %><br>
-    <%= f.text_field :mother %>
-  </div>
-  <div class="field">
-    <%= f.label :crossWeek %><br>
-    <%= f.number_field :crossWeek %>
-  </div>
-  <div class="field">
-    <%= f.label :numCrossings %><br>
-    <%= f.number_field :numCrossings %>
-  </div>
-  <div class="field">
-    <%= f.label :goodCrossings %><br>
-    <%= f.number_field :goodCrossings %>
-  </div>
-  <div class="field">
-    <%= f.label :badCrossings %><br>
-    <%= f.number_field :badCrossings %>
-  </div>
-  <div class="field">
-    <%= f.label :effective %><br>
-    <%= f.text_field :effective %>
-  </div>
-  <div class="field">
-    <%= f.label :percentageEffective %><br>
-    <%= f.text_field :percentageEffective %>
-  </div>
-  <div class="field">
-    <%= f.label :dateHarvest %><br>
-    <%= f.date_select :dateHarvest %>
-  </div>
-  <div class="field">
-    <%= f.label :weekHarvest %><br>
-    <%= f.number_field :weekHarvest %>
-  </div>
-  <div class="field">
-    <%= f.label :numSeeds %><br>
-    <%= f.number_field :numSeeds %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+
+
+
+
+
+

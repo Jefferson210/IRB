@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Three Offsprings</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Codecross</th>
+            <th>Individual</th>
+            <th>Color</th>
+            <th>Status</th>
+            <th>Headsize</th>
+            <th>Flowering</th>
+            <th>Numpetals</th>
+            <th>Form</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @three_offsprings.each do |three_offspring| %>
+        <tr>
+            <td><%= three_offspring.codeCross %></td>
+            <td><%= three_offspring.individual %></td>
+            <td><%= three_offspring.color ? three_offspring.color.colorName : 'N/A' %></td>
+            <td><%= three_offspring.status %></td>
+            <td><%= three_offspring.headSize %></td>
+            <td><%= three_offspring.flowering %></td>
+            <td><%= three_offspring.numPetals %></td>
+            <td><%= three_offspring.form %></td>
+            <td><%= link_to 'Show', three_offspring %></td>
+            <td><%= link_to 'Edit', edit_three_offspring_path(three_offspring) %></td>
+            <td><%= link_to 'Destroy', three_offspring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Three offspring', new_three_offspring_path %>

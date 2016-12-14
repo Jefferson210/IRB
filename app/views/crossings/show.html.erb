@@ -1,74 +1,75 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="text-left"><%= @crossing.crossCode %></h2>
+            </div>
 
-<p>
-  <strong>Crosscode:</strong>
-  <%= @crossing.crossCode %>
-</p>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">CrossCode:
+                        <span><strong><%= @crossing.crossCode %></strong></span>
+                    </li>
+                    <li class="list-group-item">Year:
+                        <span><strong><%= @crossing.year %></strong></span>
+                    </li>
 
-<p>
-  <strong>Year:</strong>
-  <%= @crossing.year %>
-</p>
+                    <li class="list-group-item">Status:
+                        <span><strong><%= @crossing.status %></strong></span>
+                    </li>
 
-<p>
-  <strong>Status:</strong>
-  <%= @crossing.status %>
-</p>
+                    <li class="list-group-item">Father:
+                        <span><strong><%= @crossing.father %></strong></span>
+                    </li>
 
-<p>
-  <strong>Father:</strong>
-  <%= @crossing.father %>
-</p>
+                    <li class="list-group-item">Mother:
+                        <span><strong><%= @crossing.mother %></strong></span>
+                    </li>
 
-<p>
-  <strong>Mother:</strong>
-  <%= @crossing.mother %>
-</p>
+                    <li class="list-group-item">Crossweek:
+                        <span><strong><%= @crossing.crossWeek %></strong></span>
+                    </li>
 
-<p>
-  <strong>Crossweek:</strong>
-  <%= @crossing.crossWeek %>
-</p>
+                    <li class="list-group-item">Numcrossings:
+                        <span><strong><%= @crossing.numCrossings %></strong></span>
+                    </li>
 
-<p>
-  <strong>Numcrossings:</strong>
-  <%= @crossing.numCrossings %>
-</p>
+                    <li class="list-group-item">Goodcrossings:
+                        <span><strong><%= @crossing.goodCrossings %></strong></span>
+                    </li>
 
-<p>
-  <strong>Goodcrossings:</strong>
-  <%= @crossing.goodCrossings %>
-</p>
+                    <li class="list-group-item">Badcrossings:
+                        <span><strong><%= @crossing.badCrossings %></strong></span>
+                    </li>
 
-<p>
-  <strong>Badcrossings:</strong>
-  <%= @crossing.badCrossings %>
-</p>
+                    <li class="list-group-item">Effective:
+                        <span><strong><%= @crossing.effective %></strong></span>
+                    </li>
 
-<p>
-  <strong>Effective:</strong>
-  <%= @crossing.effective %>
-</p>
+                    <li class="list-group-item">Percentageeffective:
+                        <span><strong><%= @crossing.percentageEffective %></strong></span>
+                    </li>
 
-<p>
-  <strong>Percentageeffective:</strong>
-  <%= @crossing.percentageEffective %>
-</p>
+                    <li class="list-group-item">Dateharvest:
+                        <span><strong><%= @crossing.dateHarvest %></strong></span>
+                    </li>
 
-<p>
-  <strong>Dateharvest:</strong>
-  <%= @crossing.dateHarvest %>
-</p>
+                    <li class="list-group-item">Weekharvest:
+                        <span><strong><%= @crossing.weekHarvest %></strong></span>
+                    </li>
 
-<p>
-  <strong>Weekharvest:</strong>
-  <%= @crossing.weekHarvest %>
-</p>
+                    <li class="list-group-item">Numseeds:
+                        <span><strong><%= @crossing.numSeeds %></strong></span>
+                    </li>
+                </ul>
+            </div>
 
-<p>
-  <strong>Numseeds:</strong>
-  <%= @crossing.numSeeds %>
-</p>
+            <div class="panel-footer">
+                <%= link_to 'Edit', edit_crossing_path(@crossing) %> |
+                <%= link_to 'Back', crossings_path %>
+            </div>
+        </div>
+    </div>
+</div>
 
-<%= link_to 'Edit', edit_crossing_path(@crossing) %> |
-<%= link_to 'Back', crossings_path %>

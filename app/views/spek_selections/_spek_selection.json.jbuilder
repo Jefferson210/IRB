@@ -1,0 +1,2 @@
+json.extract! spek_selection, :id, :code, :location, :trademark, :denomination, :year, :status, :numPlants, :color_id, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks, :created_at, :updated_at
+json.url spek_selection_url(spek_selection, format: :json)

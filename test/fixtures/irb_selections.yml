@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codeCross: MyString
+  code: MyString
+  location: MyString
+  trademark: MyString
+  denomination: MyString
+  year: 1
+  status: MyString
+  numPlants: 1
+  color_id: 
+  scent: MyString
+  headSize: MyString
+  numPetals: 1
+  steamLenght: 9.99
+  production: MyString
+  opening: MyString
+  abnormality: MyText
+  remarks: MyText
+
+two:
+  codeCross: MyString
+  code: MyString
+  location: MyString
+  trademark: MyString
+  denomination: MyString
+  year: 1
+  status: MyString
+  numPlants: 1
+  color_id: 
+  scent: MyString
+  headSize: MyString
+  numPetals: 1
+  steamLenght: 9.99
+  production: MyString
+  opening: MyString
+  abnormality: MyText
+  remarks: MyText

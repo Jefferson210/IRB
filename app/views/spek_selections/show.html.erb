@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @spek_selection.code %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @spek_selection.location %>
+</p>
+
+<p>
+  <strong>Trademark:</strong>
+  <%= @spek_selection.trademark %>
+</p>
+
+<p>
+  <strong>Denomination:</strong>
+  <%= @spek_selection.denomination %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @spek_selection.year %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @spek_selection.status %>
+</p>
+
+<p>
+  <strong>Numplants:</strong>
+  <%= @spek_selection.numPlants %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+    <%= @spek_selection.color ? @spek_selection.color.colorName : 'N/A' %>
+</p>
+
+<p>
+  <strong>Scent:</strong>
+  <%= @spek_selection.scent %>
+</p>
+
+<p>
+  <strong>Headsize:</strong>
+  <%= @spek_selection.headSize %>
+</p>
+
+<p>
+  <strong>Numpetals:</strong>
+  <%= @spek_selection.numPetals %>
+</p>
+
+<p>
+  <strong>Steamlenght:</strong>
+  <%= @spek_selection.steamLenght %>
+</p>
+
+<p>
+  <strong>Production:</strong>
+  <%= @spek_selection.production %>
+</p>
+
+<p>
+  <strong>Opening:</strong>
+  <%= @spek_selection.opening %>
+</p>
+
+<p>
+  <strong>Abnormality:</strong>
+  <%= @spek_selection.abnormality %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @spek_selection.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_spek_selection_path(@spek_selection) %> |
+<%= link_to 'Back', spek_selections_path %>

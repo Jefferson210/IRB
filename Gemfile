@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
+#gem 'rails', '4.1.4'
+gem 'rails', '4.2.5'
 
 ### OpenShift Online changes:
 
@@ -66,3 +67,4 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'composite_primary_keys'

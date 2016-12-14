@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codeCross: MyString
+  sowDate: 2016-12-12
+  origin: MyString
+  numSeeds: 1
+  totalWeight: 9.99
+  week: 1
+  hydratation: MyString
+  status: MyString
+  dateOut: 2016-12-12
+  totalGermination: 1
+  percentageGermination: 9.99
+
+two:
+  codeCross: MyString
+  sowDate: 2016-12-12
+  origin: MyString
+  numSeeds: 1
+  totalWeight: 9.99
+  week: 1
+  hydratation: MyString
+  status: MyString
+  dateOut: 2016-12-12
+  totalGermination: 1
+  percentageGermination: 9.99

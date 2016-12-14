@@ -1,0 +1,49 @@
+<%= form_for(@one_offspring) do |f| %>
+<% if @one_offspring.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@one_offspring.errors.count, "error") %> prohibited this one_offspring from being saved:</h2>
+
+    <ul>
+        <% @one_offspring.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="field">
+    <%= f.label :codeCross %><br>
+    <%= f.collection_select(:codeCross,Seed.where(status: 'keep'),:codeCross,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
+</div>
+<div class="field">
+    <%= f.label :individual %><br>
+    <%= f.number_field :individual %>
+</div>
+<div class="field">
+    <%= f.label :color_id %><br>
+    <%= f.collection_select(:color_id,Color.all,:id,:colorName,{:prompt => "Select Color"},{:class => "form-control"})%> 
+</div>
+<div class="field">
+    <%= f.label :status %><br>
+    <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"}, {:class => 'form-control'})  %>
+</div>
+<div class="field">
+    <%= f.label :headSize %><br>
+    <%= f.text_field :headSize %>
+</div>
+<div class="field">
+    <%= f.label :flowering %><br>
+    <%= f.number_field :flowering %>
+</div>
+<div class="field">
+    <%= f.label :numPetals %><br>
+    <%= f.number_field :numPetals %>
+</div>
+<div class="field">
+    <%= f.label :form %><br>
+    <%= f.select(:form, options_for_select([['Good','good'],['Bad','bad']], :selected => f.object.form), {:prompt => "Select"}, {:class => 'form-control'})  %>
+</div>
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>

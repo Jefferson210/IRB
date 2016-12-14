@@ -1,0 +1,2 @@
+json.extract! irb_selection, :id, :codeCross, :code, :location, :trademark, :denomination, :year, :status, :numPlants, :color_id, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks, :created_at, :updated_at
+json.url irb_selection_url(irb_selection, format: :json)
