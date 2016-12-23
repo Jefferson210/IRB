@@ -1,7 +1,8 @@
 class CreateCrossings < ActiveRecord::Migration
     def change
         create_table :crossings, id: false do |t|
-            t.string :crossCode, null: false
+            t.string :codeCross
+            t.string :numOrder
             t.integer :year
             t.string :status
             t.string :father
@@ -15,9 +16,9 @@ class CreateCrossings < ActiveRecord::Migration
             t.date :dateHarvest
             t.integer :weekHarvest
             t.integer :numSeeds
+            t.integer :numRepeat
 
             t.timestamps
         end
-        execute "ALTER TABLE crossings ADD PRIMARY KEY (crossCode);"
     end
 end
