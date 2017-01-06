@@ -69,6 +69,6 @@ class OneOffspringsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def one_offspring_params
-      params.require(:one_offspring).permit(:codeCross, :individual, :color_id, :status, :headSize, :flowering, :numPetals, :form)
+        params.require(:one_offspring).permit(:germination_id, :individual, :color_id, :status, :headSize, :flowering, :numPetals, :form)
     end
 end

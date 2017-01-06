@@ -1,8 +1,14 @@
 class ThreeOffspring < ActiveRecord::Base
-    self.primary_keys = :codeCross,:individual
+    #self.primary_keys = :codeCross,:individual
     belongs_to :two_offspring
-    belongs_to :color
+    has_many :irb_selections
+    
     #    VALIDATIONS
-    validates :codeCross, presence:{ message:"Obligatory"}, uniqueness: { scope: [:individual],case_sensitive: false, message:"already exists with this individual"}
-    validates :individual, presence:{ message:"Obligatory"}
+    validates :two_offspring_id, presence:{ message:"Obligatory"}, uniqueness: {case_sensitive: false, message:"already exists"}
+    #validates :individual, presence:{ message:"Obligatory"}
+    
+    def codeCross_name
+        "#{two_offspring.one_offspring.germination.seed.crossing.codeCross}-#{two_offspring.one_offspring.individual}"
+    end
+    
 end

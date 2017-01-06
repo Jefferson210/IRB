@@ -15,9 +15,9 @@
             <% end %>
 
             <div class="form-group">
-                <%= f.label :codeCross, :class=>"col-md-2" %>
+                <%= f.label :crossing_id, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:codeCross,Crossing.all,:crossCode,:crossCode,{:prompt => "Select"},{:class => "form-control"})%>
+                    <%= f.collection_select(:crossing_id,Crossing.all,:id,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
                 </div>
             </div>
 
@@ -88,6 +88,13 @@
                 <%= f.label :percentageGermination, :class=>"col-md-2" %>
                 <div class="col-md-3">
                     <%= f.text_field :percentageGermination,:class=>"form-control" %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :germination, :class=>"col-md-2" %>
+                <div class="col-md-3">
+                    <%= f.select(:germination, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.hydratation), {:prompt => "Select"},{:class => 'form-control'})  %>
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 class CreateOneOffsprings < ActiveRecord::Migration
     def change
-        create_table :one_offsprings, id: false do |t|
-            t.string :codeCross, null: false, unique: true
+        create_table :one_offsprings do |t|
+#            t.string :codeCross, null: false, unique: true
             t.integer :individual, null: false
             t.references :color, index: true, foreign_key: true
             t.string :status

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161223202035) do
+ActiveRecord::Schema.define(version: 20170104211244) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "colorName",  limit: 255
@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20161223202035) do
     t.datetime "updated_at"
   end
 
-  create_table "crossings", id: false, force: :cascade do |t|
-    t.string   "codeCross",           limit: 255,                         null: false
-    t.string   "numOrder",            limit: 255,                         null: false
+  create_table "crossings", force: :cascade do |t|
+    t.string   "codeCross",           limit: 255
+    t.string   "numOrder",            limit: 255
     t.integer  "year",                limit: 4
     t.string   "status",              limit: 255
-    t.string   "father",              limit: 255
-    t.string   "mother",              limit: 255
+    t.integer  "father",              limit: 4
+    t.integer  "mother",              limit: 4
     t.integer  "crossWeek",           limit: 4
     t.integer  "numCrossings",        limit: 4
     t.integer  "goodCrossings",       limit: 4
@@ -40,11 +40,12 @@ ActiveRecord::Schema.define(version: 20161223202035) do
     t.datetime "updated_at"
   end
 
-  add_index "crossings", ["father"], name: "fk_rails_55550c59ae", using: :btree
-  add_index "crossings", ["mother"], name: "fk_rails_0f4a8a74d0", using: :btree
+  add_index "crossings", ["father"], name: "fk_father_id", using: :btree
+  add_index "crossings", ["mother"], name: "fk_mother_id", using: :btree
 
-  create_table "genetic_banks", primary_key: "location", force: :cascade do |t|
+  create_table "genetic_banks", force: :cascade do |t|
     t.string   "code",         limit: 255
+    t.string   "location",     limit: 255
     t.string   "trademark",    limit: 255
     t.string   "denomination", limit: 255
     t.integer  "year",         limit: 4
@@ -66,45 +67,58 @@ ActiveRecord::Schema.define(version: 20161223202035) do
 
   add_index "genetic_banks", ["color_id"], name: "index_genetic_banks_on_color_id", using: :btree
 
-  create_table "irb_selections", id: false, force: :cascade do |t|
-    t.string   "codeCross",    limit: 255,                           null: false
-    t.string   "code",         limit: 255,                           null: false
-    t.string   "location",     limit: 255
-    t.string   "trademark",    limit: 255
-    t.string   "denomination", limit: 255
-    t.integer  "year",         limit: 4
-    t.string   "status",       limit: 255
-    t.integer  "numPlants",    limit: 4
-    t.string   "color",        limit: 255
-    t.string   "scent",        limit: 255
-    t.string   "headSize",     limit: 255
-    t.integer  "numPetals",    limit: 4
-    t.decimal  "steamLenght",                precision: 5, scale: 2
-    t.string   "production",   limit: 255
-    t.string   "opening",      limit: 255
-    t.text     "abnormality",  limit: 65535
-    t.text     "remarks",      limit: 65535
+  create_table "germinations", force: :cascade do |t|
+    t.integer  "seed_id",         limit: 4
+    t.string   "week",            limit: 255
+    t.integer  "numGerminations", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "germinations", ["seed_id"], name: "fk_rails_6b14e2e2b3", using: :btree
+
+  create_table "irb_selections", force: :cascade do |t|
+    t.integer  "three_offspring_id", limit: 4
+    t.string   "code",               limit: 255,                           null: false
+    t.string   "location",           limit: 255
+    t.string   "trademark",          limit: 255
+    t.string   "denomination",       limit: 255
+    t.integer  "year",               limit: 4
+    t.string   "status",             limit: 255
+    t.integer  "numPlants",          limit: 4
+    t.string   "color",              limit: 255
+    t.string   "scent",              limit: 255
+    t.string   "headSize",           limit: 255
+    t.integer  "numPetals",          limit: 4
+    t.decimal  "steamLenght",                      precision: 5, scale: 2
+    t.string   "production",         limit: 255
+    t.string   "opening",            limit: 255
+    t.text     "abnormality",        limit: 65535
+    t.text     "remarks",            limit: 65535
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+  end
+
+  add_index "irb_selections", ["three_offspring_id"], name: "fk_rails_6047393694", using: :btree
+
+  create_table "one_offsprings", force: :cascade do |t|
+    t.integer  "germination_id", limit: 4
+    t.integer  "individual",     limit: 4,                           null: false
+    t.integer  "color_id",       limit: 4
+    t.string   "status",         limit: 255
+    t.decimal  "headSize",                   precision: 5, scale: 2
+    t.integer  "flowering",      limit: 4
+    t.integer  "numPetals",      limit: 4
+    t.string   "form",           limit: 255
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
 
-  create_table "one_offsprings", id: false, force: :cascade do |t|
-    t.string   "codeCross",  limit: 255,                         null: false
-    t.integer  "individual", limit: 4,                           null: false
-    t.integer  "color_id",   limit: 4
-    t.string   "status",     limit: 255
-    t.decimal  "headSize",               precision: 5, scale: 2
-    t.integer  "flowering",  limit: 4
-    t.integer  "numPetals",  limit: 4
-    t.string   "form",       limit: 255
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-  end
-
   add_index "one_offsprings", ["color_id"], name: "index_one_offsprings_on_color_id", using: :btree
+  add_index "one_offsprings", ["germination_id"], name: "fk_rails_347cbf9f34", using: :btree
 
-  create_table "seeds", id: false, force: :cascade do |t|
-    t.string   "codeCross",             limit: 255,                         null: false
+  create_table "seeds", force: :cascade do |t|
+    t.integer  "crossing_id",           limit: 4
     t.date     "sowDate",                                                   null: false
     t.string   "origin",                limit: 255
     t.integer  "numSeeds",              limit: 4
@@ -120,7 +134,10 @@ ActiveRecord::Schema.define(version: 20161223202035) do
     t.datetime "updated_at",                                                null: false
   end
 
-  create_table "spek_selections", primary_key: "code", force: :cascade do |t|
+  add_index "seeds", ["crossing_id"], name: "fk_rails_e30e334158", using: :btree
+
+  create_table "spek_selections", force: :cascade do |t|
+    t.string   "code",         limit: 255,                           null: false
     t.string   "location",     limit: 255
     t.string   "trademark",    limit: 255
     t.string   "denomination", limit: 255
@@ -142,36 +159,43 @@ ActiveRecord::Schema.define(version: 20161223202035) do
 
   add_index "spek_selections", ["color_id"], name: "index_spek_selections_on_color_id", using: :btree
 
-  create_table "three_offsprings", primary_key: "codeCross", force: :cascade do |t|
-    t.string   "color",      limit: 255
-    t.string   "status",     limit: 255
-    t.decimal  "headSize",               precision: 5, scale: 2
-    t.integer  "flowering",  limit: 4
-    t.integer  "numPetals",  limit: 4
-    t.string   "form",       limit: 255
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+  create_table "three_offsprings", force: :cascade do |t|
+    t.integer  "two_offspring_id", limit: 4
+    t.string   "color",            limit: 255
+    t.string   "status",           limit: 255
+    t.decimal  "headSize",                     precision: 5, scale: 2
+    t.integer  "flowering",        limit: 4
+    t.integer  "numPetals",        limit: 4
+    t.string   "form",             limit: 255
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
-  create_table "two_offsprings", primary_key: "codeCross", force: :cascade do |t|
-    t.string   "color",      limit: 255
-    t.string   "status",     limit: 255
-    t.decimal  "headSize",               precision: 5, scale: 2
-    t.integer  "flowering",  limit: 4
-    t.integer  "numPetals",  limit: 4
-    t.string   "form",       limit: 255
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+  add_index "three_offsprings", ["two_offspring_id"], name: "fk_rails_780913f863", using: :btree
+
+  create_table "two_offsprings", force: :cascade do |t|
+    t.integer  "one_offspring_id", limit: 4
+    t.string   "color",            limit: 255
+    t.string   "status",           limit: 255
+    t.decimal  "headSize",                     precision: 5, scale: 2
+    t.integer  "flowering",        limit: 4
+    t.integer  "numPetals",        limit: 4
+    t.string   "form",             limit: 255
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
-  add_foreign_key "crossings", "genetic_banks", column: "father", primary_key: "location"
-  add_foreign_key "crossings", "genetic_banks", column: "mother", primary_key: "location"
+  add_index "two_offsprings", ["one_offspring_id"], name: "fk_rails_87f1bea580", using: :btree
+
+  add_foreign_key "crossings", "genetic_banks", column: "father", name: "fk_father_id"
+  add_foreign_key "crossings", "genetic_banks", column: "mother", name: "fk_mother_id"
   add_foreign_key "genetic_banks", "colors"
-  add_foreign_key "irb_selections", "three_offsprings", column: "codeCross", primary_key: "codeCross"
+  add_foreign_key "germinations", "seeds"
+  add_foreign_key "irb_selections", "three_offsprings"
   add_foreign_key "one_offsprings", "colors"
-  add_foreign_key "one_offsprings", "seeds", column: "codeCross", primary_key: "codeCross"
-  add_foreign_key "seeds", "crossings", column: "codeCross", primary_key: "codeCross"
+  add_foreign_key "one_offsprings", "germinations"
+  add_foreign_key "seeds", "crossings"
   add_foreign_key "spek_selections", "colors"
-  add_foreign_key "three_offsprings", "two_offsprings", column: "codeCross", primary_key: "codeCross"
-  add_foreign_key "two_offsprings", "one_offsprings", column: "codeCross", primary_key: "codeCross"
+  add_foreign_key "three_offsprings", "two_offsprings"
+  add_foreign_key "two_offsprings", "one_offsprings"
 end

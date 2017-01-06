@@ -1,7 +1,7 @@
 class CreateSeeds < ActiveRecord::Migration
     def change
-        create_table :seeds, id: false do |t|
-            t.string :codeCross, null: false, unique: true
+        create_table :seeds do |t|
+#            t.string :codeCross, null: false, unique: true
             t.date :sowDate, null: false
             t.string :origin
             t.integer :numSeeds

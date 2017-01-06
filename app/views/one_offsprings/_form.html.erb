@@ -15,9 +15,9 @@
             <% end %>
 
             <div class="form-group">
-                <%= f.label :codeCross, :class=>"col-md-2" %>
+                <%= f.label :germination_id, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:codeCross,Seed.where(status: 'keep'),:codeCross,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>                    
+                    <%= f.collection_select(:germination_id,Germination.all,:id,:codeCross_name,{:prompt => "Select"},{:class => "form-control"})%>                    
                 </div>
             </div>
 

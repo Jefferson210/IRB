@@ -1,6 +1,6 @@
 class CreateGeneticBanks < ActiveRecord::Migration
     def change
-        create_table :genetic_banks, id: false do |t|
+        create_table :genetic_banks do |t|
             t.string :code
             t.string :location
             t.string :trademark

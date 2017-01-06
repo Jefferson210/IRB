@@ -7,43 +7,45 @@
 
 
 <table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Codecross</th>
-      <th>Sowdate</th>
-      <th>Origin</th>
-      <th>Numseeds</th>
-      <th>Totalweight</th>
-      <th>Week</th>
-      <th>Hydratation</th>
-      <th>Status</th>
-      <th>Dateout</th>
-      <th>Totalgermination</th>
-      <th>Percentagegermination</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>Codecross</th>
+            <th>Sowdate</th>
+            <th>Origin</th>
+            <th>Numseeds</th>
+            <th>Totalweight</th>
+            <th>Week</th>
+            <th>Hydratation</th>
+            <th>Status</th>
+            <th>Dateout</th>
+            <th>Totalgermination</th>
+            <th>Percentagegermination</th>
+            <th>Germination</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @seeds.each do |seed| %>
-      <tr>
-        <td><%= seed.codeCross %></td>
-        <td><%= seed.sowDate %></td>
-        <td><%= seed.origin %></td>
-        <td><%= seed.numSeeds %></td>
-        <td><%= seed.totalWeight %></td>
-        <td><%= seed.week %></td>
-        <td><%= seed.hydratation %></td>
-        <td><%= seed.status %></td>
-        <td><%= seed.dateOut %></td>
-        <td><%= seed.totalGermination %></td>
-        <td><%= seed.percentageGermination %></td>
-        <td><%= link_to 'Show', seed %></td>
-        <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
-        <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @seeds.each do |seed| %>
+        <tr>
+            <td><%= seed.crossing.codeCross %></td>
+            <td><%= seed.sowDate %></td>
+            <td><%= seed.origin %></td>
+            <td><%= seed.numSeeds %></td>
+            <td><%= seed.totalWeight %></td>
+            <td><%= seed.week %></td>
+            <td><%= seed.hydratation %></td>
+            <td><%= seed.status %></td>
+            <td><%= seed.dateOut %></td>
+            <td><%= seed.totalGermination %></td>
+            <td><%= seed.percentageGermination %></td>
+            <td><%= seed.germination %></td>
+            <td><%= link_to 'Show', seed %></td>
+            <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
+            <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>

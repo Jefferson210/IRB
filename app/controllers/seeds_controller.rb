@@ -72,6 +72,6 @@ class SeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seed_params
-        params.require(:seed).permit(:codeCross, :sowDate, :origin, :numSeeds, :totalWeight, :week, :hydratation, :status, :dateOut, :totalGermination, :percentageGermination)
+        params.require(:seed).permit(:crossing_id, :sowDate, :origin, :numSeeds, :totalWeight, :week, :hydratation, :status, :dateOut, :totalGermination, :percentageGermination, :germination)
     end
 end

@@ -33,7 +33,7 @@
     <tbody>
         <% @irb_selections.each do |irb_selection| %>
         <tr>
-            <td><%= irb_selection.codeCross %></td>
+            <td><%= irb_selection.three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross%>-<%=irb_selection.three_offspring.two_offspring.one_offspring.individual%></td>
             <td><%= irb_selection.code %></td>
             <td><%= irb_selection.location %></td>
             <td><%= irb_selection.trademark %></td>
@@ -41,7 +41,7 @@
             <td><%= irb_selection.year %></td>
             <td><%= irb_selection.status %></td>
             <td><%= irb_selection.numPlants %></td>
-            <td><%= irb_selection.color ? irb_selection.color.colorName : 'N/A' %></td>
+            <td><%= irb_selection.color%></td>
             <td><%= irb_selection.scent %></td>
             <td><%= irb_selection.headSize %></td>
             <td><%= irb_selection.numPetals %></td>

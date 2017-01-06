@@ -1,6 +1,6 @@
 class CreateSpekSelections < ActiveRecord::Migration
     def change
-        create_table :spek_selections, id: false do |t|
+        create_table :spek_selections do |t|
             t.string :code, null: false, unique: true
             t.string :location
             t.string :trademark

@@ -1,12 +1,12 @@
 class CreateCrossings < ActiveRecord::Migration
     def change
-        create_table :crossings, id: false do |t|
+        create_table :crossings do |t|
             t.string :codeCross
             t.string :numOrder
             t.integer :year
             t.string :status
-            t.string :father
-            t.string :mother
+            t.integer :father
+            t.integer :mother
             t.integer :crossWeek
             t.integer :numCrossings
             t.integer :goodCrossings

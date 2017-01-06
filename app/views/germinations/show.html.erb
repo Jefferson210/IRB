@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>codeCross:</strong>
+    <%= @germination.seed.crossing.codeCross %>
+</p>
+
+<p>
+    <strong>Week:</strong>
+    <%= @germination.week %>
+</p>
+
+<p>
+    <strong>Numgerminations:</strong>
+    <%= @germination.numGerminations %>
+</p>
+
+<%= link_to 'Edit', edit_germination_path(@germination) %> |
+<%= link_to 'Back', germinations_path %>

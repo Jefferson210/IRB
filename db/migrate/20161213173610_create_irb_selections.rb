@@ -1,7 +1,7 @@
 class CreateIrbSelections < ActiveRecord::Migration
     def change
-        create_table :irb_selections, id: false do |t|
-            t.string :codeCross, null: false
+        create_table :irb_selections do |t|
+#            t.string :codeCross, null: false
             t.string :code, null: false, unique: true
             t.string :location
             t.string :trademark
