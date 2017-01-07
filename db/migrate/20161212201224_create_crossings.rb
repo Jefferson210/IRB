@@ -5,8 +5,8 @@ class CreateCrossings < ActiveRecord::Migration
             t.string :numOrder
             t.integer :year
             t.string :status
-            t.integer :father
-            t.integer :mother
+            t.integer :father_id
+            t.integer :mother_id
             t.integer :crossWeek
             t.integer :numCrossings
             t.integer :goodCrossings
