@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104211244) do
+ActiveRecord::Schema.define(version: 20170106231600) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "colorName",  limit: 255
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20170104211244) do
     t.string   "numOrder",            limit: 255
     t.integer  "year",                limit: 4
     t.string   "status",              limit: 255
-    t.integer  "father",              limit: 4
-    t.integer  "mother",              limit: 4
+    t.integer  "father_id",           limit: 4
+    t.integer  "mother_id",           limit: 4
     t.integer  "crossWeek",           limit: 4
     t.integer  "numCrossings",        limit: 4
     t.integer  "goodCrossings",       limit: 4
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20170104211244) do
     t.datetime "updated_at"
   end
 
-  add_index "crossings", ["father"], name: "fk_father_id", using: :btree
-  add_index "crossings", ["mother"], name: "fk_mother_id", using: :btree
+  add_index "crossings", ["father_id"], name: "fk_father_id", using: :btree
+  add_index "crossings", ["mother_id"], name: "fk_mother_id", using: :btree
 
   create_table "genetic_banks", force: :cascade do |t|
     t.string   "code",         limit: 255
@@ -187,8 +187,8 @@ ActiveRecord::Schema.define(version: 20170104211244) do
 
   add_index "two_offsprings", ["one_offspring_id"], name: "fk_rails_87f1bea580", using: :btree
 
-  add_foreign_key "crossings", "genetic_banks", column: "father", name: "fk_father_id"
-  add_foreign_key "crossings", "genetic_banks", column: "mother", name: "fk_mother_id"
+  add_foreign_key "crossings", "genetic_banks", column: "father_id", name: "fk_father_id"
+  add_foreign_key "crossings", "genetic_banks", column: "mother_id", name: "fk_mother_id"
   add_foreign_key "genetic_banks", "colors"
   add_foreign_key "germinations", "seeds"
   add_foreign_key "irb_selections", "three_offsprings"

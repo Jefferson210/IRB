@@ -17,7 +17,7 @@
             <div class="form-group">
                 <%= f.label :crossing_id, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:crossing_id,Crossing.all,:id,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
+                    <%= f.collection_select(:crossing_id,Crossing.where(status: "keep" ),:id,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
                 </div>
             </div>
 
