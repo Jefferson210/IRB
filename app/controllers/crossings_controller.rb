@@ -69,6 +69,6 @@ class CrossingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crossing_params
-      params.require(:crossing).permit(:crossCode, :year, :status, :father, :mother, :crossWeek, :numCrossings, :goodCrossings, :badCrossings, :effective, :percentageEffective, :dateHarvest, :weekHarvest, :numSeeds)
+        params.require(:crossing).permit(:codeCross, :numOrder, :year, :status, :father_id, :mother_id, :crossWeek, :numCrossings, :goodCrossings, :badCrossings, :effective, :percentageEffective, :dateHarvest, :weekHarvest, :numSeeds, :numRepeat)
     end
 end

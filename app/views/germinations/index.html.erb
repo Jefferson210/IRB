@@ -1,0 +1,34 @@
+
+
+<h1 class="alert alert-success text-center">Germinations</h1>
+
+<div class="text-center">
+    <h3><%= link_to 'New Germination', new_germination_path %></h3>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>CodeCross</th>
+            <th>Week</th>
+            <th>Numgerminations</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @germinations.each do |germination| %>
+        <tr>
+            <td><%= germination.seed.crossing.codeCross %></td>
+            <td><%= germination.week %></td>
+            <td><%= germination.numGerminations %></td>
+            <td><%= link_to 'Show', germination %></td>
+            <td><%= link_to 'Edit', edit_germination_path(germination) %></td>
+            <td><%= link_to 'Destroy', germination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+

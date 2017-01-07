@@ -3,13 +3,13 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="text-left"><%= @seed.codeCross %></h2>
+                <h2 class="text-left"><%= @seed.crossing.codeCross %></h2>
             </div>
 
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item">CodeCross:
-                        <span><strong><%= @seed.codeCross %></strong></span>
+                        <span><strong><%= @seed.crossing.codeCross %></strong></span>
                     </li>
 
                     <li class="list-group-item">SowDate:
@@ -50,6 +50,10 @@
 
                     <li class="list-group-item">Percentagegermination:
                         <span><strong><%= @seed.percentageGermination %></strong></span>
+                    </li>
+                    
+                    <li class="list-group-item">Germination:
+                        <span><strong><%= @seed.germination %></strong></span>
                     </li>
 
                 </ul>

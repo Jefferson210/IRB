@@ -3,21 +3,17 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="text-left"><%= @two_offspring.codeCross %></h2>
+                <h2 class="text-left"><%= @two_offspring.one_offspring.germination.seed.crossing.codeCross %>-<%=@two_offspring.one_offspring.individual%></h2>
             </div>
 
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item">Codecross:
-                        <span><strong><%= @two_offspring.codeCross %></strong></span>
-                    </li>
-
-                    <li class="list-group-item">Individual:
-                        <span><strong><%= @two_offspring.individual %></strong></span>
+                        <span><strong><%= @two_offspring.one_offspring.germination.seed.crossing.codeCross %>-<%=@two_offspring.one_offspring.individual%></strong></span>
                     </li>
 
                     <li class="list-group-item">Color:
-                        <span><strong><%= @two_offspring.color ? @two_offspring.color.colorName : 'N/A' %></strong></span>
+                        <span><strong><%= @two_offspring.color  %></strong></span>
                     </li>
 
                     <li class="list-group-item">Status:

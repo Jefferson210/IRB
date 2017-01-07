@@ -9,7 +9,6 @@
     <thead>
         <tr>
             <th>Codecross</th>
-            <th>Individual</th>
             <th>Color</th>
             <th>Status</th>
             <th>Headsize</th>
@@ -23,9 +22,8 @@
     <tbody>
         <% @three_offsprings.each do |three_offspring| %>
         <tr>
-            <td><%= three_offspring.codeCross %></td>
-            <td><%= three_offspring.individual %></td>
-            <td><%= three_offspring.color ? three_offspring.color.colorName : 'N/A' %></td>
+            <td><%= three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross %>-<%=three_offspring.two_offspring.one_offspring.individual%></td>
+            <td><%= three_offspring.color %></td>
             <td><%= three_offspring.status %></td>
             <td><%= three_offspring.headSize %></td>
             <td><%= three_offspring.flowering %></td>

@@ -25,7 +25,7 @@
     <tbody>
         <% @one_offsprings.each do |one_offspring| %>
         <tr>
-            <td><%= one_offspring.codeCross %></td>
+            <td><%= one_offspring.germination.seed.crossing.codeCross %></td>
             <td><%= one_offspring.individual %></td>
             <td><%= one_offspring.color ? one_offspring.color.colorName : 'N/A' %></td>
             <td><%= one_offspring.status %></td>

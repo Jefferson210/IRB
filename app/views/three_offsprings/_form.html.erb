@@ -15,23 +15,23 @@
             <% end %>
 
             <div class="form-group">
-                <%= f.label :codeCross, :class=>"col-md-2" %>
+                <%= f.label :two_offspring_id, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:codeCross,TwoOffspring.where(status: 'keep'),:codeCross,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>                    
+                    <%= f.collection_select(:two_offspring_id,TwoOffspring.where(status: 'keep'),:id,:codeCross_name,{:prompt => "Select"},{:class => "form-control"})%>                    
                 </div>
             </div>
 
-            <div class="form-group">
-                <%= f.label :individual, :class=>"col-md-2" %>
-                <div class="col-md-3">
-                    <%= f.number_field :individual ,:class=>"form-control"%>
-                </div>
-            </div>
+            <!--div class="form-group">
+< f.label :individual, :class=>"col-md-2" %>
+<div class="col-md-3">
+< f.number_field :individual ,:class=>"form-control"%>
+</div>
+</div>-->
 
             <div class="form-group">
-                <%= f.label :color_id, :class=>"col-md-2" %>
+                <%= f.label :color, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:color_id,Color.all,:id,:colorName,{:prompt => "Select Color"},{:class => "form-control"})%> 
+                    <%= f.text_field :color,:class=>"form-control" %>
                 </div>
             </div>
 

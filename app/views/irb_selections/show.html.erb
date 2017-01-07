@@ -9,7 +9,7 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group item">CodeCross:
-                        <span><strong> <%= @irb_selection.codeCross %></strong></span>
+                        <span><strong> <%= @irb_selection.three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross%>-<%=@irb_selection.three_offspring.two_offspring.one_offspring.individual%></strong></span>
                     </li>
 
                     <li class="list-group item">Code:
@@ -41,7 +41,7 @@
                     </li>
 
                     <li class="list-group item">Color:
-                        <span><strong><%= @irb_selection.color ? @irb_selection.color.colorName : 'N/A' %></strong></span>
+                        <span><strong><%= @irb_selection.color%></strong></span>
                     </li>
 
                     <li class="list-group item">Scent:

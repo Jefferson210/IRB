@@ -6,49 +6,49 @@
 
 
 <table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Crosscode</th>
-      <th>Year</th>
-      <th>Status</th>
-      <th>Father</th>
-      <th>Mother</th>
-      <th>Crossweek</th>
-      <th>Numcrossings</th>
-      <th>Goodcrossings</th>
-      <th>Badcrossings</th>
-      <th>Effective</th>
-      <th>Percentageeffective</th>
-      <th>Dateharvest</th>
-      <th>Weekharvest</th>
-      <th>Numseeds</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>Crosscode</th>
+            <th>Year</th>
+            <th>Status</th>
+            <th>Father</th>
+            <th>Mother</th>
+            <th>Crossweek</th>
+            <th>Numcrossings</th>
+            <th>Goodcrossings</th>
+            <th>Badcrossings</th>
+            <th>Effective</th>
+            <th>Percentageeffective</th>
+            <th>Dateharvest</th>
+            <th>Weekharvest</th>
+            <th>Numseeds</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @crossings.each do |crossing| %>
-      <tr>
-        <td><%= crossing.crossCode %></td>
-        <td><%= crossing.year %></td>
-        <td><%= crossing.status %></td>
-        <td><%= crossing.father %></td>
-        <td><%= crossing.mother %></td>
-        <td><%= crossing.crossWeek %></td>
-        <td><%= crossing.numCrossings %></td>
-        <td><%= crossing.goodCrossings %></td>
-        <td><%= crossing.badCrossings %></td>
-        <td><%= crossing.effective %></td>
-        <td><%= crossing.percentageEffective %></td>
-        <td><%= crossing.dateHarvest %></td>
-        <td><%= crossing.weekHarvest %></td>
-        <td><%= crossing.numSeeds %></td>
-        <td><%= link_to 'Show', crossing %></td>
-        <td><%= link_to 'Edit', edit_crossing_path(crossing) %></td>
-        <td><%= link_to 'Destroy', crossing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% @crossings.each do |crossing| %>
+        <tr>
+            <td><%= crossing.codeCross %></td>
+            <td><%= crossing.year %></td>
+            <td><%= crossing.status %></td>
+            <td><%= crossing.father.code%></td>
+            <td><%= crossing.mother.code %></td>
+            <td><%= crossing.crossWeek %></td>
+            <td><%= crossing.numCrossings %></td>
+            <td><%= crossing.goodCrossings %></td>
+            <td><%= crossing.badCrossings %></td>
+            <td><%= crossing.effective %></td>
+            <td><%= crossing.percentageEffective %></td>
+            <td><%= crossing.dateHarvest %></td>
+            <td><%= crossing.weekHarvest %></td>
+            <td><%= crossing.numSeeds %></td>
+            <td><%= link_to 'Show', crossing %></td>
+            <td><%= link_to 'Edit', edit_crossing_path(crossing) %></td>
+            <td><%= link_to 'Destroy', crossing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br>

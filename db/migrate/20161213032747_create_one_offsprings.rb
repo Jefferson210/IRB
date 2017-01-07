@@ -1,7 +1,7 @@
 class CreateOneOffsprings < ActiveRecord::Migration
     def change
-        create_table :one_offsprings, id: false do |t|
-            t.string :codeCross, null: false
+        create_table :one_offsprings do |t|
+#            t.string :codeCross, null: false, unique: true
             t.integer :individual, null: false
             t.references :color, index: true, foreign_key: true
             t.string :status
@@ -12,6 +12,5 @@ class CreateOneOffsprings < ActiveRecord::Migration
 
             t.timestamps null: false
         end
-        execute "ALTER TABLE one_offsprings ADD PRIMARY KEY (codeCross,individual);"
     end
 end

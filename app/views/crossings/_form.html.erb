@@ -15,10 +15,17 @@
             <% end %>
 
             <div class="form-group">
-                <%= f.label :crossCode , :class=>"col-md-2 control-label"%>
+                <%= f.label :codeCross , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.text_field :crossCode,:class=>"form-control" %>
+                    <%= f.text_field :codeCross,:class=>"form-control" %>
                 </div>                
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :numOrder , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">  
+                    <%= f.number_field :numOrder, :class=>"form-control"  %>                  
+                </div>
             </div>
 
             <div class="form-group">
@@ -36,16 +43,16 @@
             </div>
 
             <div class="form-group">
-                <%= f.label :father , :class=>"col-md-2 control-label"%>
+                <%= f.label :father_id , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.collection_select(:father,GeneticBank.all,:id,:code,{:prompt => "Select"},{:class => "form-control"})%> 
+                    <%= f.collection_select(:father_id,GeneticBank.all,:id,:selectCodeTrademark,{:prompt => "Select code-trademark"},{:class => "form-control"})%> 
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :mother, :class=>"col-md-2 control-label" %>
+                <%= f.label :mother_id, :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:mother,GeneticBank.all,:id,:code,{:prompt => "Select"},{:class => "form-control"})%> 
+                    <%= f.collection_select(:mother_id,GeneticBank.all,:id,:selectCodeTrademark,{:prompt => "Select code-trademark"},{:class => "form-control"})%> 
                 </div>
             </div>
 
@@ -109,6 +116,13 @@
                 <%= f.label :numSeeds , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">  
                     <%= f.number_field :numSeeds, :class=>"form-control"  %>                  
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :numRepeat , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">  
+                    <%= f.number_field :numRepeat, :class=>"form-control"  %>                  
                 </div>
             </div>
 

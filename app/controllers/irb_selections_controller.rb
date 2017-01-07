@@ -69,6 +69,6 @@ class IrbSelectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def irb_selection_params
-      params.require(:irb_selection).permit(:codeCross, :code, :location, :trademark, :denomination, :year, :status, :numPlants, :color_id, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks)
+      params.require(:irb_selection).permit(:three_offspring_id, :code, :location, :trademark, :denomination, :year, :status, :numPlants, :color, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks)
     end
 end
