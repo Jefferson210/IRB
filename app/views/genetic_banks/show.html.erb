@@ -78,6 +78,34 @@
                 </ul>
             </div>
 
+            <div class="row">
+                <h2>Images</h2>
+                <% @genetic_bank.genetic_bank_pictures.each do |picture| %>
+                <div class="col-md-3">
+                    <div class="image-rose">
+                        <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                    </div>
+                </div>
+                <%end%>
+            </div>
+
+
+           
+            <div class="row">
+                <h2>Add Image</h2>    
+                <%= form_for([@genetic_bank, @genetic_bank.genetic_bank_pictures.build]) do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :picture%>
+                    <%= f.file_field :picture %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit%>
+                </div>
+                <% end %>
+            </div>
+
             <div class="panel-footer">
                 <%= link_to 'Edit', edit_genetic_bank_path(@genetic_bank) %> |
                 <%= link_to 'Back', genetic_banks_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104211244) do
+ActiveRecord::Schema.define(version: 20170108020415) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "colorName",  limit: 255
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20170104211244) do
 
   add_index "crossings", ["father_id"], name: "fk_father_id", using: :btree
   add_index "crossings", ["mother_id"], name: "fk_mother_id", using: :btree
+
+  create_table "genetic_bank_pictures", force: :cascade do |t|
+    t.integer  "genetic_bank_id",      limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "genetic_bank_pictures", ["genetic_bank_id"], name: "index_genetic_bank_pictures_on_genetic_bank_id", using: :btree
 
   create_table "genetic_banks", force: :cascade do |t|
     t.string   "code",         limit: 255

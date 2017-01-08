@@ -1,8 +1,11 @@
 class GeneticBank < ActiveRecord::Base
     belongs_to :color
+    #    relacion para especificar el nombre de la FK 
     has_many :fathers, :class_name => "Crossing", :foreign_key => "father_id", dependent: :destroy
     has_many :mothers, :class_name => "Crossing", :foreign_key => "mother_id", dependent: :destroy
-    
+    #    relacion para agregar varias imagenes a una variedad
+    has_many :genetic_bank_pictures, dependent: :destroy
+
     #    self.primary_keys = :location
     #    VALIDATIONS
     validates :code, :allow_blank => true, uniqueness: {case_sensitive: false, message:"already exists"}    
@@ -16,6 +19,7 @@ class GeneticBank < ActiveRecord::Base
     validate :location_exists, on: :update
     validate :code_exists, on: :update
 
+    #    comprobar si existe un campo con el mismo location
     def location_exists
         if self.location_changed?
             if GeneticBank.exists?(self.location)
@@ -24,6 +28,7 @@ class GeneticBank < ActiveRecord::Base
         end
     end
 
+    #    comprobar si existe un campo con el mismo code
     def code_exists
         if self.code_changed?
             if GeneticBank.exists?(self.code)
@@ -31,9 +36,10 @@ class GeneticBank < ActiveRecord::Base
             end
         end
     end
-    
-     def selectCodeTrademark
-         "#{GeneticBank.where(id: self.id).first.code}-#{GeneticBank.where(id: self.id).first.trademark}"
+
+    #    funcion para mostrar en el select de crossing el code y trademark
+    def selectCodeTrademark
+        "#{GeneticBank.where(id: self.id).first.code}-#{GeneticBank.where(id: self.id).first.trademark}"
     end
 
 end

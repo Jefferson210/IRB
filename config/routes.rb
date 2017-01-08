@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :germinations
+    resources :germinations
     resources :spek_selections
     resources :irb_selections
     resources :three_offsprings
@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :one_offsprings
     resources :seeds
     resources :crossings
-
     resources :colors
 
-    resources :genetic_banks
+    resources :genetic_banks do
+        resources :genetic_bank_pictures
+    end
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
