@@ -43,5 +43,7 @@ class GeneticBank < ActiveRecord::Base
     def selectCodeTrademark
         "#{GeneticBank.where(id: self.id).first.code}-#{GeneticBank.where(id: self.id).first.trademark}"
     end
-
 end
+
+
+

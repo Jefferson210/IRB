@@ -15,56 +15,56 @@
             <% end %>
 
             <div class="form-group">
-                <%= f.label :two_offspring_id, :class=>"col-md-2" %>
+                <%= f.label :two_offspring_id,"Two offspring (codeCros-individual)", :class=>"col-md-3" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:two_offspring_id,TwoOffspring.where(status: 'keep'),:id,:codeCross_name,{:prompt => "Select"},{:class => "form-control"})%>                    
+                    <%= f.collection_select(:two_offspring_id,TwoOffspring.where(status: 'keep'),:id,:codeCross_name,{:prompt => "Select"},{:class => "form-control", :id => "two_offspring_id"})%>                    
                 </div>
             </div>
 
             <!--div class="form-group">
-< f.label :individual, :class=>"col-md-2" %>
+< f.label :individual, :class=>"col-md-3" %>
 <div class="col-md-3">
 < f.number_field :individual ,:class=>"form-control"%>
 </div>
 </div>-->
 
             <div class="form-group">
-                <%= f.label :color, :class=>"col-md-2" %>
+                <%= f.label :color, :class=>"col-md-3" %>
                 <div class="col-md-3">
-                    <%= f.text_field :color,:class=>"form-control", disabled: true%>
+                    <%= f.text_field :color,:class=>"form-control", :id => "colorId", :readonly => true%>
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :status, :class=>"col-md-2" %>
+                <%= f.label :status, :class=>"col-md-3" %>
                 <div class="col-md-3">
                     <%= f.select(:status, options_for_select([['Keep','keep'],['Out','out']], :selected => f.object.status), {:prompt => "Select"}, {:class => 'form-control'})  %>
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :headSize, :class=>"col-md-2" %>
+                <%= f.label :headSize, :class=>"col-md-3" %>
                 <div class="col-md-3">
                     <%= f.text_field :headSize,:class=>"form-control" %>
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :flowering, :class=>"col-md-2" %>
+                <%= f.label :flowering, :class=>"col-md-3" %>
                 <div class="col-md-3">
                     <%= f.number_field :flowering ,:class=>"form-control"%>
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :numPetals, :class=>"col-md-2" %>
+                <%= f.label :numPetals, :class=>"col-md-3" %>
                 <div class="col-md-3">
                     <%= f.number_field :numPetals ,:class=>"form-control"%>
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :form, :class=>"col-md-2" %>
+                <%= f.label :form, :class=>"col-md-3" %>
                 <div class="col-md-3">
                     <%= f.select(:form, options_for_select([['Good','good'],['Bad','bad']], :selected => f.object.form), {:prompt => "Select"}, {:class => 'form-control'})  %>
                 </div>

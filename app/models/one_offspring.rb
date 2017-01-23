@@ -8,10 +8,11 @@ class OneOffspring < ActiveRecord::Base
     validates :germination_id, presence:{ message:"Obligatory"}, uniqueness: { scope: [:individual],case_sensitive: false, message:"already exists with this individual"}
     validates :individual, presence:{ message:"Obligatory"}
     
-    validate :individualGermination_less_than_individualOneOffspring
+    validate :individualGermination_less_than_individualOneOffspring, :on => :save
     
     def individualGermination_less_than_individualOneOffspring
-        errors.add(:individual, "should be less or equal than individual of Germination") if individual > germination.numGerminations
+#        errors.add(:individual, "should be less or equal than individual of Germination") if individual > germination.numGerminations
+        errors.add(:individual, "should be less or equal than individual of Germination") if individual >  Germination.group(:codeCross).sum(:numGerminations)    
     end
     
     def codeCross_name

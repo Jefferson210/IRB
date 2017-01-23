@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th>Crosscode</th>
+            <th>NumRepeat</th>
             <th>Year</th>
             <th>Status</th>
             <th>Father</th>
@@ -29,7 +30,8 @@
     <tbody>
         <% @crossings.each do |crossing| %>
         <tr>
-            <td><%= crossing.codeCross %></td>
+            <td><%= crossing.codeCross%></td>
+            <td><%= crossing.numRepeat %></td>
             <td><%= crossing.year %></td>
             <td><%= crossing.status %></td>
             <td><%= crossing.father.code%></td>

@@ -17,7 +17,7 @@
             <div class="form-group">
                 <%= f.label :crossing_id, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:crossing_id,Crossing.where(status: "keep" ),:id,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>
+                    <%= f.collection_select(:crossing_id,Crossing.where(effective: "yes" ),:id,:selectCodeNumRepeat,{:prompt => "Select"},{:class => "form-control",:id => "crossing_id"})%>
                 </div>
             </div>
 
@@ -78,23 +78,23 @@
             </div>
 
             <div class="form-group">
-                <%= f.label :totalGermination, :class=>"col-md-2" %>
+                <%= f.label :germination, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.number_field :totalGermination,:class=>"form-control" %>
+                    <%= f.select(:germination, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.hydratation), {:prompt => "Select"},{:class => 'form-control'})  %>
                 </div>
             </div>
 
             <div class="form-group">
-                <%= f.label :percentageGermination, :class=>"col-md-2" %>
+                <%= f.label :codeCrossName, :class=>"col-md-3" %>
                 <div class="col-md-3">
-                    <%= f.text_field :percentageGermination,:class=>"form-control" %>
+                    <%=f.text_field :codeCrossName, :class => "form-control", :id => "codeCrossName", :readonly => true%>
                 </div>
             </div>
             
             <div class="form-group">
-                <%= f.label :germination, :class=>"col-md-2" %>
+                <%= f.label :codeCross, :class=>"col-md-3" %>
                 <div class="col-md-3">
-                    <%= f.select(:germination, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.hydratation), {:prompt => "Select"},{:class => 'form-control'})  %>
+                    <%=f.text_field :codeCross, :class => "form-control", :id => "codeCross", :readonly => true%>
                 </div>
             </div>
 

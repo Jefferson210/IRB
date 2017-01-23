@@ -12,6 +12,23 @@ class SeedsController < ApplicationController
     def show
     end
 
+    def sumaTotalCode
+        #        @sumaTotalCode = Seed.find(params[:id])
+        #        @sumaTotalCode = Seed.all
+        @sumaTotalCode = Seed.where(crossing_id: 1)
+        #        @enCode = @sumaTotalCode.codeCross
+        respond_to do |format|
+            format.json { render :json => @sumaTotalCode }
+        end
+    end
+
+    def getSeed
+        @objectSeed = Seed.find(params[:id])
+        respond_to do |format|
+            format.json { render :json => @objectSeed }
+        end
+    end
+
     # GET /seeds/new
     def new
         @seed = Seed.new
@@ -64,14 +81,27 @@ class SeedsController < ApplicationController
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_seed
-#        Seed.find(:first).to_param 
-#        params[:id] # => '1,1'
-#        Seed.find(params[:id])
+        #        Seed.find(:first).to_param 
+        #        params[:id] # => '1,1'
+        #        Seed.find(params[:id])
         @seed = Seed.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seed_params
-        params.require(:seed).permit(:crossing_id, :sowDate, :origin, :numSeeds, :totalWeight, :week, :hydratation, :status, :dateOut, :totalGermination, :percentageGermination, :germination)
+        params.require(:seed).permit(:crossing_id, :sowDate, :origin, :numSeeds, :totalWeight, :week, :hydratation, :status, :dateOut, :germination, :codeCrossName, :codeCross)
+    end
+
+    helper_method :sumaCodeCrossNumRepeat
+    def sumaCodeCrossNumRepeat
+        @CodeCrossNumRepeat = Seed.group(:codeCrossName).sum(:numSeeds)    
+    end
+
+    helper_method :sumaCode
+    def sumaCode
+        @CodeCross = Seed.group(:codeCross).sum(:numSeeds)    
     end
 end
+
+
+

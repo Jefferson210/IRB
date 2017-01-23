@@ -7,8 +7,12 @@ class Seed < ActiveRecord::Base
     validates :crossing_id, presence:{ message:"Obligatory"}, uniqueness: { scope: [:sowDate],case_sensitive: false, message:"already exists with this date"}
     validates :sowDate, presence:{ message:"Obligatory"}
 
-    
-    def codeCross_name
-        "#{crossing.codeCross}"
+
+    def codeCross_numRepeat
+        "#{crossing.codeCross}-#{crossing.numRepeat}"
+    end
+
+    def sumaTotalCode
+        Seed.sum(:numSeeds) # => 4562
     end
 end

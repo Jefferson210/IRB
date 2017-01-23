@@ -2,7 +2,7 @@
 
 <p>
     <strong>codeCross:</strong>
-    <%= @germination.seed.crossing.codeCross %>
+    <%= @germination.seed.crossing.codeCross %>-<%= @germination.seed.crossing.numRepeat %>
 </p>
 
 <p>
@@ -13,6 +13,16 @@
 <p>
     <strong>Numgerminations:</strong>
     <%= @germination.numGerminations %>
+</p>
+
+<p>
+    <strong>codeCross:</strong>
+    <%= @germination.codeCross %>
+</p>
+
+<p>
+    <strong>codeCrossNumRepeat:</strong>
+    <%= @germination.codeCrossNumRepeat %>
 </p>
 
 <%= link_to 'Edit', edit_germination_path(@germination) %> |

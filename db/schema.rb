@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108020415) do
+ActiveRecord::Schema.define(version: 20170122230946) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "colorName",  limit: 255
@@ -80,11 +80,13 @@ ActiveRecord::Schema.define(version: 20170108020415) do
   add_index "genetic_banks", ["color_id"], name: "index_genetic_banks_on_color_id", using: :btree
 
   create_table "germinations", force: :cascade do |t|
-    t.integer  "seed_id",         limit: 4
-    t.string   "week",            limit: 255
-    t.integer  "numGerminations", limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "seed_id",            limit: 4
+    t.string   "week",               limit: 255
+    t.integer  "numGerminations",    limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "codeCross",          limit: 255
+    t.string   "codeCrossNumRepeat", limit: 255
   end
 
   add_index "germinations", ["seed_id"], name: "fk_rails_6b14e2e2b3", using: :btree
@@ -130,20 +132,20 @@ ActiveRecord::Schema.define(version: 20170108020415) do
   add_index "one_offsprings", ["germination_id"], name: "fk_rails_347cbf9f34", using: :btree
 
   create_table "seeds", force: :cascade do |t|
-    t.integer  "crossing_id",           limit: 4
-    t.date     "sowDate",                                                   null: false
-    t.string   "origin",                limit: 255
-    t.integer  "numSeeds",              limit: 4
-    t.decimal  "totalWeight",                       precision: 5, scale: 2
-    t.integer  "week",                  limit: 4
-    t.string   "hydratation",           limit: 255
-    t.string   "status",                limit: 255
+    t.integer  "crossing_id",   limit: 4
+    t.date     "sowDate",                                           null: false
+    t.string   "origin",        limit: 255
+    t.integer  "numSeeds",      limit: 4
+    t.decimal  "totalWeight",               precision: 5, scale: 2
+    t.integer  "week",          limit: 4
+    t.string   "hydratation",   limit: 255
+    t.string   "status",        limit: 255
     t.date     "dateOut"
-    t.integer  "totalGermination",      limit: 4
-    t.decimal  "percentageGermination",             precision: 5, scale: 2
-    t.string   "germination",           limit: 255
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.string   "germination",   limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "codeCrossName", limit: 255
+    t.string   "codeCross",     limit: 255
   end
 
   add_index "seeds", ["crossing_id"], name: "fk_rails_e30e334158", using: :btree
