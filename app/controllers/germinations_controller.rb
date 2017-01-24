@@ -12,6 +12,22 @@ class GerminationsController < ApplicationController
     def show
     end
 
+    def numGerminationsNumRepeat
+        @NumRepeat = Germination.group(:codeCrossNumRepeat).sum(:numGerminations)  
+
+        respond_to do |format|
+            format.json { render :json => @NumRepeat }
+        end
+    end
+
+    def numGerminationsCodeCross
+        @Code = Germination.group(:codeCross).sum(:numGerminations)  
+
+        respond_to do |format|
+            format.json { render :json => @Code }
+        end
+    end
+
     # GET /germinations/new
     def new
         @germination = Germination.new
@@ -69,7 +85,7 @@ class GerminationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def germination_params
-        params.require(:germination).permit(:seed_id, :week, :numGerminations,:codeCross, :codeCrossNumRepeat)
+        params.require(:germination).permit(:seed_id, :week, :numGerminations,:codeCross, :codeCrossNumRepeat, :totalNumRepeat, :totalCode)
     end
 
     helper_method :sumaCodeCrossNumRepeat

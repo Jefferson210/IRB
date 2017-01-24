@@ -12,13 +12,19 @@ class SeedsController < ApplicationController
     def show
     end
 
-    def sumaTotalCode
-        #        @sumaTotalCode = Seed.find(params[:id])
-        #        @sumaTotalCode = Seed.all
-        @sumaTotalCode = Seed.where(crossing_id: 1)
-        #        @enCode = @sumaTotalCode.codeCross
+    def numSeedsNumRepeat
+        @CodeCrossNumRepeat = Seed.group(:codeCrossName).sum(:numSeeds)  
+
         respond_to do |format|
-            format.json { render :json => @sumaTotalCode }
+            format.json { render :json => @CodeCrossNumRepeat }
+        end
+    end
+    
+    def numSeedsCodeCross
+        @CodeCross = Seed.group(:codeCross).sum(:numSeeds)  
+
+        respond_to do |format|
+            format.json { render :json => @CodeCross }
         end
     end
 
@@ -89,7 +95,7 @@ class SeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seed_params
-        params.require(:seed).permit(:crossing_id, :sowDate, :origin, :numSeeds, :totalWeight, :week, :hydratation, :status, :dateOut, :germination, :codeCrossName, :codeCross)
+        params.require(:seed).permit(:crossing_id, :sowDate, :origin, :numSeeds, :totalWeight, :week, :hydratation, :status, :dateOut, :germination, :codeCrossName, :codeCross,:totalCode, :totalNumRepeat)
     end
 
     helper_method :sumaCodeCrossNumRepeat

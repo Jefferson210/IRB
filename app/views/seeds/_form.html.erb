@@ -38,7 +38,7 @@
             <div class="form-group">
                 <%= f.label :numSeeds, :class=>"col-md-2" %>
                 <div class="col-md-3">
-                    <%= f.number_field :numSeeds,:class=>"form-control" %>
+                    <%= f.number_field :numSeeds,:class=>"form-control", :id=>"numSeeds",  :onchange=> "sumaNumRepeat()"  %>
                 </div>
             </div>
 
@@ -81,6 +81,20 @@
                 <%= f.label :germination, :class=>"col-md-2" %>
                 <div class="col-md-3">
                     <%= f.select(:germination, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.hydratation), {:prompt => "Select"},{:class => 'form-control'})  %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :totalCode, :class=>"col-md-3" %>
+                <div class="col-md-3">
+                    <%=f.text_field :totalCode, :class => "form-control", :id => "totalCode", :readonly => true%>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :totalNumRepeat, :class=>"col-md-3" %>
+                <div class="col-md-3">
+                    <%=f.text_field :totalNumRepeat, :class => "form-control", :id => "totalNumRepeat", :readonly => true%>
                 </div>
             </div>
 
