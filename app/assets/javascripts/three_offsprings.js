@@ -12,8 +12,11 @@ $(document).on("turbolinks:load", function(){
                 type: 'GET',
                 dataType: 'json',
                 success: function(result){
-                    console.log(result.color)
-                    $("#colorId").val(result.color)
+                    if(result == null){
+                        $("#colorId").val("")
+                    }else{
+                        $("#colorId").val(result.colorName)                        
+                    }
                 },
                 error: function(err){
                     alert("Algo salio mal");

@@ -13,16 +13,15 @@ class GerminationsController < ApplicationController
     end
 
     def numGerminationsNumRepeat
-        @NumRepeat = Germination.group(:codeCrossNumRepeat).sum(:numGerminations)  
+        @numRepeat = Germination.group(:codeCrossNumRepeat).sum(:numGerminations)
 
         respond_to do |format|
-            format.json { render :json => @NumRepeat }
+            format.json { render :json => @numRepeat }
         end
     end
 
     def numGerminationsCodeCross
         @Code = Germination.group(:codeCross).sum(:numGerminations)  
-
         respond_to do |format|
             format.json { render :json => @Code }
         end

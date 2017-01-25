@@ -13,8 +13,7 @@ class OneOffspring < ActiveRecord::Base
 
     def individualGermination_less_than_individualOneOffspring
         #        errors.add(:individual, "should be less or equal than individual of Germination") if individual > germination.numGerminations
-        errors.add(:individual, "should be less or equal than individual of Germination") if individual >  Germination.maximum(:totalCode) 
-        
+        errors.add(:individual, "should be less or equal than individual of Germination") if individual >  Germination.where(codeCross: 'cross1').select(:id,:codeCross,:totalCode).maximum(:totalCode)    
     end
 
     def codeCross_name

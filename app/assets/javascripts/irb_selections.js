@@ -6,18 +6,21 @@
 
 $( document ).on('turbolinks:load', function() {
     $("#three_offspring_id").on('change', function() {
-//        if(  $("#three_offspring_id").val() != "" ){
+        //        if(  $("#three_offspring_id").val() != "" ){
         if(  $("#three_offspring_id").val() != "" ){
             var id = $( "#three_offspring_id option:selected" ).val();
-//            console.log(id)
+            //            console.log(id)
             $.ajax({
                 url: "/selectColorIrbSelections/"+ id,
                 type: "GET",
                 dataType: "json",
                 //            data : {id: 1},
                 success: function (result) {
-//                    console.log(result.color)
-                    $("#colorId").val(result.color)
+                    if(result == null){
+                        $("#colorId").val("")
+                    }else{
+                        $("#colorId").val(result.colorName)                        
+                    }
                 },
                 error: function (err){
                     //alert("Algo salio mal");

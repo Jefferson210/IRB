@@ -38,15 +38,21 @@ $( document ).on('turbolinks:load', function() {
                 dataType: "json",
                 success: function (result) {
                     if($("#numGerminations").val() != ''){
-                        var id = $( "#seed_id option:selected" ).text();
-                        var numSeeds = $("#numGerminations").val();
-                        var sum = parseInt(result[id]) + parseInt(numSeeds)
+                        var val2 = 0;
+                        var numRepeat = $( "#seed_id option:selected" ).text();
+                        var val1 = $("#numGerminations").val();
+                        if(result[numRepeat] == undefined  ){
+                            val2 = 0;
+                        }else{
+                            val2 = result[numRepeat]
+                        }
+                        var sum = parseInt(val1) + parseInt(val2)
                         $("#totalNumRepeat").val(sum)
                     }
                 },
                 error: function (err){
-                    alert("Algo salio mal");
-                    console.log(err);
+                    //                    alert("Algo salio mal");
+                    //                    console.log(err);
                 }
             });  
         }
@@ -58,16 +64,23 @@ $( document ).on('turbolinks:load', function() {
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
+                    //                    console.log(result)
                     if($("#numGerminations").val() != ''){
-                        var id = $( "#codeCross" ).val();
-                        var numSeeds = $("#numGerminations").val();
-                        var sum = parseInt(result[id]) + parseInt(numSeeds)
+                        var val2 = 0;
+                        var numRepeat = $( "#codeCross" ).val();
+                        var val1 = $("#numGerminations").val();
+                        if(result[numRepeat] == undefined ){
+                            val2 = 0;
+                        }else{
+                            val2 = result[numRepeat]
+                        }
+                        var sum = parseInt(val1) + parseInt(val2)
                         $("#totalCode").val(sum)
                     }
                 },
                 error: function (err){
-                    alert("Algo salio mal");
-                    console.log(err);
+                    //                    alert("Algo salio mal");
+                    //                    console.log(err);
                 }
             });  
         }
@@ -77,7 +90,7 @@ $( document ).on('turbolinks:load', function() {
 
 
 function germinationsTotal() {
-//    alert("cambio")
+    //    alert("cambio")
     if($("#seed_id").val() != ""){
         //Funcion para adquirir el total de numSeeds por NumRepeat al cambiar el valor del input "numSeeds"
         $.ajax({
@@ -86,38 +99,47 @@ function germinationsTotal() {
             dataType: "json",
             success: function (result) {
                 if($("#numGerminations").val() != ''){
-                    var id = $( "#seed_id option:selected" ).text();
-                    console.log(id)
-                    var numSeeds = $("#numGerminations").val();
-                    var sum = parseInt(result[id]) + parseInt(numSeeds)
+                    var val2 = 0;
+                    var numRepeat = $( "#seed_id option:selected" ).text();
+                    var val1 = $("#numGerminations").val();
+                    if(result[numRepeat] == undefined ){
+                        val2 = 0;
+                    }else{
+                        val2 = result[numRepeat]
+                    }
+                    var sum = parseInt(val1) + parseInt(val2)
                     $("#totalNumRepeat").val(sum)
                 }
             },
             error: function (err){
-                alert("Algo salio mal");
-                console.log(err);
+//                alert("Algo salio mal");
+//                console.log(err);
             }
         }); 
         //Funcion para adquirir el total de numSeeds por codeCross al cambiar el valor del input "numSeeds"
-        //        if($("#seed_id").val() != ""){
         $.ajax({
             url: "/numGerminationsCodeCross/",
             type: "GET",
             dataType: "json",
             success: function (result) {
                 if($("#numGerminations").val() != ''){
-                    var id = $( "#codeCross" ).val();
-                    var numSeeds = $("#numGerminations").val();
-                    var sum = parseInt(result[id]) + parseInt(numSeeds)
+                    var val2 = 0;
+                    var numRepeat = $( "#codeCross" ).val();
+                    var val1 = $("#numGerminations").val();
+                    if(result[numRepeat] == undefined ){
+                        val2 = 0;
+                    }else{
+                        val2 = result[numRepeat]
+                    }
+                    var sum = parseInt(val1) + parseInt(val2)
                     $("#totalCode").val(sum)
                 }
             },
             error: function (err){
-                alert("Algo salio mal");
-                console.log(err);
+//                alert("Algo salio mal");
+//                console.log(err);
             }
-        });  
-        //        } 
+        });   
     }
 }
 

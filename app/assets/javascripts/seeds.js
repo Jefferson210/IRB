@@ -34,16 +34,22 @@ $( document ).on('turbolinks:load', function() {
                 dataType: "json",
                 success: function (result) {
                     if($("#numSeeds").val() != ''){
-                        var id = $( "#crossing_id option:selected" ).text();
-                        var numSeeds = $("#numSeeds").val();
-                        var sum = parseInt(result[id]) + parseInt(numSeeds)
+                        var val2 = 0;
+                        var numRepeat = $( "#crossing_id option:selected" ).text();
+                        var val1 = $("#numSeeds").val();
+                        if(result[numRepeat] == undefined  ){
+                            val2 = 0;
+                        }else{
+                            val2 = result[numRepeat]
+                        }
+                        var sum = parseInt(val1) + parseInt(val2)
                         $("#totalNumRepeat").val(sum)
                     }
 
                 },
                 error: function (err){
-                    alert("Algo salio mal");
-                    console.log(err);
+//                    alert("Algo salio mal");
+//                    console.log(err);
                 }
             });  
         }
@@ -56,15 +62,21 @@ $( document ).on('turbolinks:load', function() {
                 dataType: "json",
                 success: function (result) {
                     if($("#numSeeds").val() != ''){
-                        var id = $( "#codeCross" ).val();
-                        var numSeeds = $("#numSeeds").val();
-                        var sum = parseInt(result[id]) + parseInt(numSeeds)
+                        var val2 = 0;
+                        var numRepeat = $( "#codeCross" ).val();
+                        var val1 = $("#numSeeds").val();
+                        if(result[numRepeat] == undefined  ){
+                            val2 = 0;
+                        }else{
+                            val2 = result[numRepeat]
+                        }
+                        var sum = parseInt(val1) + parseInt(val2)
                         $("#totalCode").val(sum)
                     }
                 },
                 error: function (err){
-                    alert("Algo salio mal");
-                    console.log(err);
+//                    alert("Algo salio mal");
+//                    console.log(err);
                 }
             });  
         }
@@ -82,9 +94,15 @@ function sumaNumRepeat() {
             dataType: "json",
             success: function (result) {
                 if($("#numSeeds").val() != ''){
-                    var id = $( "#crossing_id option:selected" ).text();
-                    var numSeeds = $("#numSeeds").val();
-                    var sum = parseInt(result[id]) + parseInt(numSeeds)
+                    var val2 = 0;
+                    var numRepeat = $( "#crossing_id option:selected" ).text();
+                    var val1 = $("#numSeeds").val();
+                    if(result[numRepeat] == undefined  ){
+                        val2 = 0;
+                    }else{
+                        val2 = result[numRepeat]
+                    }
+                    var sum = parseInt(val1) + parseInt(val2)
                     $("#totalNumRepeat").val(sum)
                 }
             },
@@ -94,16 +112,21 @@ function sumaNumRepeat() {
             }
         }); 
         //Funcion para adquirir el total de numSeeds por codeCross al cambiar el valor del input "numSeeds"
-        //        if($("#crossing_id").val() != ""){
         $.ajax({
             url: "/numSeedsCodeCross/",
             type: "GET",
             dataType: "json",
             success: function (result) {
                 if($("#numSeeds").val() != ''){
-                    var id = $( "#codeCross" ).val();
-                    var numSeeds = $("#numSeeds").val();
-                    var sum = parseInt(result[id]) + parseInt(numSeeds)
+                    var val2 = 0;
+                    var numRepeat = $( "#codeCross" ).val();
+                    var val1 = $("#numSeeds").val();
+                    if(result[numRepeat] == undefined  ){
+                        val2 = 0;
+                    }else{
+                        val2 = result[numRepeat]
+                    }
+                    var sum = parseInt(val1) + parseInt(val2)
                     $("#totalCode").val(sum)
                 }
             },
@@ -112,7 +135,6 @@ function sumaNumRepeat() {
                 console.log(err);
             }
         });  
-        //        } 
     }
 }
 
