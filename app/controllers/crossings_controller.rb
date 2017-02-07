@@ -18,6 +18,14 @@ class CrossingsController < ApplicationController
             format.json { render :json => @objectCrossing }
         end
     end
+    
+    def codeCrossParents
+        @parents = Crossing.where(code: params[:code])
+        # puts params[:id]
+        respond_to do |format|
+            format.json { render :json => @parents }
+        end
+    end
 
     # GET /crossings/new
     def new

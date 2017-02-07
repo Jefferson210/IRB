@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
     resources :germinations
     resources :spek_selections
     resources :irb_selections
@@ -26,6 +27,9 @@ Rails.application.routes.draw do
     
     get 'numGerminationsNumRepeat' => 'germinations#numGerminationsNumRepeat'
     get 'numGerminationsCodeCross' => 'germinations#numGerminationsCodeCross'
+    
+    # ruta para conocer padre y madre de un codigo
+    get 'codeCrossParents/:id' => 'crossings#codeCrossParents'
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

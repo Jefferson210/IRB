@@ -17,7 +17,7 @@
             <div class="form-group">
                 <%= f.label :codeCross , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.text_field :codeCross,:class=>"form-control" %>
+                    <%= f.text_field :codeCross,:class=>"form-control",:id=>"codeCrossId", :onchange=> "sameParents()" %>
                 </div>                
             </div>
 
