@@ -89,11 +89,22 @@ class GerminationsController < ApplicationController
 
     helper_method :sumaCodeCrossNumRepeat
     def sumaCodeCrossNumRepeat
-        @CodeCross = Germination.group(:codeCrossNumRepeat).sum(:numGerminations)    
+        @CodeCross = Germination.group(:codeCrossNumRepeat).sum(:numGerminations) 
     end
 
     helper_method :sumaCodeCross
     def sumaCodeCross
         @CodeCross = Germination.group(:codeCross).sum(:numGerminations)    
     end
+    
+    helper_method :percentajeSeedsNumRepeat
+    def percentajeSeedsNumRepeat    
+        @numSeedsNumRepeat = Seed.group(:codeCrossName).sum(:numSeeds)
+    end
+    
+    helper_method :percentajeSeedscodeCross
+    def percentajeSeedscodeCross    
+        @numSeedsNumRepeat = Seed.group(:codeCross).sum(:numSeeds)
+    end
+    
 end

@@ -17,7 +17,7 @@
             <div class="form-group">
                 <%= f.label :germination_id,"Germination (codeCross-numRepeat)",:class=>"col-md-3" %>
                 <div class="col-md-3">
-                    <%= f.collection_select(:germination_id,Germination.all,:id,:codeCross_numRepeat,{:prompt => "Select"},{:class => "form-control"})%>                    
+                    <%= f.collection_select(:germination_id,Germination.group(:codeCross),:id,:codeCross,{:prompt => "Select"},{:class => "form-control"})%>                    
                 </div>
             </div>
 

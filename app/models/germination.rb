@@ -11,9 +11,10 @@ class Germination < ActiveRecord::Base
     
     validate :individualGermination_less_than_individualSeed
     
-    def codeCross_numRepeat
-        "#{seed.crossing.codeCross}-#{seed.crossing.numRepeat}"
-    end
+#    def codeCross_numRepeat
+##        "#{seed.crossing.codeCross}-#{seed.crossing.numRepeat}"
+#        "#{seed.crossing.codeCross}"
+#    end
     
     def individualGermination_less_than_individualSeed
         if self.numGerminations.blank?

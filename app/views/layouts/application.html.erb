@@ -41,6 +41,17 @@
                     </div><!-- /.container-fluid -->
                 </nav>
             </div>
+            <div class="row">
+                <% if notice %>
+                <h4 class="notice alert alert-success"><%= notice %></h4>
+                <% end %>
+                <% if alert %>
+                <h4 class="alert alert alert-danger"><%= alert %></h4>
+                <% end %>
+                <% if flash[:info] %>
+                <h4 class="error"><%= flash[:info] %></h4>
+                <% end %>
+            </div>
         </div>
 
         <%= yield %>

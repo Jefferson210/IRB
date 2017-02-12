@@ -5,13 +5,15 @@ class GeneticBanksController < ApplicationController
     # GET /genetic_banks.json
     def index
         @genetic_banks = GeneticBank.all
+#        @pictures = GeneticBankPicture.where(:genetic_bank_id  => "1").first
+        @pictures = GeneticBankPicture.group(:genetic_bank_id)
     end
-
+    
     # GET /genetic_banks/1
     # GET /genetic_banks/1.json
     def show
     end
-
+    
     # GET /genetic_banks/new
     def new
         @genetic_bank = GeneticBank.new

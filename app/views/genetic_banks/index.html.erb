@@ -11,6 +11,7 @@
             <th>Location</th>
             <th>Trademark</th>
             <th>Denomination</th>
+            <th>Image</th>
             <th>Year</th>
             <th>Breeder</th>
             <th>Status</th>
@@ -29,12 +30,23 @@
     </thead>
 
     <tbody>
+
+
         <% @genetic_banks.each do |genetic_bank| %>
         <tr>
             <td><%= genetic_bank.code %></td>
             <td><%= genetic_bank.location %></td>
             <td><%= genetic_bank.trademark %></td>
             <td><%= genetic_bank.denomination %></td>
+            <td>
+                <% @pictures.each do |picture| %>
+                    <% if genetic_bank.id == picture.genetic_bank_id %>
+                        <div class="image-rose">
+                            <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                        </div>
+                    <%end%>
+                <%end%>
+            </td>
             <td><%= genetic_bank.year %></td>
             <td><%= genetic_bank.breeder %></td>
             <td><%= genetic_bank.status %></td>
@@ -52,10 +64,18 @@
             <td><%= link_to 'Edit', edit_genetic_bank_path(genetic_bank) %></td>
             <td><%= link_to 'Destroy', genetic_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
+
         <% end %>
     </tbody>
 </table>
 
+
 <br>
+
+
+
+
+
+
 
 

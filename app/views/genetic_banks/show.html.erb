@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice">< notice %></p>-->
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
@@ -8,73 +8,77 @@
 
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group item">Code:
-                        <span><strong> <%= @genetic_bank.code %></strong></span>
-                    </li>
+                    <div class="col-md-6">
+                        <li class="list-group item">Code:
+                            <span><strong> <%= @genetic_bank.code %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Location:
-                        <span><strong><%= @genetic_bank.location %></strong></span>
-                    </li>
+                        <li class="list-group item">Location:
+                            <span><strong><%= @genetic_bank.location %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Trademark:
-                        <span><strong><%= @genetic_bank.trademark %></strong></span>
-                    </li>
+                        <li class="list-group item">Trademark:
+                            <span><strong><%= @genetic_bank.trademark %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Denomination:
-                        <span><strong> <%= @genetic_bank.denomination %></strong></span>
-                    </li>
+                        <li class="list-group item">Denomination:
+                            <span><strong> <%= @genetic_bank.denomination %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Year:
-                        <span><strong><%= @genetic_bank.year %></strong></span>
-                    </li>
+                        <li class="list-group item">Year:
+                            <span><strong><%= @genetic_bank.year %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Breeder:
-                        <span><strong> <%= @genetic_bank.breeder %></strong></span>
-                    </li>
+                        <li class="list-group item">Breeder:
+                            <span><strong> <%= @genetic_bank.breeder %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Status:
-                        <span><strong>   <%= @genetic_bank.status %></strong></span>
-                    </li>
+                        <li class="list-group item">Status:
+                            <span><strong>   <%= @genetic_bank.status %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Numplants:
-                        <span><strong> <%= @genetic_bank.numPlants %></strong></span>
-                    </li>
+                        <li class="list-group item">Numplants:
+                            <span><strong> <%= @genetic_bank.numPlants %></strong></span>
+                        </li>
+                    </div>
 
-                    <li class="list-group item">Color:
-                        <span><strong><%= @genetic_bank.color ? @genetic_bank.color.colorName : 'N/A' %></strong></span>
-                    </li>
+                    <div class="col-md-6">
+                        <li class="list-group item">Color:
+                            <span><strong><%= @genetic_bank.color ? @genetic_bank.color.colorName : 'N/A' %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Scent:
-                        <span><strong> <%= @genetic_bank.scent %></strong></span>
-                    </li>
+                        <li class="list-group item">Scent:
+                            <span><strong> <%= @genetic_bank.scent %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Headsize:
-                        <span><strong><%= @genetic_bank.headSize %></strong></span>
-                    </li>
+                        <li class="list-group item">Headsize:
+                            <span><strong><%= @genetic_bank.headSize %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Numpetals:
-                        <span><strong><%= @genetic_bank.numPetals %></strong></span>
-                    </li>
+                        <li class="list-group item">Numpetals:
+                            <span><strong><%= @genetic_bank.numPetals %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Steamlenght:
-                        <span><strong><%= @genetic_bank.steamLenght %></strong></span>
-                    </li>
+                        <li class="list-group item">Steamlenght:
+                            <span><strong><%= @genetic_bank.steamLenght %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Production:
-                        <span><strong><%= @genetic_bank.production %></strong></span>
-                    </li>
+                        <li class="list-group item">Production:
+                            <span><strong><%= @genetic_bank.production %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Opening:
-                        <span><strong>  <%= @genetic_bank.opening %></strong></span>
-                    </li>
+                        <li class="list-group item">Opening:
+                            <span><strong>  <%= @genetic_bank.opening %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Abnormality:
-                        <span><strong><%= @genetic_bank.abnormality %></strong></span>
-                    </li>
+                        <li class="list-group item">Abnormality:
+                            <span><strong><%= @genetic_bank.abnormality %></strong></span>
+                        </li>
 
-                    <li class="list-group item">Remarks:
-                        <span><strong> <%= @genetic_bank.remarks %></strong></span>
-                    </li>
+                        <li class="list-group item">Remarks:
+                            <span><strong> <%= @genetic_bank.remarks %></strong></span>
+                        </li>
+                    </div>
                 </ul>
             </div>
 
@@ -86,11 +90,12 @@
                         <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
                     </div>
                 </div>
+                <%= picture.check_box :_destroy %>
                 <%end%>
             </div>
 
 
-           
+
             <div class="row">
                 <h2>Add Image</h2>    
                 <%= form_for([@genetic_bank, @genetic_bank.genetic_bank_pictures.build]) do |f| %>

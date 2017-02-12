@@ -6,6 +6,7 @@ class GeneticBank < ActiveRecord::Base
 
     #    relacion para agregar varias imagenes a una variedad
     has_many :genetic_bank_pictures, dependent: :destroy
+    #    belongs_to :genetic_bank_picture, dependent: :destroy
 
     #    self.primary_keys = :location
 

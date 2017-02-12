@@ -71,14 +71,25 @@ class GeneticBankPicturesController < ApplicationController
     def create
         @genetic_bank = GeneticBank.find(params[:genetic_bank_id])
         @picture = @genetic_bank.genetic_bank_pictures.create(genetic_bank_picture_params)
-        redirect_to genetic_bank_path(@genetic_bank)
+        #        redirect_to genetic_bank_path(@genetic_bank)
+
+        if params[:genetic_bank_picture]
+            if @picture.save
+                redirect_to genetic_bank_path(@genetic_bank), notice: 'Picture uploaded.'
+            else
+                @picture.errors.delete(:picture)
+                render :new
+            end
+        else
+            redirect_to genetic_bank_path(@genetic_bank), alert: 'Picture cannot be blank.'
+        end
     end
 
 
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    private
+    #    private
     def genetic_bank_picture_params
-        params.require(:genetic_bank_picture).permit(:picture) 
+        params.require(:genetic_bank_picture).permit(:picture) if params[:genetic_bank_picture]
     end
 end
