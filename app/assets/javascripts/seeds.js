@@ -11,7 +11,7 @@ $( document ).on('turbolinks:load', function() {
             $("#codeCrossName").val(codeCrossName)
         }
 
-        //Funcion para obtener los codeCross
+        //Funcion para obtener los codeCross y numSeeds
         if($("#crossing_id").val() != ""){
             var id = $( "#crossing_id option:selected" ).val();
             $.ajax({
@@ -19,7 +19,13 @@ $( document ).on('turbolinks:load', function() {
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
+                    console.log(result)
                     $("#codeCross").val(result.codeCross)
+                    if(result.numSeeds == null){
+                        $("#numSeeds").val(0)
+                    }else{
+                        $("#numSeeds").val(result.numSeeds) 
+                    }
                 },
                 error: function (err){
                 }
@@ -33,6 +39,7 @@ $( document ).on('turbolinks:load', function() {
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
+                    //                    console.log(result)
                     if($("#numSeeds").val() != ''){
                         var val2 = 0;
                         var numRepeat = $( "#crossing_id option:selected" ).text();
@@ -48,8 +55,8 @@ $( document ).on('turbolinks:load', function() {
 
                 },
                 error: function (err){
-//                    alert("Algo salio mal");
-//                    console.log(err);
+                    //                    alert("Algo salio mal");
+                    //                    console.log(err);
                 }
             });  
         }
@@ -75,8 +82,8 @@ $( document ).on('turbolinks:load', function() {
                     }
                 },
                 error: function (err){
-//                    alert("Algo salio mal");
-//                    console.log(err);
+                    //                    alert("Algo salio mal");
+                    //                    console.log(err);
                 }
             });  
         }
@@ -107,8 +114,8 @@ function sumaNumRepeat() {
                 }
             },
             error: function (err){
-                alert("Algo salio mal");
-                console.log(err);
+//                alert("Algo salio mal");
+//                console.log(err);
             }
         }); 
         //Funcion para adquirir el total de numSeeds por codeCross al cambiar el valor del input "numSeeds"
@@ -131,8 +138,8 @@ function sumaNumRepeat() {
                 }
             },
             error: function (err){
-                alert("Algo salio mal");
-                console.log(err);
+//                alert("Algo salio mal");
+//                console.log(err);
             }
         });  
     }

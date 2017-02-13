@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
     $("#codeCrossId").change(function(){
         var codeCross = $("#codeCrossId").val();
 
@@ -40,4 +41,41 @@ $(document).on('turbolinks:load', function(){
         });
 
     })
+
+    $("#goodCrossingId").change(function(){
+        var numCrossings = $("#numCrossingId").val();
+        var goodCrossings = $(this).val();
+        //        console.log(numCrossings)
+
+        if(parseInt(goodCrossings) > parseInt(numCrossings)){
+            $("#notice").html("<p class='alert alert-danger'>GoodCrossing should be less than NumCrossing</p>")
+            $("#goodCrossingId").val(0)
+            $("#badCrossingId").val(0) 
+        }else{
+            $("#notice").html("");
+            var badCrossing = parseInt(numCrossings) - parseInt(goodCrossings);
+            $("#badCrossingId").val(badCrossing) 
+        }
+    })
+
+    $("#numCrossingId").change(function(){
+        var numCrossings = $("#numCrossingId").val();
+        var goodCrossings = $("#goodCrossingId").val();
+        if(goodCrossings == ""){
+            goodCrossings =0;
+        }
+        if(parseInt(goodCrossings) > parseInt(numCrossings)){
+            $("#notice").html("<p class='alert alert-danger'>GoodCrossing should be less than NumCrossing</p>")
+            $("#goodCrossingId").val(0)
+            $("#badCrossingId").val(0) 
+        }else{
+            $("#notice").html("");
+            var badCrossing = parseInt(numCrossings) - parseInt(goodCrossings);
+            $("#badCrossingId").val(badCrossing) 
+        }
+    })
 })
+
+
+
+

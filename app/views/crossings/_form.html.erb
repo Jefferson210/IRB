@@ -1,4 +1,5 @@
 <div class="container">
+    <p id="notice"></p>
     <div class="row">
         <div class="col-offset-1 col-md-10">
             <%= form_for(@crossing,:html=>{:class=>"form-horizontal"}) do |f| %>
@@ -18,7 +19,7 @@
                 <%= f.label :codeCross , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
                     <%= f.text_field :codeCross,:class=>"form-control",:id=>"codeCrossId" %>
-<!--                    , :onchange=> "sameParents()"-->
+                    <!--                    , :onchange=> "sameParents()"-->
                 </div>                
             </div>
 
@@ -74,21 +75,21 @@
             <div class="form-group">
                 <%= f.label :numCrossings, :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">
-                    <%= f.number_field :numCrossings,:class=>"form-control" %>
+                    <%= f.number_field :numCrossings,:class=>"form-control", :id => "numCrossingId" %>
                 </div>
             </div>
 
             <div class="form-group">
                 <%= f.label :goodCrossings, :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">
-                    <%= f.number_field :goodCrossings,:class=>"form-control" %>
+                    <%= f.number_field :goodCrossings,:class=>"form-control", :id => "goodCrossingId" %>
                 </div>
             </div>
 
             <div class="form-group">
                 <%= f.label :badCrossings, :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">
-                    <%= f.number_field :badCrossings,:class=>"form-control" %>
+                    <%= f.number_field :badCrossings,:class=>"form-control", :id => "badCrossingId", :readonly => true %>
                 </div>
             </div>
 
