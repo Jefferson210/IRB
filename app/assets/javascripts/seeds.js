@@ -19,13 +19,25 @@ $( document ).on('turbolinks:load', function() {
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
-                    console.log(result)
-                    $("#codeCross").val(result.codeCross)
-                    if(result.numSeeds == null){
+                    
+                    $("#codeCross").val(result[1].codeCross)
+                    
+                    if(result[1].numSeeds == null){
                         $("#numSeeds").val(0)
                     }else{
-                        $("#numSeeds").val(result.numSeeds) 
+                        $("#numSeeds").val(result[1].numSeeds) 
+                    }  
+                    
+                    var val2 = 0;
+                    var numRepeat = result[1].codeCross                  
+                    var val1 = result[1].numSeeds
+                    if(result[0][numRepeat] == undefined  ){
+                        val2 = 0;
+                    }else{
+                        val2 = result[0][numRepeat]
                     }
+                    var sum = parseInt(val1) + parseInt(val2)
+                    $("#totalCode").val(sum)
                 },
                 error: function (err){
                 }
@@ -33,7 +45,7 @@ $( document ).on('turbolinks:load', function() {
         }
 
         //Funcion para adquirir el total de numSeeds por NumRepeat al cambiar el valor del select "crossing_id"
-        if($("#crossing_id").val() != ""){
+       /* if($("#crossing_id").val() != ""){
             $.ajax({
                 url: "/numSeedsNumRepeat/",
                 type: "GET",
@@ -59,40 +71,40 @@ $( document ).on('turbolinks:load', function() {
                     //                    console.log(err);
                 }
             });  
-        }
+        }*/
 
         //Funcion para adquirir el total de numSeeds por codeCross al cambiar el valor del select "crossing_id"
-        if($("#crossing_id").val() != ""){
+       /*if($("#crossing_id").val() != ""){
             $.ajax({
                 url: "/numSeedsCodeCross/",
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
-                    if($("#numSeeds").val() != ''){
-                        var val2 = 0;
-                        var numRepeat = $( "#codeCross" ).val();
-                        var val1 = $("#numSeeds").val();
-                        if(result[numRepeat] == undefined  ){
-                            val2 = 0;
-                        }else{
-                            val2 = result[numRepeat]
-                        }
-                        var sum = parseInt(val1) + parseInt(val2)
-                        $("#totalCode").val(sum)
+                    //console.log(result)                    
+                    var val2 = 0;
+                    var numRepeat = $( "#codeCross" ).val();                    
+                    var val1 = $("#numSeeds").val();
+                    if(result[numRepeat] == undefined  ){
+                        val2 = 0;
+                    }else{
+                        val2 = result[numRepeat]
                     }
+                    var sum = parseInt(val1) + parseInt(val2)
+                    $("#totalCode").val(sum)
+                    
                 },
                 error: function (err){
                     //                    alert("Algo salio mal");
                     //                    console.log(err);
                 }
             });  
-        }
+        }*/
 
     });
 })
 
 
-function sumaNumRepeat() {
+/*function sumaNumRepeat() {
     if($("#crossing_id").val() != ""){
         //Funcion para adquirir el total de numSeeds por NumRepeat al cambiar el valor del input "numSeeds"
         $.ajax({
@@ -143,7 +155,7 @@ function sumaNumRepeat() {
             }
         });  
     }
-}
+}*/
 
 
 

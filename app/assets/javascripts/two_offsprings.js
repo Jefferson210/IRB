@@ -15,6 +15,7 @@ $( document ).on('turbolinks:load', function() {
                 dataType: "json",
                 //            data : {id: 1},
                 success: function (result) {
+                    console.log(result)
                     if(result == null){
                         $("#colorId").val("")
                     }else{

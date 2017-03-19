@@ -5,6 +5,8 @@ class CrossingsController < ApplicationController
     # GET /crossings.json
     def index
         @crossings = Crossing.all
+        #Para traer todas las imagenes
+        @pictures = GeneticBankPicture.group(:genetic_bank_id)
     end
 
     # GET /crossings/1
@@ -14,15 +16,29 @@ class CrossingsController < ApplicationController
 
     def getCrossing
         @objectCrossing = Crossing.find(params[:id])
+        @CodeCross = Seed.group(:codeCross).sum(:numSeeds)  
+        @getCrossing = []
+        @getCrossing<<@CodeCross
+        @getCrossing<<@objectCrossing
+        
         respond_to do |format|
-            format.json { render :json => @objectCrossing }
+            format.json { render :json => @getCrossing }
         end
     end
 
     def codeCrossParents
+#        @parents = Crossing.where(:codeCross => params[:text]).first
+#        respond_to do |format|
+#            format.json { render :json => @parents }
+#        end
+        
         @parents = Crossing.where(:codeCross => params[:text]).first
+        @fatherId = @parents.father_id
+        puts "Id padre @fatherId #{@fatherId}"
+        @geneticBankFather = GeneticBank.where(:id => @fatherId)        
+        puts @geneticBankFather
         respond_to do |format|
-            format.json { render :json => @parents }
+            format.json { render :json => @geneticBankFather}
         end
     end
 

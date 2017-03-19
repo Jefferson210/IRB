@@ -9,20 +9,22 @@
     <thead>
         <tr>
             <th>Crosscode</th>
-            <th>NumRepeat</th>
+            <th>Num.Rep</th>
             <th>Year</th>
             <th>Status</th>
             <th>Father</th>
+            <th>FatherPict.</th>
             <th>Mother</th>
+            <th>MotherPict.</th>
             <th>Crossweek</th>
-            <th>Numcrossings</th>
-            <th>Goodcrossings</th>
-            <th>Badcrossings</th>
             <th>Effective</th>
-            <th>Percentageeffective</th>
+            <th>Num.Cross</th>
+            <th>Good.Cross</th>
+            <th>Bad.Cross</th>           
+            <th>%Effective</th>
             <th>Dateharvest</th>
             <th>Weekharvest</th>
-            <th>Numseeds</th>
+            <th>Num.Seeds</th>
             <th colspan="3"></th>
         </tr>
     </thead>
@@ -34,13 +36,31 @@
             <td><%= crossing.numRepeat %></td>
             <td><%= crossing.year %></td>
             <td><%= crossing.status %></td>
-            <td><%= crossing.father.code%></td>
+            <td><%= crossing.father.code %></td>
+            <td> 
+                <% @pictures.each do |picture| %>
+                <% if crossing.father_id  == picture.genetic_bank_id %>
+                <div class="image-rose">
+                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
             <td><%= crossing.mother.code %></td>
+            <td> 
+                <% @pictures.each do |picture| %>
+                <% if crossing.mother_id  == picture.genetic_bank_id %>
+                <div class="image-rose">
+                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
             <td><%= crossing.crossWeek %></td>
+            <td><%= crossing.effective %></td>
             <td><%= crossing.numCrossings %></td>
             <td><%= crossing.goodCrossings %></td>
             <td><%= crossing.badCrossings %></td>
-            <td><%= crossing.effective %></td>
             <td><%= crossing.percentageEffective %></td>
             <td><%= crossing.dateHarvest %></td>
             <td><%= crossing.weekHarvest %></td>

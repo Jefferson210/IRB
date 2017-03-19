@@ -26,14 +26,14 @@
             <div class="form-group">
                 <%= f.label :numRepeat , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">  
-                    <%= f.number_field :numRepeat, :class=>"form-control"  %>                  
+                    <%= f.number_field :numRepeat, :class=>"form-control" ,min: 0 %>                  
                 </div>
             </div>
 
             <div class="form-group">
                 <%= f.label :numOrder , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">  
-                    <%= f.number_field :numOrder, :class=>"form-control"  %>                  
+                    <%= f.number_field :numOrder, :class=>"form-control" ,min: 0 %>                  
                 </div>
             </div>
 
@@ -58,6 +58,7 @@
                 </div>
             </div>
 
+
             <div class="form-group">
                 <%= f.label :mother_id, :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">
@@ -65,66 +66,67 @@
                 </div>
             </div>
 
+
             <div class="form-group">
                 <%= f.label :crossWeek, :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">
-                    <%= f.number_field :numCrossings,:class=>"form-control" %>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <%= f.label :numCrossings, :class=>"col-md-2 control-label" %>
-                <div class="col-md-3">
-                    <%= f.number_field :numCrossings,:class=>"form-control", :id => "numCrossingId" %>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <%= f.label :goodCrossings, :class=>"col-md-2 control-label" %>
-                <div class="col-md-3">
-                    <%= f.number_field :goodCrossings,:class=>"form-control", :id => "goodCrossingId" %>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <%= f.label :badCrossings, :class=>"col-md-2 control-label" %>
-                <div class="col-md-3">
-                    <%= f.number_field :badCrossings,:class=>"form-control", :id => "badCrossingId", :readonly => true %>
+                    <%= f.number_field :numCrossings,:class=>"form-control", min: 0 %>
                 </div>
             </div>
 
             <div class="form-group">
                 <%= f.label :effective , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.select(:effective, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.effective), {:prompt => "Select"},{:class => 'form-control'})  %>
+                    <%= f.select(:effective, options_for_select([['Not','not'],['Yes','yes']], :selected => f.object.effective), {:prompt => "Select"},{:class => 'form-control', :id => "effectiveId"})  %>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group effectiveOption">
+                <%= f.label :numCrossings, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :numCrossings,:class=>"form-control",min: 0, :id => "numCrossingId" %>
+                </div>
+            </div>
+
+            <div class="form-group effectiveOption">
+                <%= f.label :goodCrossings, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :goodCrossings,:class=>"form-control",min: 0,:id => "goodCrossingId" %>
+                </div>
+            </div>
+
+            <div class="form-group effectiveOption">
+                <%= f.label :badCrossings, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.number_field :badCrossings,:class=>"form-control",min: 0,:id => "badCrossingId", :readonly => true %>
+                </div>
+            </div>
+
+            <div class="form-group effectiveOption">
                 <%= f.label :percentageEffective , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.text_field :percentageEffective ,:class=>"form-control"%>
+                    <%= f.text_field :percentageEffective ,:class=>"form-control", :id => "percEffectiveId",:readonly => true%>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group effectiveOption">
                 <%= f.label :dateHarvest , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
                     <%= f.date_field :dateHarvest ,:class=>"form-control",value: f.object.dateHarvest ,:prompt => "Select"%>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group effectiveOption">
                 <%= f.label :weekHarvest , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.number_field :weekHarvest, :class=>"form-control"  %>
+                    <%= f.number_field :weekHarvest, :class=>"form-control",min: 0  %>
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group effectiveOption">
                 <%= f.label :numSeeds , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">  
-                    <%= f.number_field :numSeeds, :class=>"form-control"  %>                  
+                    <%= f.number_field :numSeeds, :class=>"form-control",min: 0  %>                  
                 </div>
             </div>
 

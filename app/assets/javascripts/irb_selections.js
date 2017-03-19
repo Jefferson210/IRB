@@ -19,7 +19,7 @@ $( document ).on('turbolinks:load', function() {
                     if(result == null){
                         $("#colorId").val("")
                     }else{
-                        $("#colorId").val(result.colorName)                        
+                        $("#colorId").val(result.color)                        
                     }
                 },
                 error: function (err){

@@ -12,10 +12,11 @@ $(document).on("turbolinks:load", function(){
                 type: 'GET',
                 dataType: 'json',
                 success: function(result){
+                   // console.log(result)
                     if(result == null){
                         $("#colorId").val("")
                     }else{
-                        $("#colorId").val(result.colorName)                        
+                        $("#colorId").val(result.color)                        
                     }
                 },
                 error: function(err){

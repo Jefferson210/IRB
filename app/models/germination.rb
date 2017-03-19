@@ -10,6 +10,7 @@ class Germination < ActiveRecord::Base
     validates :numGerminations, presence:{ message:"Obligatory"}
     
     validate :individualGermination_less_than_individualSeed
+#    , on: :create
     
 #    def codeCross_numRepeat
 ##        "#{seed.crossing.codeCross}-#{seed.crossing.numRepeat}"
@@ -21,6 +22,7 @@ class Germination < ActiveRecord::Base
             puts "errors algo salio mal"
         else
             maxIndividual = Seed.where(codeCross: self.seed.codeCross).select(:id).maximum(:totalCode)
+            puts "Maximo #{maxIndividual}"
             errors.add(:numGerminations, "should be less or equal than total Code #{maxIndividual} from Seed ") if numGerminations >  maxIndividual
         end
     end

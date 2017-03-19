@@ -53,9 +53,9 @@
             <td><%= item[1] %></td>
             <td>
                 <%percentajeSeedscodeCross.each do |seed|%>
-                <%if seed[0] == item[0]%>
-                <%= (item[1] * 100) / seed[1] %>
-                <%end%>
+                    <%if seed[0] == item[0]%>
+                        <%= (item[1] * 100) / seed[1] %>
+                    <%end%>
                 <%end%>
                 
             </td>
@@ -84,7 +84,11 @@
             <td>
                 <% percentajeSeedsNumRepeat.each do |seed| %>
                     <%if seed[0] == item[0]%>
-                        <%=(item[1] * 100) / seed[1] %>
+                       <%percentajeSeedscodeCross.each do |seed2|%>
+                        <%if seed2[0] == item[0]%>
+                            <%= (item[1] * 100) / seed2[1] %>
+                        <%end%>
+                    <%end%>                        
                     <%end%>
                 <%end%>
 

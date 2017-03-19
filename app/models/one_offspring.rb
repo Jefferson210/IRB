@@ -18,6 +18,7 @@ class OneOffspring < ActiveRecord::Base
             puts "errors algo salio mal"
         else
             maxIndividual = Germination.where(codeCross: self.germination.codeCross).select(:id,:codeCross,:totalCode).maximum(:totalCode)
+            puts "Maximo #{maxIndividual}"
             errors.add(:individual, "should be less or equal than total Code #{maxIndividual} from Germination ") if individual >  maxIndividual
         end
     end
