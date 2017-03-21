@@ -4,6 +4,9 @@ class OneOffspring < ActiveRecord::Base
     belongs_to :germination
     belongs_to :color
     has_many :two_offsprings
+    #    relacion para agregar varias imagenes a una variedad
+    has_many :one_offspring_pictures, dependent: :destroy
+    
     #    VALIDATIONS
     validates :germination_id, presence:{ message:"Obligatory"}, uniqueness: { scope: [:individual],case_sensitive: false, message:"already exists with this individual"}
     validates :individual, presence:{ message:"Obligatory"}

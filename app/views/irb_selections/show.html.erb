@@ -78,6 +78,32 @@
                 </ul>
             </div>
 
+            <div class="row">
+                <h2>Images</h2>
+                <% @irb_selection.irb_selections_pictures.each do |picture| %>
+                <div class="col-md-3">
+                    <div class="image-rose">
+                        <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                    </div>
+                </div>
+                <%end%>
+            </div>
+
+            <div class="row">
+                <h2>Add Image</h2>    
+                <%= form_for([@irb_selection, @irb_selection.irb_selections_pictures.build]) do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :picture%>
+                    <%= f.file_field :picture %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit%>
+                </div>
+                <% end %>
+            </div>
+
             <div class="panel-footer">
                 <%= link_to 'Edit', edit_irb_selection_path(@irb_selection) %> |
                 <%= link_to 'Back', irb_selections_path %>

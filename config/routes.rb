@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
   resources :users
     resources :germinations
-    resources :spek_selections
-    resources :irb_selections
-    resources :three_offsprings
-    resources :two_offsprings 
-    resources :one_offsprings
     resources :seeds
     resources :crossings
     resources :colors
@@ -13,6 +8,26 @@ Rails.application.routes.draw do
     resources :genetic_banks do
         resources :genetic_bank_pictures
     end
+    
+    resources :one_offsprings do
+        resources :one_offspring_pictures
+    end
+    resources :two_offsprings do
+        resources :two_offspring_pictures
+    end
+    
+    resources :three_offsprings do
+        resources :three_offspring_pictures
+    end
+    
+    resources :irb_selections do
+        resources :irb_selections_pictures
+    end
+    
+    resources :spek_selections 
+#    do
+#        resources :spek_selections_pictures
+#    end
 
     #    rutas para seleccionar el color de una variedad mediante ajax
     get 'selectColorTwoOffspring/:id' => 'two_offsprings#selectColor'

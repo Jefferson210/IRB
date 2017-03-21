@@ -43,6 +43,33 @@
                 </ul>
             </div>
 
+            <div class="row">
+                <h2>Images</h2>
+                <% @one_offspring.one_offspring_pictures.each do |picture| %>
+                <div class="col-md-3">
+                    <div class="image-rose">
+                        <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                    </div>
+                </div>
+                
+                <%end%>
+            </div>
+
+            <div class="row">
+                <h2>Add Image</h2>    
+                <%= form_for([@one_offspring, @one_offspring.one_offspring_pictures.build]) do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :picture%>
+                    <%= f.file_field :picture %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit%>
+                </div>
+                <% end %>
+            </div>
+
             <div class="panel-footer">
                 <%= link_to 'Edit', edit_one_offspring_path(@one_offspring) %> |
                 <%= link_to 'Back', one_offsprings_path %>

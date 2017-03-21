@@ -1,6 +1,8 @@
 class SpekSelection < ActiveRecord::Base
     belongs_to :color
     self.primary_keys = :code
+   
+
     #    VALIDATIONS
     validates :code, presence:{ message:"Obligatory"}, uniqueness: {case_sensitive: false, message:"already exists"}    
     validates :location, :allow_blank => true, uniqueness: {case_sensitive: false, message:"already exists"}    

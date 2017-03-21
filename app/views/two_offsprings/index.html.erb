@@ -11,6 +11,7 @@
     <thead>
         <tr>
             <th>codeCross-individual</th>
+            <th>Image</th>
             <th>Color</th>
             <th>Status</th>
             <th>Headsize</th>
@@ -25,6 +26,15 @@
         <% @two_offsprings.each do |two_offspring| %>
         <tr>
             <td><%= two_offspring.one_offspring.germination.seed.crossing.codeCross %>-<%=two_offspring.one_offspring.individual%></td>
+            <td>
+                <% @pictures.each do |picture| %>
+                <% if two_offspring.id == picture.two_offspring_id %>
+                <div class="image-rose-index">
+                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
             <td><%= two_offspring.color %></td>
             <td><%= two_offspring.status %></td>
             <td><%= two_offspring.headSize %></td>

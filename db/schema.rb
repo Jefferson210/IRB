@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123232734) do
+ActiveRecord::Schema.define(version: 20170319194437) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "colorName",  limit: 255
@@ -117,6 +117,30 @@ ActiveRecord::Schema.define(version: 20170123232734) do
 
   add_index "irb_selections", ["three_offspring_id"], name: "fk_rails_6047393694", using: :btree
 
+  create_table "irb_selections_pictures", force: :cascade do |t|
+    t.integer  "irb_selection_id",     limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "irb_selections_pictures", ["irb_selection_id"], name: "index_irb_selections_pictures_on_irb_selection_id", using: :btree
+
+  create_table "one_offspring_pictures", force: :cascade do |t|
+    t.integer  "one_offspring_id",     limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "one_offspring_pictures", ["one_offspring_id"], name: "index_one_offspring_pictures_on_one_offspring_id", using: :btree
+
   create_table "one_offsprings", force: :cascade do |t|
     t.integer  "germination_id", limit: 4
     t.integer  "individual",     limit: 4,                           null: false
@@ -177,6 +201,30 @@ ActiveRecord::Schema.define(version: 20170123232734) do
 
   add_index "spek_selections", ["color_id"], name: "index_spek_selections_on_color_id", using: :btree
 
+  create_table "spek_selections_pictures", force: :cascade do |t|
+    t.integer  "spek_selection_id",    limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "spek_selections_pictures", ["spek_selection_id"], name: "index_spek_selections_pictures_on_spek_selection_id", using: :btree
+
+  create_table "three_offspring_pictures", force: :cascade do |t|
+    t.integer  "three_offspring_id",   limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "three_offspring_pictures", ["three_offspring_id"], name: "index_three_offspring_pictures_on_three_offspring_id", using: :btree
+
   create_table "three_offsprings", force: :cascade do |t|
     t.integer  "two_offspring_id", limit: 4
     t.string   "color",            limit: 255
@@ -190,6 +238,18 @@ ActiveRecord::Schema.define(version: 20170123232734) do
   end
 
   add_index "three_offsprings", ["two_offspring_id"], name: "fk_rails_780913f863", using: :btree
+
+  create_table "two_offspring_pictures", force: :cascade do |t|
+    t.integer  "two_offspring_id",     limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "two_offspring_pictures", ["two_offspring_id"], name: "index_two_offspring_pictures_on_two_offspring_id", using: :btree
 
   create_table "two_offsprings", force: :cascade do |t|
     t.integer  "one_offspring_id", limit: 4
@@ -210,10 +270,15 @@ ActiveRecord::Schema.define(version: 20170123232734) do
   add_foreign_key "genetic_banks", "colors"
   add_foreign_key "germinations", "seeds"
   add_foreign_key "irb_selections", "three_offsprings"
+  add_foreign_key "irb_selections_pictures", "irb_selections"
+  add_foreign_key "one_offspring_pictures", "one_offsprings"
   add_foreign_key "one_offsprings", "colors"
   add_foreign_key "one_offsprings", "germinations"
   add_foreign_key "seeds", "crossings"
   add_foreign_key "spek_selections", "colors"
+  add_foreign_key "spek_selections_pictures", "spek_selections"
+  add_foreign_key "three_offspring_pictures", "three_offsprings"
   add_foreign_key "three_offsprings", "two_offsprings"
+  add_foreign_key "two_offspring_pictures", "two_offsprings"
   add_foreign_key "two_offsprings", "one_offsprings"
 end

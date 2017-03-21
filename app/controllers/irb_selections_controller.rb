@@ -5,6 +5,7 @@ class IrbSelectionsController < ApplicationController
     # GET /irb_selections.json
     def index
         @irb_selections = IrbSelection.all
+        @pictures = IrbSelectionsPicture.group(:irb_selection_id)
     end
 
     # GET /irb_selections/1

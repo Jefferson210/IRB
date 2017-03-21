@@ -5,6 +5,7 @@ class TwoOffspringsController < ApplicationController
     # GET /two_offsprings.json
     def index
         @two_offsprings = TwoOffspring.all
+        @pictures = TwoOffspringPicture.group(:two_offspring_id)
     end
 
     # GET /two_offsprings/1

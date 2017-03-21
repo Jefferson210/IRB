@@ -17,3 +17,7 @@
 
 #Ignore images in geneticBank
 /public/**/geneticBank/*
+/public/**/irbSelections/*
+/public/**/oneOffspring/*
+/public/**/twoOffspring/*
+/public/**/threeOffspring/*

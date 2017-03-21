@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th>Codecross</th>
+            <th>Image</th>
             <th>Color</th>
             <th>Status</th>
             <th>Headsize</th>
@@ -23,6 +24,15 @@
         <% @three_offsprings.each do |three_offspring| %>
         <tr>
             <td><%= three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross %>-<%=three_offspring.two_offspring.one_offspring.individual%></td>
+            <td>
+                <% @pictures.each do |picture| %>
+                <% if three_offspring.id == picture.three_offspring_id %>
+                        <div class="image-rose-index">
+                            <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                        </div>
+                    <%end%>
+                <%end%>
+            </td>
             <td><%= three_offspring.color %></td>
             <td><%= three_offspring.status %></td>
             <td><%= three_offspring.headSize %></td>

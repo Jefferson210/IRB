@@ -10,19 +10,20 @@
     <thead>
         <tr>
             <th>Codecross</th>
-            <th>Code</th>
-            <th>Location</th>
+            <th>Code</th>            
+            <th>Locat.</th>
             <th>Trademark</th>
-            <th>Denomination</th>
+            <th>Denomin.</th>
+            <th>Image</th>
             <th>Year</th>
             <th>Status</th>
-            <th>Numplants</th>
+            <th>N.Plants</th>
             <th>Color</th>
             <th>Scent</th>
             <th>Headsize</th>
-            <th>Numpetals</th>
+            <th>N.Petals</th>
             <th>Steamlenght</th>
-            <th>Production</th>
+            <th>Produc.</th>
             <th>Opening</th>
             <th>Abnormality</th>
             <th>Remarks</th>
@@ -34,10 +35,19 @@
         <% @irb_selections.each do |irb_selection| %>
         <tr>
             <td><%= irb_selection.three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross%>-<%=irb_selection.three_offspring.two_offspring.one_offspring.individual%></td>
-            <td><%= irb_selection.code %></td>
+            <td><%= irb_selection.code %></td>            
             <td><%= irb_selection.location %></td>
             <td><%= irb_selection.trademark %></td>
             <td><%= irb_selection.denomination %></td>
+            <td>
+                <% @pictures.each do |picture| %>
+                <% if irb_selection.id == picture.irb_selection_id %>
+                <div class="image-rose-index">
+                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
             <td><%= irb_selection.year %></td>
             <td><%= irb_selection.status %></td>
             <td><%= irb_selection.numPlants %></td>
