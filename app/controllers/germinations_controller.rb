@@ -5,6 +5,8 @@ class GerminationsController < ApplicationController
     # GET /germinations.json
     def index
         @germinations = Germination.all
+         #Para traer todas las imagenes
+        @pictures = GeneticBankPicture.group(:genetic_bank_id)
     end
 
     # GET /germinations/1
@@ -22,8 +24,15 @@ class GerminationsController < ApplicationController
 
     def numGerminationsCodeCross
         @Code = Germination.group(:codeCross).sum(:numGerminations)  
+        @missinSeeds = Germination.group(:codeCross).maximum(:missingSeed)
+        @totalSeeds = Seed.group(:codeCross).maximum(:totalCode)
+        @CodeAndMissingSeed = []
+        @CodeAndMissingSeed<<@Code
+        @CodeAndMissingSeed<<@missinSeeds
+        @CodeAndMissingSeed<<@totalSeeds
+        
         respond_to do |format|
-            format.json { render :json => @Code }
+            format.json { render :json => @CodeAndMissingSeed }
         end
     end
 
@@ -84,7 +93,7 @@ class GerminationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def germination_params
-        params.require(:germination).permit(:seed_id, :week, :numGerminations,:codeCross, :codeCrossNumRepeat, :totalNumRepeat, :totalCode)
+        params.require(:germination).permit(:seed_id, :week, :numGerminations,:codeCross, :codeCrossNumRepeat, :totalNumRepeat, :totalCode, :missingSeed)
     end
 
     helper_method :sumaCodeCrossNumRepeat

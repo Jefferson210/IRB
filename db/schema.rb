@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319194437) do
+ActiveRecord::Schema.define(version: 20170326202033) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "colorName",  limit: 255
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170319194437) do
     t.string   "codeCrossNumRepeat", limit: 255
     t.integer  "totalCode",          limit: 4
     t.integer  "totalNumRepeat",     limit: 4
+    t.integer  "missingSeed",        limit: 4
   end
 
   add_index "germinations", ["seed_id"], name: "fk_rails_6b14e2e2b3", using: :btree

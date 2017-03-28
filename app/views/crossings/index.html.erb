@@ -9,7 +9,8 @@
     <thead>
         <tr>
             <th>Crosscode</th>
-            <th>Num.Rep</th>
+            <th>N.Ord</th>
+            <th>N.Rep</th>
             <th>Year</th>
             <th>Status</th>
             <th>Father</th>
@@ -18,13 +19,13 @@
             <th>MotherPict.</th>
             <th>Crossweek</th>
             <th>Effective</th>
-            <th>Num.Cross</th>
+            <th>N.Cross</th>
             <th>Good.Cross</th>
             <th>Bad.Cross</th>           
             <th>%Effective</th>
             <th>Dateharvest</th>
             <th>Weekharvest</th>
-            <th>Num.Seeds</th>
+            <th>N.Seeds</th>
             <th colspan="3"></th>
         </tr>
     </thead>
@@ -33,6 +34,7 @@
         <% @crossings.each do |crossing| %>
         <tr>
             <td><%= crossing.codeCross%></td>
+            <td><%= crossing.numOrder%></td>
             <td><%= crossing.numRepeat %></td>
             <td><%= crossing.year %></td>
             <td><%= crossing.status %></td>

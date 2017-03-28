@@ -32,31 +32,38 @@
                 <%= f.label :numGerminations , :class=>"col-md-3"%>
                 <div class="col-md-3">
                     <%= f.number_field :numGerminations,:class=>"form-control" ,:id=>"numGerminations" , :onchange=> "germinationsTotal()"%>
-                    
+
                 </div>    
             </div>
-            
+
+            <div class="form-group">
+                <%= f.label :missingSeed , :class=>"col-md-3"%>
+                <div class="col-md-3">
+                    <%= f.number_field :missingSeed,:class=>"form-control" ,:id=>"missingSeedId" , :readonly => true%>                    
+                </div>    
+            </div>
+
             <div class="form-group">
                 <%= f.label :totalCode , :class=>"col-md-3"%>
                 <div class="col-md-3">
                     <%= f.text_field :totalCode,:class=>"form-control" ,:id=>"totalCode", :readonly => true %>
                 </div>    
             </div>
-            
+
             <div class="form-group">
                 <%= f.label :totalNumRepeat , :class=>"col-md-3"%>
                 <div class="col-md-3">
                     <%= f.text_field :totalNumRepeat,:class=>"form-control" ,:id=>"totalNumRepeat", :readonly => true %>
                 </div>    
             </div>
-            
+
             <div class="form-group">
                 <%= f.label :codeCross, :class=>"col-md-3" %>
                 <div class="col-md-3">
                     <%= f.text_field :codeCross,:class=>"form-control", :id => "codeCross" , :readonly => true %>
                 </div>    
             </div>
-            
+
             <div class="form-group">
                 <%= f.label :codeCrossNumRepeat, :class=>"col-md-3" %>
                 <div class="col-md-3">
