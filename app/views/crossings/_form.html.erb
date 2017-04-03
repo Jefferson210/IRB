@@ -15,10 +15,34 @@
             </div>
             <% end %>
 
+
+
+
+             <div class="form-group">
+                <%= f.label :father_id , :class=>"col-md-2 control-label"%>
+                <div class="col-md-3">
+                    <%= f.collection_select(:father_id,GeneticBank.where(:status => "keep"),:id,:selectCodeTrademark,{:prompt => "Select code-trademark"},{:class => "form-control",:id => "father_id"})%> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <%= f.label :mother_id, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.collection_select(:mother_id,GeneticBank.where(:status => "keep"),:id,:selectCodeTrademark,{:prompt => "Select code-trademark"},{:class => "form-control",:id => "mother_id",disabled: true})%> 
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :year, :class=>"col-md-2 control-label" %>
+                <div class="col-md-3">
+                    <%= f.select :year, (Time.zone.now.year - 5)..(Time.zone.now.year + 20), {:prompt => "Select"},{:class =>"form-control",disabled: true} %>
+                </div>
+            </div>
+            
             <div class="form-group">
                 <%= f.label :codeCross , :class=>"col-md-2 control-label"%>
                 <div class="col-md-3">
-                    <%= f.text_field :codeCross,:class=>"form-control",:id=>"codeCrossId" %>
+                    <%= f.text_field :codeCross,:class=>"form-control",:id=>"codeCrossId" ,:readonly => true %>
                     <!--                    , :onchange=> "sameParents()"-->
                 </div>                
             </div>
@@ -31,16 +55,9 @@
             </div>
 
             <div class="form-group">
-                <%= f.label :numOrder , :class=>"col-md-2 control-label"%>
+                <%= f.label :numOrder , :class=>"col-md-2 control-label" %>
                 <div class="col-md-3">  
-                    <%= f.number_field :numOrder, :class=>"form-control" ,min: 0 %>                  
-                </div>
-            </div>
-
-            <div class="form-group">
-                <%= f.label :year, :class=>"col-md-2 control-label" %>
-                <div class="col-md-3">
-                    <%= f.select :year, (Time.zone.now.year - 16)..(Time.zone.now.year + 10), {:prompt => "Select"},{:class =>"form-control"} %>
+                    <%= f.number_field :numOrder, :class=>"form-control" ,min: 0 , :readonly => true %>                  
                 </div>
             </div>
 
@@ -51,20 +68,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <%= f.label :father_id , :class=>"col-md-2 control-label"%>
-                <div class="col-md-3">
-                    <%= f.collection_select(:father_id,GeneticBank.where(:status => "keep"),:id,:selectCodeTrademark,{:prompt => "Select code-trademark"},{:class => "form-control",:id => "father_id"})%> 
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <%= f.label :mother_id, :class=>"col-md-2 control-label" %>
-                <div class="col-md-3">
-                    <%= f.collection_select(:mother_id,GeneticBank.where(:status => "keep"),:id,:selectCodeTrademark,{:prompt => "Select code-trademark"},{:class => "form-control",:id => "mother_id"})%> 
-                </div>
-            </div>
+            
 
 
             <div class="form-group">

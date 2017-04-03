@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     get 'getCrossing/:id' => 'crossings#getCrossing'
     get 'getSeed/:id' => 'seeds#getSeed'
     
+    get 'getCrossings'=> 'crossings#index'
+    get 'getCrossingsByYear/:year'=> 'crossings#getCrossingsByYear'
+    get 'validRepetition/:info'=> 'crossings#validRepetition'
+    
     get 'numSeedsNumRepeat' => 'seeds#numSeedsNumRepeat'
     get 'numSeedsCodeCross' => 'seeds#numSeedsCodeCross'
     

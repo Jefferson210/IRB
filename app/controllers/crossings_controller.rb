@@ -41,6 +41,29 @@ class CrossingsController < ApplicationController
             format.json { render :json => @geneticBankFather}
         end
     end
+    
+    def validRepetition
+       @infor=params[:info].split('-')
+       @code=@infor[0]
+       @numRepetition=@infor[1]
+       
+       @CrossingExist = Crossing.where(codeCross:@code,numRepeat:@numRepetition)
+
+       
+      respond_to do |format|
+          format.json { render :json => @CrossingExist }
+        end
+      
+    end
+    
+    def getCrossingsByYear
+        @year=params[:year]
+        @Crossings=Crossing.where(year:@year,status:'Keep')
+        respond_to do |format|
+        format.json { render :json => @Crossings }
+        end
+    
+    end
 
     # GET /crossings/new
     def new
