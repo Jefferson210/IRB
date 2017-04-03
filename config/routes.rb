@@ -24,10 +24,9 @@ Rails.application.routes.draw do
         resources :irb_selections_pictures
     end
     
-    resources :spek_selections 
-#    do
-#        resources :spek_selections_pictures
-#    end
+    resources :spek_selections do
+        resources :spek_selections_pictures
+    end
 
     #    rutas para seleccionar el color de una variedad mediante ajax
     get 'selectColorTwoOffspring/:id' => 'two_offsprings#selectColor'

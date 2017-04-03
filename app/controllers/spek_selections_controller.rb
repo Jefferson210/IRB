@@ -5,7 +5,7 @@ class SpekSelectionsController < ApplicationController
     # GET /spek_selections.json
     def index
         @spek_selections = SpekSelection.all
-        
+        @pictures = SpekSelectionsPicture.group(:spek_selection_id)
     end
 
     # GET /spek_selections/1

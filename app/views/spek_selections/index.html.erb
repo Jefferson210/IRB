@@ -16,11 +16,11 @@
             <th>Image</th>
             <th>Year</th>
             <th>Status</th>
-            <th>Numplants</th>
+            <th>N.Plants</th>
             <th>Color</th>
             <th>Scent</th>
             <th>Headsize</th>
-            <th>Numpetals</th>
+            <th>N.Petals</th>
             <th>Steamlenght</th>
             <th>Production</th>
             <th>Opening</th>
@@ -37,7 +37,15 @@
             <td><%= spek_selection.location %></td>
             <td><%= spek_selection.trademark %></td>
             <td><%= spek_selection.denomination %></td>
-            
+            <td>
+                <% @pictures.each do |picture|%>
+                <% if spek_selection.id == picture.spek_selection_id%>
+                <div class="image-rose-index">
+                    <%= image_tag picture.picture.url(), :class =>"img-thumbnail"%>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
             <td><%= spek_selection.year %></td>
             <td><%= spek_selection.status %></td>
             <td><%= spek_selection.numPlants %></td>

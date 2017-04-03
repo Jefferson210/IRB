@@ -14,7 +14,7 @@
             <th>mother.Img</th>
             <th>Week</th>
             <th>Numgerminations</th>
-            <th>missingSeed</th>
+<!--            <th>missingSeed</th>-->
             <th colspan="3"></th>
         </tr>
     </thead>
@@ -43,7 +43,7 @@
             </td>
             <td><%= germination.week %></td>
             <td><%= germination.numGerminations %></td>
-            <td><%= germination.missingSeed %></td>
+<!--            <td>< germination.missingSeed %></td>-->
             <td><%= link_to 'Show', germination %></td>
             <td><%= link_to 'Edit', edit_germination_path(germination) %></td>
             <td><%= link_to 'Destroy', germination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -53,8 +53,10 @@
 </table>
 
 <!--
-<h4>Total CodeCrossNumRepeat = <% sumaCodeCrossNumRepeat %></h4>
-<h4>Total CodeCross = <%sumaCodeCross %></h4>
+<h4>Total CodeCrossNumRepeat = < sumaCodeCrossNumRepeat %></h4>
+<h4>Total CodeCross = < sumaCodeCross %></h4>
+<h4>percentajeSeedsNumRepeat  = < percentajeSeedsNumRepeat %></h4>
+<h4>percentajeSeedscodeCross  = < percentajeSeedscodeCross %></h4>
 -->
 
 <h2 class="alert alert-info">Results</h2>
@@ -104,13 +106,11 @@
             <td><%= item[0] %></td>
             <td><%= item[1] %></td>
             <td>
-<!--
-                < percentajeSeedsNumRepeat.each do |seed| %>
-                    <if seed[0] == item[0]%>
-                           < (item[1] * 100) / seed[1] %>                    
-                    <end%>
-                <end%>
--->
+                <% percentajeSeedsNumRepeat.each do |seed| %>
+                    <%if seed[0] == item[0]%>
+                           <%= (item[1] * 100) / seed[1] %>                    
+                    <%end%>
+                <%end%>
 
             </td>
 
