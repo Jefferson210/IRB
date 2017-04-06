@@ -80,8 +80,7 @@
                     <%if seed[0] == item[0]%>
                         <%= (item[1] * 100) / seed[1] %>
                     <%end%>
-                <%end%>
-                
+                <%end%>%                
             </td>
         </tr>
         <% end %>
@@ -108,10 +107,9 @@
             <td>
                 <% percentajeSeedsNumRepeat.each do |seed| %>
                     <%if seed[0] == item[0]%>
-                           <%= (item[1] * 100) / seed[1] %>                    
+                <%= (item[1] * 100) / seed[1]  %>                    
                     <%end%>
-                <%end%>
-
+                <%end%>%
             </td>
 
         </tr>

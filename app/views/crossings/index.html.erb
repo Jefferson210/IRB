@@ -38,7 +38,8 @@
             <td><%= crossing.numRepeat %></td>
             <td><%= crossing.year %></td>
             <td><%= crossing.status %></td>
-            <td><%= crossing.father.code %></td>
+            <td><%= crossing.father.trademark == "" ? crossing.father.code : crossing.father.trademark || 
+            crossing.father.trademark && crossing.father.code ? "#{crossing.father.trademark}-#{crossing.father.code}" :             crossing.father.trademark%></td>
             <td> 
                 <% @pictures.each do |picture| %>
                 <% if crossing.father_id  == picture.genetic_bank_id %>
@@ -48,7 +49,7 @@
                 <%end%>
                 <%end%>
             </td>
-            <td><%= crossing.mother.code %></td>
+            <td><%= crossing.mother.trademark == "" ? crossing.mother.code : crossing.mother.trademark || crossing.mother.trademark && crossing.mother.code ? "#{crossing.mother.trademark}-#{crossing.mother.code}" : crossing.mother.trademark %></td>
             <td> 
                 <% @pictures.each do |picture| %>
                 <% if crossing.mother_id  == picture.genetic_bank_id %>

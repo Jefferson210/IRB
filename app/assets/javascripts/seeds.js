@@ -45,7 +45,7 @@ $( document ).on('turbolinks:load', function() {
         }
 
         //Funcion para adquirir el total de numSeeds por NumRepeat al cambiar el valor del select "crossing_id"
-       /* if($("#crossing_id").val() != ""){
+        if($("#crossing_id").val() != ""){
             $.ajax({
                 url: "/numSeedsNumRepeat/",
                 type: "GET",
@@ -71,7 +71,7 @@ $( document ).on('turbolinks:load', function() {
                     //                    console.log(err);
                 }
             });  
-        }*/
+        }
 
         //Funcion para adquirir el total de numSeeds por codeCross al cambiar el valor del select "crossing_id"
        /*if($("#crossing_id").val() != ""){

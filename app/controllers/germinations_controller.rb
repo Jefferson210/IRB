@@ -23,13 +23,16 @@ class GerminationsController < ApplicationController
     end
 
     def numGerminationsCodeCross
-        @Code = Germination.group(:codeCross).sum(:numGerminations)  
+        #@Code = Germination.group(:codeCross).sum(:numGerminations)  
+        @Code = Germination.group(:codeCrossNumRepeat).sum(:numGerminations)  
         @missinSeeds = Germination.group(:codeCross).maximum(:missingSeed)
         @totalSeeds = Seed.group(:codeCross).maximum(:totalCode)
+        @totalSeedsNumRepeat = Seed.group(:codeCrossName).maximum(:totalNumRepeat) 
         @CodeAndMissingSeed = []
         @CodeAndMissingSeed<<@Code
         @CodeAndMissingSeed<<@missinSeeds
         @CodeAndMissingSeed<<@totalSeeds
+        @CodeAndMissingSeed<<@totalSeedsNumRepeat
         
         respond_to do |format|
             format.json { render :json => @CodeAndMissingSeed }

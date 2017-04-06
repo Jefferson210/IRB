@@ -13,7 +13,7 @@ $( document ).on('turbolinks:load', function() {
                 type: "GET",
                 dataType: "json",
                 success: function (result) {
-                    //console.log(result)
+//                    console.log(result)
                     $("#codeCross").val(result.codeCross)
                     $("#codeCrossNumRepeat").val(result.codeCrossName)
                 },
@@ -80,17 +80,46 @@ $( document ).on('turbolinks:load', function() {
                         var sum = parseInt(val1) + parseInt(val2)
                         $("#totalCode").val(sum)   
                     }  
-                    var numRepeat = $( "#codeCross" ).val();
-                    if(result[1][numRepeat] == undefined){
-                        console.log("no hay missingSeed")
-                        $("#missingSeedId").val(result[2][numRepeat]);
-                    }
-                    else{
-                        
-                        missingSeed = parseInt(result[1][numRepeat]) - parseInt(result[0][numRepeat])
-                        $("#missingSeedId").val(missingSeed);
-                    }
+                    //var numRepeat = $( "#codeCross" ).val();
+                    var numRepeat = $( "#codeCrossNumRepeat" ).val();
+                    var code = $( "#codeCross" ).val();
+                    //nos aeguramos que se llenen los campos codeCross y codeCrossNumRepeat
+                    if(numRepeat == "" || code == ""){
+                        if($("#seed_id").val() != ""){
+                            var id = $( "#seed_id option:selected" ).val();
+                            $.ajax({
+                                url: "/getSeed/"+ id,
+                                type: "GET",
+                                dataType: "json",
+                                success: function (result) {
+                                    //console.log(result)
+                                    $("#codeCross").val(result.codeCross)
+                                    $("#codeCrossNumRepeat").val(result.codeCrossName)
+                                },
+                                error: function (err){
+                                    //                    alert("Algo salio mal");
+                                    //                    console.log(err);
+                                }
+                            });  
+                        }else{
+                            $("#codeCross").val('')
+                            $("#codeCrossNumRepeat").val('')        
+                        }
 
+                    }
+                    console.log("codeNumRepeat "+numRepeat);
+                    console.log("code "+code);
+                    //if(result[1][numRepeat] == undefined){
+                    if(result[0][numRepeat] == undefined){
+                        console.log("no hay missingSeed")
+                        //$("#missingSeedId").val(result[2][numRepeat]);
+                        $("#missingSeedId").val(result[3][numRepeat]);
+                    }
+                    else{                                               
+                        //missingSeed = parseInt(result[1][numRepeat]) - parseInt(result[0][numRepeat])                  
+                        missingSeed = parseInt(result[3][numRepeat]) - parseInt(result[0][numRepeat])                 
+                        $("#missingSeedId").val(missingSeed); 
+                    } 
                 },
                 error: function (err){
                     //                    alert("Algo salio mal");

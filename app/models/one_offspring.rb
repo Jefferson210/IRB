@@ -11,16 +11,16 @@ class OneOffspring < ActiveRecord::Base
     validates :germination_id, presence:{ message:"Obligatory"}, uniqueness: { scope: [:individual],case_sensitive: false, message:"already exists with this individual"}
     validates :individual, presence:{ message:"Obligatory"}
 
-    #    validate :individualGermination_less_than_individualOneOffspring, :on => :save
-    validate :individualGermination_less_than_individualOneOffspring
+    #    validate :individualOneOffspring_less_than_totalCodeCrossGermination, :on => :save
+    validate :individualOneOffspring_less_than_totalCodeCrossGermination
 
-    def individualGermination_less_than_individualOneOffspring
+    def individualOneOffspring_less_than_totalCodeCrossGermination
         #        errors.add(:individual, "should be less or equal than individual of Germination") if individual > germination.numGerminations
         
         if self.individual.blank?
             puts "errors algo salio mal"
         else
-            maxIndividual = Germination.where(codeCross: self.germination.codeCross).select(:id,:codeCross,:totalCode).maximum(:totalCode)
+            maxIndividual = Germination.where(codeCross: self.germination.codeCross).select(:id,:codeCross,:totalCode).sum(:totalCode)
             puts "Maximo #{maxIndividual}"
             errors.add(:individual, "should be less or equal than total Code #{maxIndividual} from Germination ") if individual >  maxIndividual
         end
