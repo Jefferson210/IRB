@@ -107,10 +107,17 @@ class CrossingsController < ApplicationController
     # DELETE /crossings/1
     # DELETE /crossings/1.json
     def destroy
-        @crossing.destroy
-        respond_to do |format|
-            format.html { redirect_to crossings_url, notice: 'Crossing was successfully destroyed.' }
-            format.json { head :no_content }
+        begin
+            @crossing.destroy
+            respond_to do |format|
+                format.html {redirect_to crossings_url, :flash =>{:success => 'Crossing was successfully destroyed.'}}
+                format.json {head :no_content}
+            end
+        rescue StandardError => e 
+#        rescue ActiveRecord::DeleteRestrictionError => e 
+            respond_to do |format|
+                format.html {redirect_to crossings_url, alert: "Cannot delete record because of dependent seeds"}
+            end
         end
     end
 

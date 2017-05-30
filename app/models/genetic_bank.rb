@@ -1,15 +1,15 @@
 class GeneticBank < ActiveRecord::Base
     belongs_to :color
     #    relacion para especificar el nombre de la FK 
-    has_many :fathers, :class_name => "Crossing", :foreign_key => "father_id", dependent: :destroy
-    has_many :mothers, :class_name => "Crossing", :foreign_key => "mother_id", dependent: :destroy
+    #    Con :restrict_with_exception lanza una excepción cuando se invoca a destruir en un registro padre con hijos
+    has_many :fathers, :class_name => "Crossing", :foreign_key => "father_id", dependent: :restrict_with_exception 
+    has_many :mothers, :class_name => "Crossing", :foreign_key => "mother_id", dependent: :restrict_with_exception
 
     #    relacion para agregar varias imagenes a una variedad
     has_many :genetic_bank_pictures, dependent: :destroy
     #    belongs_to :genetic_bank_picture, dependent: :destroy
-
     #    self.primary_keys = :location
-
+    
     #    VALIDATIONS
     validates :code, :allow_blank => true, uniqueness: {case_sensitive: false, message:"already exists"}    
     validates :location, presence:{ message:"Obligatory"}, :allow_blank => false, uniqueness: {case_sensitive: false, message:"already exists"} 
@@ -44,6 +44,9 @@ class GeneticBank < ActiveRecord::Base
     def selectCodeTrademark
         "#{GeneticBank.where(id: self.id).first.code}-#{GeneticBank.where(id: self.id).first.trademark}"
     end
+
+    
+    
 end
 
 

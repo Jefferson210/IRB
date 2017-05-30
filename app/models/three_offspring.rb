@@ -1,7 +1,7 @@
 class ThreeOffspring < ActiveRecord::Base
     #self.primary_keys = :codeCross,:individual
     belongs_to :two_offspring
-    has_many :irb_selections
+    has_many :irb_selections, dependent: :restrict_with_exception
     
     #    relacion para agregar varias imagenes a una variedad
     has_many :three_offspring_pictures, dependent: :destroy

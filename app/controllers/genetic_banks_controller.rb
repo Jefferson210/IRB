@@ -5,15 +5,15 @@ class GeneticBanksController < ApplicationController
     # GET /genetic_banks.json
     def index
         @genetic_banks = GeneticBank.all
-#        @pictures = GeneticBankPicture.where(:genetic_bank_id  => "1").first
+        #        @pictures = GeneticBankPicture.where(:genetic_bank_id  => "1").first
         @pictures = GeneticBankPicture.group(:genetic_bank_id)
     end
-    
+
     # GET /genetic_banks/1
     # GET /genetic_banks/1.json
     def show
     end
-    
+
     # GET /genetic_banks/new
     def new
         @genetic_bank = GeneticBank.new
@@ -56,21 +56,27 @@ class GeneticBanksController < ApplicationController
     # DELETE /genetic_banks/1
     # DELETE /genetic_banks/1.json
     def destroy
-        @genetic_bank.destroy
-        respond_to do |format|
-            format.html { redirect_to genetic_banks_url, notice: 'Genetic bank was successfully destroyed.' }
-            format.json { head :no_content }
+        begin
+            @genetic_bank.destroy
+            respond_to do |format|
+                format.html {redirect_to genetic_banks_url, :flash =>{:success => 'Genetic bank was successfully destroyed.'}}
+                format.json {head :no_content}
+            end
+        rescue ActiveRecord::DeleteRestrictionError => e 
+            respond_to do |format|
+                format.html {redirect_to genetic_banks_url, alert: "Cannot delete the record because it is a parent in a crossing" }
+            end
         end
     end
 
-    private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_genetic_bank
-        @genetic_bank = GeneticBank.find(params[:id])
-    end
+        private
+        # Use callbacks to share common setup or constraints between actions.
+        def set_genetic_bank
+            @genetic_bank = GeneticBank.find(params[:id])
+        end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def genetic_bank_params
-        params.require(:genetic_bank).permit(:code, :location, :trademark, :denomination, :year, :breeder, :status, :numPlants, :color_id, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks)
+        # Never trust parameters from the scary internet, only allow the white list through.
+        def genetic_bank_params
+            params.require(:genetic_bank).permit(:code, :location, :trademark, :denomination, :year, :breeder, :status, :numPlants, :color_id, :scent, :headSize, :numPetals, :steamLenght, :production, :opening, :abnormality, :remarks)
+        end
     end
-end

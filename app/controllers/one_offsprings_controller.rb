@@ -56,10 +56,16 @@ class OneOffspringsController < ApplicationController
     # DELETE /one_offsprings/1
     # DELETE /one_offsprings/1.json
     def destroy
-        @one_offspring.destroy
-        respond_to do |format|
-            format.html { redirect_to one_offsprings_url, notice: 'One offspring was successfully destroyed.' }
-            format.json { head :no_content }
+        begin
+            @one_offspring.destroy
+            respond_to do |format|
+                format.html { redirect_to one_offsprings_url, notice: 'One offspring was successfully destroyed.' }
+                format.json { head :no_content }
+            end
+        rescue ActiveRecord::DeleteRestrictionError => e
+            respond_to do |format|
+                format.html {redirect_to one_offsprings_url, alert: "#{e}"}
+            end
         end
     end
 

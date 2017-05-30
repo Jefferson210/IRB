@@ -3,7 +3,7 @@ class OneOffspring < ActiveRecord::Base
     #belongs_to :seed
     belongs_to :germination
     belongs_to :color
-    has_many :two_offsprings
+    has_many :two_offsprings, dependent: :restrict_with_exception
     #    relacion para agregar varias imagenes a una variedad
     has_many :one_offspring_pictures, dependent: :destroy
     

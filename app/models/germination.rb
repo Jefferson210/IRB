@@ -1,6 +1,6 @@
 class Germination < ActiveRecord::Base
     belongs_to :seed
-    has_many :one_offsprings
+    has_many :one_offsprings, dependent: :restrict_with_exception
 
 
     #VALIDATES

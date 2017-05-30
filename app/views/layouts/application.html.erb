@@ -43,14 +43,21 @@
             </div>
             <div class="row">
                 <% if notice %>
-                <h4 class="notice alert alert-success"><%= notice %></h4>
+                <h4 class="alert alert-success"><%= notice %></h4>
                 <% end %>
                 <% if alert %>
-                <h4 class="alert alert alert-danger"><%= alert %></h4>
+                <h4 class="alert alert-warning"><%= alert %></h4>
+                <% end %>
+                <% if flash[:success] %>
+                <h4 class="alert alert-success"><%= flash[:success] %></h4>
+                <% end %>
+                <% if flash[:error] %>
+                <h4 class="alert alert-danger"><%= flash[:error] %></h4>
                 <% end %>
                 <% if flash[:info] %>
-                <h4 class="error"><%= flash[:info] %></h4>
+                <h4 class="alert alert-info"><%= flash[:info] %></h4>
                 <% end %>
+                
             </div>
         </div>
 

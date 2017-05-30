@@ -81,10 +81,16 @@ class GerminationsController < ApplicationController
     # DELETE /germinations/1
     # DELETE /germinations/1.json
     def destroy
-        @germination.destroy
-        respond_to do |format|
-            format.html { redirect_to germinations_url, notice: 'Germination was successfully destroyed.' }
-            format.json { head :no_content }
+        begin
+            @germination.destroy
+            respond_to do |format|
+                format.html { redirect_to germinations_url, notice: 'Germination was successfully destroyed.' }
+                format.json { head :no_content }
+            end
+        rescue ActiveRecord::DeleteRestrictionError => e
+            respond_to do |format|
+                format.html {redirect_to germinations_url, alert: "#{e}"}
+            end
         end
     end
 

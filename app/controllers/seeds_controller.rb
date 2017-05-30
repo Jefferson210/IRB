@@ -77,10 +77,16 @@ class SeedsController < ApplicationController
     # DELETE /seeds/1
     # DELETE /seeds/1.json
     def destroy
-        @seed.destroy
-        respond_to do |format|
-            format.html { redirect_to seeds_url, notice: 'Seed was successfully destroyed.' }
-            format.json { head :no_content }
+        begin
+            @seed.destroy
+            respond_to do |format|
+                format.html { redirect_to seeds_url, notice: 'Seed was successfully destroyed.' }
+                format.json { head :no_content }
+            end
+        rescue ActiveRecord::DeleteRestrictionError => e
+            respond_to do |format|
+                format.html { redirect_to seeds_url, alert: "#{e}"}
+            end
         end
     end
 
