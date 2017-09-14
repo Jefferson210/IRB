@@ -5,8 +5,12 @@ class GeneticBanksController < ApplicationController
     # GET /genetic_banks.json
     def index
         @genetic_banks = GeneticBank.all
-        #        @pictures = GeneticBankPicture.where(:genetic_bank_id  => "1").first
         @pictures = GeneticBankPicture.group(:genetic_bank_id)
+        @geneticBank = initialize_grid(GeneticBankPicture,
+                        include: [{genetic_bank: :color}], 
+                        group: ['genetic_banks.code'])
+        @geneticBankImagesPath = "/assets/images/geneticBank/"
+        
     end
 
     # GET /genetic_banks/1

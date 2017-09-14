@@ -70,3 +70,5 @@ gem 'spring',        group: :development
 gem 'composite_primary_keys'
 gem 'bootstrap-sass'
 gem 'paperclip', '~> 4.0'
+gem 'wice_grid', '~> 3.6.0'
+gem 'font-awesome-sass',  '~> 4.3'

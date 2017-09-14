@@ -4,6 +4,7 @@
     <h3><%= link_to 'New Genetic bank', new_genetic_bank_path %></h3>
 </div>
 
+<!--
 <table class="table table-hover">
     <thead>
         <tr>
@@ -30,47 +31,98 @@
     </thead>
 
     <tbody>
-
-
-        <% @genetic_banks.each do |genetic_bank| %>
+        < @genetic_banks.each do |genetic_bank| %>
         <tr>
-            <td><%= genetic_bank.code %></td>
-            <td><%= genetic_bank.location %></td>
-            <td><%= genetic_bank.trademark %></td>
-            <td><%= genetic_bank.denomination %></td>
+            <td>< genetic_bank.code %></td>
+            <td>< genetic_bank.location %></td>
+            <td>< genetic_bank.trademark %></td>
+            <td>< genetic_bank.denomination %></td>
             <td>
-                <% @pictures.each do |picture| %>
-                    <% if genetic_bank.id == picture.genetic_bank_id %>
+                < @pictures.each do |picture| %>
+                    < if genetic_bank.id == picture.genetic_bank_id %>
                         <div class="image-rose">
-                            <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                            < image_tag picture.picture.url(), :class=>"img-thumbnail" %>
                         </div>
-                    <%end%>
-                <%end%>
+                    <end%>
+                <end%>
             </td>
-            <td><%= genetic_bank.year %></td>
-            <td><%= genetic_bank.breeder %></td>
-            <td><%= genetic_bank.status %></td>
-            <td><%= genetic_bank.numPlants %></td>
-            <td><%= genetic_bank.scent %></td>
-            <td><%= genetic_bank.headSize %></td>
-            <td><%= genetic_bank.numPetals %></td>
-            <td><%= genetic_bank.color ? genetic_bank.color.colorName : 'N/A'%></td>
-            <td><%= genetic_bank.steamLenght %></td>
-            <td><%= genetic_bank.production %></td>
-            <td><%= genetic_bank.opening %></td>
-            <td><%= genetic_bank.abnormality %></td>
-            <td><%= genetic_bank.remarks %></td>
-            <td><%= link_to 'Show', genetic_bank %></td>
-            <td><%= link_to 'Edit', edit_genetic_bank_path(genetic_bank) %></td>
-            <td><%= link_to 'Destroy', genetic_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+            </td>
+            <td>< genetic_bank.year %></td>
+            <td>< genetic_bank.breeder %></td>
+            <td>< genetic_bank.status %></td>
+            <td>< genetic_bank.numPlants %></td>
+            <td>< genetic_bank.scent %></td>
+            <td>< genetic_bank.headSize %></td>
+            <td>< genetic_bank.numPetals %></td>
+            <td>< genetic_bank.color ? genetic_bank.color.colorName : 'N/A'%></td>
+            <td>< genetic_bank.steamLenght %></td>
+            <td>< genetic_bank.production %></td>
+            <td>< genetic_bank.opening %></td>
+            <td>< genetic_bank.abnormality %></td>
+            <td>< genetic_bank.remarks %></td>
+            <td>< link_to 'Show', genetic_bank %></td>
+            <td>< link_to 'Edit', edit_genetic_bank_path(genetic_bank) %></td>
+            <td>< link_to 'Destroy', genetic_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
-
-        <% end %>
+        < end %>
     </tbody>
 </table>
-
+-->
 
 <br>
+
+<%= grid(@geneticBank) do |h|
+    
+    h.column name: 'Code', attribute: 'code', assoc: :genetic_bank
+
+    h.column name: 'Location', attribute: 'location', assoc: :genetic_bank 
+    
+    h.column name:"Trademark", attribute: 'trademark' , assoc: :genetic_bank
+
+    h.column name:"Denomination", attribute: 'denomination' , assoc: :genetic_bank
+    
+    h.column name:"Image" do |image|
+        link_to(image_tag(@geneticBankImagesPath+image.picture_file_name,:class =>"img-thumbnail"),         @geneticBankImagesPath+image.picture_file_name)
+    end
+        
+    h.column name:"Year", attribute: 'year' , assoc: :genetic_bank
+
+    h.column name:"Breeder", attribute: 'breeder' , assoc: :genetic_bank
+
+    h.column name:"Status", attribute: 'status' , assoc: :genetic_bank
+
+    h.column name:"Scent", attribute:'scent' , assoc: :genetic_bank
+
+    h.column name:"HeadSize", attribute: 'headSize' , assoc: :genetic_bank
+    
+    h.column name:"N.Petals", attribute:'numPetals' , assoc: :genetic_bank
+    
+    h.column name:  'Color', attribute: 'colorName',  assoc: [:genetic_bank, :color]
+    
+    h.column name:"Steamlenght", attribute: 'steamLenght' , assoc: :genetic_bank
+    
+    h.column name:"Production", attribute: 'production' , assoc: :genetic_bank
+    
+    h.column name:"Opening", attribute: 'production' , assoc: :genetic_bank
+    
+    h.column name:"Abnormality", attribute: 'abnormality' , assoc: :genetic_bank
+    
+    h.column name:"Remarks", attribute: 'remarks' , assoc: :genetic_bank  
+    
+    h.column do |edit|
+        link_to('Edit', edit_genetic_bank_path(edit.genetic_bank_id))
+    end    
+    
+    h.column do |show|
+        link_to('Show',genetic_bank_path(show.genetic_bank_id))
+    end
+    
+#    h.column do |delete|
+#        link_to('Destroy', delete.genetic_bank_id, confirm: 'Are you sure?', method: :delete,:class => 'deleteButton')
+#    end
+end-%>
+
 
 
 
