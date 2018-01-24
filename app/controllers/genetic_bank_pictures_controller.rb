@@ -84,7 +84,13 @@ class GeneticBankPicturesController < ApplicationController
             redirect_to genetic_bank_path(@genetic_bank), alert: 'Picture cannot be blank.'
         end
     end
-
+    
+    def destroy
+        @geneticBank = GeneticBank.find(params[:genetic_bank_id])
+        @picture = @geneticBank.genetic_bank_pictures.find(params[:id])
+        @picture.destroy
+        redirect_to genetic_banks_path(@geneticBank), notice: "Picture Deleted"
+    end
 
 
     # Never trust parameters from the scary internet, only allow the white list through.

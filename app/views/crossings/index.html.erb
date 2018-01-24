@@ -3,79 +3,59 @@
 <div class="text-center">
     <h3><%= link_to 'New Crossing', new_crossing_path %></h3>
 </div>
-
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Crosscode</th>
-            <th>N.Ord</th>
-            <th>N.Rep</th>
-            <th>Year</th>
-            <th>Status</th>
-            <th>Father</th>
-            <th>FatherPict.</th>
-            <th>Mother</th>
-            <th>MotherPict.</th>
-            <th>Crossweek</th>
-            <th>Effective</th>
-            <th>N.Cross</th>
-            <th>Good.Cross</th>
-            <th>Bad.Cross</th>           
-            <th>%Effective</th>
-            <th>Dateharvest</th>
-            <th>Weekharvest</th>
-            <th>N.Seeds</th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @crossings.each do |crossing| %>
-        <tr>
-            <td><%= crossing.codeCross%></td>
-            <td><%= crossing.numOrder%></td>
-            <td><%= crossing.numRepeat %></td>
-            <td><%= crossing.year %></td>
-            <td><%= crossing.status %></td>
-            <td><%= crossing.father.trademark == "" ? crossing.father.code : crossing.father.trademark || 
-            crossing.father.trademark && crossing.father.code ? "#{crossing.father.trademark}-#{crossing.father.code}" :             crossing.father.trademark%></td>
-            <td> 
-                <% @pictures.each do |picture| %>
-                <% if crossing.father_id  == picture.genetic_bank_id %>
-                <div class="image-rose">
-                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
-                </div>
-                <%end%>
-                <%end%>
-            </td>
-            <td><%= crossing.mother.trademark == "" ? crossing.mother.code : crossing.mother.trademark || crossing.mother.trademark && crossing.mother.code ? "#{crossing.mother.trademark}-#{crossing.mother.code}" : crossing.mother.trademark %></td>
-            <td> 
-                <% @pictures.each do |picture| %>
-                <% if crossing.mother_id  == picture.genetic_bank_id %>
-                <div class="image-rose">
-                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
-                </div>
-                <%end%>
-                <%end%>
-            </td>
-            <td><%= crossing.crossWeek %></td>
-            <td><%= crossing.effective %></td>
-            <td><%= crossing.numCrossings %></td>
-            <td><%= crossing.goodCrossings %></td>
-            <td><%= crossing.badCrossings %></td>
-            <td><%= crossing.percentageEffective %></td>
-            <td><%= crossing.dateHarvest %></td>
-            <td><%= crossing.weekHarvest %></td>
-            <td><%= crossing.numSeeds %></td>
-            <td><%= link_to 'Show', crossing %></td>
-            <td><%= link_to 'Edit', edit_crossing_path(crossing) %></td>
-            <td><%= link_to 'Destroy', crossing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-
-<br>
+<p id="notice"><%= notice %></p>
+<%=
+    grid(@crossingsGrid) do |crossing|
+        crossing.column name: "CrossCode", attribute: "codeCross"
+        crossing.column name: "N°Order", attribute: "numOrder"
+        crossing.column name: "N°Repeat", attribute: "numRepeat"
+        crossing.column name: "Year", attribute: "year"
+        crossing.column name: "Status", attribute: "status"        
+        
+        crossing.column name: "Father", attribute: "code", assoc: :father do |father|
+            father.father.code
+        end
+        
+        crossing.column name: "Father Picture" do |fatherPicture|
+            if @pictures.exists?(:genetic_bank_id => fatherPicture.father.id)
+                arrayImage = @pictures.where(genetic_bank_id: fatherPicture.father.id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end         
+        crossing.column name: "Mother", attribute: "code", assoc: :mother do |mother|
+            mother.mother.code
+        end
+        
+        crossing.column name: "Mother Picture" do |motherPicture|
+            if @pictures.exists?(:genetic_bank_id => motherPicture.mother.id)
+                arrayImage = @pictures.where(genetic_bank_id: motherPicture.mother.id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        crossing.column name: "Crossweek", attribute: "crossWeek"
+        crossing.column name: "Effective", attribute: "effective"
+        crossing.column name: "N°Cross", attribute: "numCrossings"
+        crossing.column name: "Good Cross", attribute: "goodCrossings"
+        crossing.column name: "Bad Cross", attribute: "badCrossings"
+        crossing.column name: "%Effective", attribute: "percentageEffective"
+        crossing.column name: "Dateharvest", attribute: "dateHarvest",filter_type: :bootstrap_datepicker
+        crossing.column name: "Weekharvest", attribute: "weekHarvest"
+        crossing.column name: "N°Seeds", attribute: "numSeeds"    
+        
+        crossing.column do |crossingEdit|
+            link_to("Edit",edit_crossing_path(crossingEdit.id),:class => "btn btn-warning")
+        end
+        
+        crossing.column do |crossingShow|
+            link_to("Show",crossing_path(crossingShow.id),:class => "btn btn-success")
+        end
+        
+        crossing.column do |crossingDelete|
+            link_to("Delete",crossing_path(crossingDelete.id),data:{confirm: "Are you Sure?"}, method: :delete,:class => "btn btn-danger")
+        end
+    end
+-%>
 
 

@@ -88,12 +88,15 @@
                 <div class="col-md-3">
                     <div class="image-rose">
                         <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                        <p>
+                            <%= link_to [picture.genetic_bank,picture],method: :delete,data:{confirm: 'Are you sure?'},:class => "btn btn-danger btn-sm" do%>
+                            <i class="glyphicon glyphicon-trash"></i>
+                            <%end%>
+                        </p>
                     </div>
                 </div>
                 <%end%>
             </div>
-
-
 
             <div class="row">
                 <h2>Add Image</h2>    
@@ -103,16 +106,15 @@
                     <%= f.label :picture%>
                     <%= f.file_field :picture %>
                 </div>
-
+                <br>
                 <div class="form-group">
-                    <%= f.submit%>
+                    <%= f.submit class: "btn btn-primary" %>
                 </div>
                 <% end %>
             </div>
-
             <div class="panel-footer">
-                <%= link_to 'Edit', edit_genetic_bank_path(@genetic_bank) %> |
-                <%= link_to 'Back', genetic_banks_path %>
+                <%= link_to 'Edit', edit_genetic_bank_path(@genetic_bank), class: "btn btn-primary active"%>
+                <%= link_to 'Back', genetic_banks_path, class: "btn btn-primary active" %>
             </div>
         </div>
     </div>

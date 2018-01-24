@@ -1,56 +1,46 @@
-
-
 <h1 class="alert alert-success text-center">Germinations</h1>
 
 <div class="text-center">
     <h3><%= link_to 'New Germination', new_germination_path %></h3>
 </div>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>CodeCross</th>
-            <th>father.Img</th>
-            <th>mother.Img</th>
-            <th>Week</th>
-            <th>Numgerminations</th>
-<!--            <th>missingSeed</th>-->
-            <th colspan="3"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @germinations.each do |germination| %>
-        <tr>
-            <td><%= germination.seed.crossing.codeCross %>-<%= germination.seed.crossing.numRepeat%></td>
-            <td> 
-                <% @pictures.each do |picture| %>
-                <% if germination.seed.crossing.father_id  == picture.genetic_bank_id %>
-                <div class="image-rose-index">
-                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
-                </div>
-                <%end%>
-                <%end%>
-            </td>
-            <td> 
-                <% @pictures.each do |picture| %>
-                <% if germination.seed.crossing.mother_id  == picture.genetic_bank_id %>
-                <div class="image-rose-index">
-                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
-                </div>
-                <%end%>
-                <%end%>
-            </td>
-            <td><%= germination.week %></td>
-            <td><%= germination.numGerminations %></td>
-<!--            <td>< germination.missingSeed %></td>-->
-            <td><%= link_to 'Show', germination %></td>
-            <td><%= link_to 'Edit', edit_germination_path(germination) %></td>
-            <td><%= link_to 'Destroy', germination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<%=
+    grid(@germinationsGrid) do |germination|
+        germination.column name: "CodeCross", attribute: "codeCross", assoc: :seed do |seedCross|
+            seedCross.seed.crossing.codeCross+"-#{seedCross.seed.crossing.numRepeat}"
+        end
+        germination.column name: "Father Img", html: {class: "image-rose-index"}  do |germinationFatherImg|
+            if @pictures.exists?(:genetic_bank_id => germinationFatherImg.seed.crossing.father_id)
+                arrayImage = @pictures.where(genetic_bank_id: germinationFatherImg.seed.crossing.father_id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        
+        germination.column name: "Mother Img", html: {class: "image-rose-index"} do |germinationMotherImg|
+            if @pictures.exists?(:genetic_bank_id => germinationMotherImg.seed.crossing.mother_id)
+                arrayImage = @pictures.where(genetic_bank_id: germinationMotherImg.seed.crossing.mother_id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        germination.column name: "Week", attribute: "week"
+        germination.column name: "N°Germinations", attribute: "numGerminations"
+#        germination.column name: "MissingSeed", attribute: "missingSeed"
+        
+        germination.column do |germinationEdit|
+            link_to("Edit",edit_germination_path(germinationEdit.id),:class => "btn btn-warning")
+        end
+        
+        germination.column do |germinationShow|
+            link_to("Show",germination_path(germinationShow.id),:class => "btn btn-success")
+        end
+        
+        germination.column do |germinationDelete|
+            link_to("Delete",germination_path(germinationDelete.id),data: {confirm: "Are you SUre?"},method: :delete,:class => "btn btn-danger")
+        end
+    end
+-%>
 
 <!--
 <h4>Total CodeCrossNumRepeat = < sumaCodeCrossNumRepeat %></h4>

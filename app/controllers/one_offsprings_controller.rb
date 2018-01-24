@@ -7,6 +7,10 @@ class OneOffspringsController < ApplicationController
         @one_offsprings = OneOffspring.all
         @pictures = OneOffspringPicture.group(:one_offspring_id)
         @picturesParents = GeneticBankPicture.group(:genetic_bank_id)
+        @oneOffsprings = initialize_grid(OneOffspring,
+            include: [:color,:germination])
+        @geneticBankImagesPath = "/assets/images/geneticBank/"
+        @oneOffspringImgPath = "/assets/images/oneOffspring/"
     end
 
     # GET /one_offsprings/1

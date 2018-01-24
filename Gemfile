@@ -6,7 +6,8 @@ gem 'rails', '4.2.5'
 ### OpenShift Online changes:
 
 # Fix the conflict with the system 'rake':
-gem 'rake', '~> 0.9.6'
+#gem 'rake', '~> 0.9.6'
+gem 'rake', '~> 10.4', '>= 10.4.2'
 
 # Support for databases and environment.
 # Use 'sqlite3' for testing and development and mysql and postgresql
@@ -18,18 +19,18 @@ gem 'rake', '~> 0.9.6'
 # $ rhc env set BUNDLE_WITHOUT="development test postgresql"
 #
 group :development, :test do
-  gem 'sqlite3'
-  gem 'minitest'
-  gem 'thor'
+    gem 'sqlite3'
+    gem 'minitest'
+    gem 'thor'
 end
 
 # Add support for the MySQL
 group :production, :mysql do
-  gem 'mysql2'
+    gem 'mysql2'
 end
 
 group :production, :postgresql do
-  gem 'pg'
+    gem 'pg'
 end
 
 ### / OpenShift changes
@@ -69,6 +70,13 @@ gem 'spring',        group: :development
 
 gem 'composite_primary_keys'
 gem 'bootstrap-sass'
-gem 'paperclip', '~> 4.0'
-gem 'wice_grid', '~> 3.6.0'
+gem 'paperclip', '~> 4.0'  #uso de iamgenes
+gem 'wice_grid', '~> 3.6.0' #filtros en tablas(grid)
 gem 'font-awesome-sass',  '~> 4.3'
+gem 'bootstrap-datepicker-rails' #para uso de datePicker
+
+#group :development do
+#    gem 'capistrano', '~> 3.6'
+#    gem 'capistrano-rails', '~> 1.1'
+#    gem 'capistrano-bundler', '~> 1.1.2'
+#end

@@ -4,7 +4,9 @@ class SeedsController < ApplicationController
     # GET /seeds
     # GET /seeds.json
     def index
-        @seeds = Seed.all
+        @seeds = Seed.all  
+        @seedsGrid = initialize_grid(Seed,
+            include: [:crossing])
     end
 
     # GET /seeds/1

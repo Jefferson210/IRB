@@ -6,12 +6,16 @@ class GerminationsController < ApplicationController
     def index
         @germinations = Germination.all
          #Para traer todas las imagenes
-        @pictures = GeneticBankPicture.group(:genetic_bank_id)
+        @pictures = GeneticBankPicture.group(:genetic_bank_id)        
+        @germinationsGrid = initialize_grid(Germination,
+            include: [:seed])
+        @geneticBankImagesPath = "/assets/images/geneticBank/"
     end
 
     # GET /germinations/1
     # GET /germinations/1.json
     def show
+        @pictures = GeneticBankPicture.group(:genetic_bank_id)        
     end
 
     def numGerminationsNumRepeat

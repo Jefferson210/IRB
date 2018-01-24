@@ -7,6 +7,9 @@ class CrossingsController < ApplicationController
         @crossings = Crossing.all
         #Para traer todas las imagenes
         @pictures = GeneticBankPicture.group(:genetic_bank_id)
+        @crossingsGrid = initialize_grid(Crossing,
+            include: [:father,:mother])
+        @geneticBankImagesPath = "/assets/images/geneticBank/"
     end
 
     # GET /crossings/1

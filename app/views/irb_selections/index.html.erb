@@ -4,70 +4,49 @@
     <h3><%= link_to 'New Irb selection', new_irb_selection_path %></h3>
 </div>
 
-<p id="notice"><%= notice %></p>
+<%=
+    grid(@irbSelections) do |irbSelection|
+        irbSelection.column name: "", attribute: "codeCross", assoc: [:three_offspring,:two_offspring,:one_offspring,:germination] do |k|
+            k.three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross+"-#{k.three_offspring.two_offspring.one_offspring.individual}"
+        end
+        
+        irbSelection.column name: "Code", attribute: "code"
+        irbSelection.column name: "Locat", attribute: "location"
+        irbSelection.column name: "Trademark", attribute: "trademark"
+        irbSelection.column name: "Denomin", attribute: "denomination"
+        
+        irbSelection.column name: "Image", html: {class: "image-rose-index"} do |irbSelectionImg|
+            if @pictures.exists?(:irb_selection_id => irbSelectionImg.id)
+                arrayImage = @pictures.where(irb_selection_id: irbSelectionImg.id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@irbSelectionsImgPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        
+        irbSelection.column name: "Year", attribute: "year"
+        irbSelection.column name: "Status", attribute: "status"
+        irbSelection.column name: "N.Plants", attribute: "numPlants"
+        irbSelection.column name: "Color", attribute: "color"
+        irbSelection.column name: "Scent", attribute: "scent"
+        irbSelection.column name: "Headsize", attribute: "headSize"
+        irbSelection.column name: "N.Petals", attribute: "numPetals"
+        irbSelection.column name: "Steamlenght", attribute: "steamLenght"
+        irbSelection.column name: "Produc", attribute: "production"
+        irbSelection.column name: "Opening", attribute: "opening"
+        irbSelection.column name: "Abnormality", attribute: "abnormality"
+        irbSelection.column name: "Remarks", attribute: "remarks"
+        
+        irbSelection.column do |edit|
+            link_to('Edit', edit_irb_selection_path(edit.id),:class => "btn btn-warning")
+        end    
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Codecross</th>
-            <th>Code</th>            
-            <th>Locat.</th>
-            <th>Trademark</th>
-            <th>Denomin.</th>
-            <th>Image</th>
-            <th>Year</th>
-            <th>Status</th>
-            <th>N.Plants</th>
-            <th>Color</th>
-            <th>Scent</th>
-            <th>Headsize</th>
-            <th>N.Petals</th>
-            <th>Steamlenght</th>
-            <th>Produc.</th>
-            <th>Opening</th>
-            <th>Abnormality</th>
-            <th>Remarks</th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
+        irbSelection.column do |show|
+            link_to('Show',irb_selection_path(show.id),:class => "btn btn-success")
+        end
 
-    <tbody>
-        <% @irb_selections.each do |irb_selection| %>
-        <tr>
-            <td><%= irb_selection.three_offspring.two_offspring.one_offspring.germination.seed.crossing.codeCross%>-<%=irb_selection.three_offspring.two_offspring.one_offspring.individual%></td>
-            <td><%= irb_selection.code %></td>            
-            <td><%= irb_selection.location %></td>
-            <td><%= irb_selection.trademark %></td>
-            <td><%= irb_selection.denomination %></td>
-            <td>
-                <% @pictures.each do |picture| %>
-                <% if irb_selection.id == picture.irb_selection_id %>
-                <div class="image-rose-index">
-                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
-                </div>
-                <%end%>
-                <%end%>
-            </td>
-            <td><%= irb_selection.year %></td>
-            <td><%= irb_selection.status %></td>
-            <td><%= irb_selection.numPlants %></td>
-            <td><%= irb_selection.color%></td>
-            <td><%= irb_selection.scent %></td>
-            <td><%= irb_selection.headSize %></td>
-            <td><%= irb_selection.numPetals %></td>
-            <td><%= irb_selection.steamLenght %></td>
-            <td><%= irb_selection.production %></td>
-            <td><%= irb_selection.opening %></td>
-            <td><%= irb_selection.abnormality %></td>
-            <td><%= irb_selection.remarks %></td>
-            <td><%= link_to 'Show', irb_selection %></td>
-            <td><%= link_to 'Edit', edit_irb_selection_path(irb_selection) %></td>
-            <td><%= link_to 'Destroy', irb_selection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-
-<br>
-
+        irbSelection.column do |delete|
+            link_to('Delete', irb_selection_path(delete.id), data: {confirm: 'Are you sure?'}, method: :delete,:class => 'btn btn-danger')
+        end
+    end
+-%>
 

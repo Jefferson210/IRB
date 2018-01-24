@@ -1,0 +1,59 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Location</th>
+            <th>Trademark</th>
+            <th>Denomination</th>
+            <th>Image</th>
+            <th>Year</th>
+            <th>Status</th>
+            <th>N.Plants</th>
+            <th>Color</th>
+            <th>Scent</th>
+            <th>Headsize</th>
+            <th>N.Petals</th>
+            <th>Steamlenght</th>
+            <th>Production</th>
+            <th>Opening</th>
+            <th>Abnormality</th>
+            <th>Remarks</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @spek_selections.each do |spek_selection| %>
+        <tr>
+            <td><%= spek_selection.code %></td>
+            <td><%= spek_selection.location %></td>
+            <td><%= spek_selection.trademark %></td>
+            <td><%= spek_selection.denomination %></td>
+            <td>
+                <% @pictures.each do |picture|%>
+                <% if spek_selection.id == picture.spek_selection_id%>
+                <div class="image-rose-index">
+                    <%= image_tag picture.picture.url(), :class =>"img-thumbnail"%>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
+            <td><%= spek_selection.year %></td>
+            <td><%= spek_selection.status %></td>
+            <td><%= spek_selection.numPlants %></td>
+            <td><%= spek_selection.color ? spek_selection.color.colorName : 'N/A' %></td>
+            <td><%= spek_selection.scent %></td>
+            <td><%= spek_selection.headSize %></td>
+            <td><%= spek_selection.numPetals %></td>
+            <td><%= spek_selection.steamLenght %></td>
+            <td><%= spek_selection.production %></td>
+            <td><%= spek_selection.opening %></td>
+            <td><%= spek_selection.abnormality %></td>
+            <td><%= spek_selection.remarks %></td>
+            <td><%= link_to 'Show', spek_selection %></td>
+            <td><%= link_to 'Edit', edit_spek_selection_path(spek_selection) %></td>
+            <td><%= link_to 'Destroy', spek_selection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

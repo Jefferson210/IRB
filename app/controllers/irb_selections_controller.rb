@@ -6,6 +6,9 @@ class IrbSelectionsController < ApplicationController
     def index
         @irb_selections = IrbSelection.all
         @pictures = IrbSelectionsPicture.group(:irb_selection_id)
+        @irbSelections = initialize_grid(IrbSelection,
+            include: [{three_offspring: :two_offspring}])
+        @irbSelectionsImgPath = "/assets/images/irbSelections/" 
     end
 
     # GET /irb_selections/1

@@ -4,124 +4,50 @@
     <h3><%= link_to 'New Genetic bank', new_genetic_bank_path %></h3>
 </div>
 
-<!--
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Code</th>
-            <th>Location</th>
-            <th>Trademark</th>
-            <th>Denomination</th>
-            <th>Image</th>
-            <th>Year</th>
-            <th>Breeder</th>
-            <th>Status</th>
-            <th>#Plants</th>
-            <th>Scent</th>
-            <th>Headsize</th>
-            <th>Numpetals</th>
-            <th>Color</th>
-            <th>Steamlenght</th>
-            <th>Production</th>
-            <th>Opening</th>
-            <th>Abnormality</th>
-            <th>Remarks</th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
-
-    <tbody>
-        < @genetic_banks.each do |genetic_bank| %>
-        <tr>
-            <td>< genetic_bank.code %></td>
-            <td>< genetic_bank.location %></td>
-            <td>< genetic_bank.trademark %></td>
-            <td>< genetic_bank.denomination %></td>
-            <td>
-                < @pictures.each do |picture| %>
-                    < if genetic_bank.id == picture.genetic_bank_id %>
-                        <div class="image-rose">
-                            < image_tag picture.picture.url(), :class=>"img-thumbnail" %>
-                        </div>
-                    <end%>
-                <end%>
-            </td>
-            <td>
-            </td>
-            <td>< genetic_bank.year %></td>
-            <td>< genetic_bank.breeder %></td>
-            <td>< genetic_bank.status %></td>
-            <td>< genetic_bank.numPlants %></td>
-            <td>< genetic_bank.scent %></td>
-            <td>< genetic_bank.headSize %></td>
-            <td>< genetic_bank.numPetals %></td>
-            <td>< genetic_bank.color ? genetic_bank.color.colorName : 'N/A'%></td>
-            <td>< genetic_bank.steamLenght %></td>
-            <td>< genetic_bank.production %></td>
-            <td>< genetic_bank.opening %></td>
-            <td>< genetic_bank.abnormality %></td>
-            <td>< genetic_bank.remarks %></td>
-            <td>< link_to 'Show', genetic_bank %></td>
-            <td>< link_to 'Edit', edit_genetic_bank_path(genetic_bank) %></td>
-            <td>< link_to 'Destroy', genetic_bank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-        < end %>
-    </tbody>
-</table>
--->
-
 <br>
 
-<%= grid(@geneticBank) do |h|
+<%=
+    grid(@geneticBank) do |geneticBank|
     
-    h.column name: 'Code', attribute: 'code', assoc: :genetic_bank
-
-    h.column name: 'Location', attribute: 'location', assoc: :genetic_bank 
-    
-    h.column name:"Trademark", attribute: 'trademark' , assoc: :genetic_bank
-
-    h.column name:"Denomination", attribute: 'denomination' , assoc: :genetic_bank
-    
-    h.column name:"Image" do |image|
-        link_to(image_tag(@geneticBankImagesPath+image.picture_file_name,:class =>"img-thumbnail"),         @geneticBankImagesPath+image.picture_file_name)
-    end
+    geneticBank.column name: 'Code', attribute: 'code'
+    geneticBank.column name: 'Location', attribute: 'location'    
+    geneticBank.column name:"Trademark", attribute: 'trademark' 
+    geneticBank.column name:"Denomination", attribute: 'denomination'
         
-    h.column name:"Year", attribute: 'year' , assoc: :genetic_bank
+    geneticBank.column name: "Image" do |geneticBankImage|
+        if @pictures.exists?(:genetic_bank_id => geneticBankImage.id)   
+            arrayImage = @pictures.where(genetic_bank_id: geneticBankImage.id).to_a
+            pictureFileName = arrayImage[0][:picture_file_name]
+            image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+        end
+    end
 
-    h.column name:"Breeder", attribute: 'breeder' , assoc: :genetic_bank
-
-    h.column name:"Status", attribute: 'status' , assoc: :genetic_bank
-
-    h.column name:"Scent", attribute:'scent' , assoc: :genetic_bank
-
-    h.column name:"HeadSize", attribute: 'headSize' , assoc: :genetic_bank
-    
-    h.column name:"N.Petals", attribute:'numPetals' , assoc: :genetic_bank
-    
-    h.column name:  'Color', attribute: 'colorName',  assoc: [:genetic_bank, :color]
-    
-    h.column name:"Steamlenght", attribute: 'steamLenght' , assoc: :genetic_bank
-    
-    h.column name:"Production", attribute: 'production' , assoc: :genetic_bank
-    
-    h.column name:"Opening", attribute: 'production' , assoc: :genetic_bank
-    
-    h.column name:"Abnormality", attribute: 'abnormality' , assoc: :genetic_bank
-    
-    h.column name:"Remarks", attribute: 'remarks' , assoc: :genetic_bank  
-    
-    h.column do |edit|
-        link_to('Edit', edit_genetic_bank_path(edit.genetic_bank_id))
+    geneticBank.column name:"Year", attribute: 'year' 
+    geneticBank.column name:"Breeder", attribute: 'breeder' 
+    geneticBank.column name:"Status", attribute: 'status' 
+    geneticBank.column name:"Scent", attribute:'scent' 
+    geneticBank.column name:"HeadSize", attribute: 'headSize'     
+    geneticBank.column name:"N.Petals", attribute:'numPetals'     
+    geneticBank.column name:  'Color', attribute: 'colorName',  assoc: :color    
+    geneticBank.column name:"Steamlenght", attribute: 'steamLenght'     
+    geneticBank.column name:"Production", attribute: 'production'     
+    geneticBank.column name:"Opening", attribute: 'production'     
+    geneticBank.column name:"Abnormality", attribute: 'abnormality'     
+    geneticBank.column name:"Remarks", attribute: 'remarks'      
+    geneticBank.column do |edit|
+        link_to('Edit', edit_genetic_bank_path(edit.id),:class => "btn btn-warning")
     end    
     
-    h.column do |show|
-        link_to('Show',genetic_bank_path(show.genetic_bank_id))
+    geneticBank.column do |show|
+        link_to('Show',genetic_bank_path(show.id),:class => "btn btn-success")
     end
     
-#    h.column do |delete|
-#        link_to('Destroy', delete.genetic_bank_id, confirm: 'Are you sure?', method: :delete,:class => 'deleteButton')
-#    end
-end-%>
+    geneticBank.column do |delete|
+        link_to('Delete', genetic_bank_path(delete.id), data: {confirm: 'Are you sure?'}, method: :delete,:class => 'btn btn-danger')
+    end
+end
+-%>
+
 
 
 

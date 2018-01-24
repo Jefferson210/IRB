@@ -6,9 +6,8 @@ class GeneticBanksController < ApplicationController
     def index
         @genetic_banks = GeneticBank.all
         @pictures = GeneticBankPicture.group(:genetic_bank_id)
-        @geneticBank = initialize_grid(GeneticBankPicture,
-                        include: [{genetic_bank: :color}], 
-                        group: ['genetic_banks.code'])
+        @geneticBank = initialize_grid(GeneticBank,
+                        include: [:color])                       
         @geneticBankImagesPath = "/assets/images/geneticBank/"
         
     end

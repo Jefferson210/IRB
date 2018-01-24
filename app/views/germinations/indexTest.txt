@@ -1,0 +1,45 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>CodeCross</th>
+            <th>father.Img</th>
+            <th>mother.Img</th>
+            <th>Week</th>
+            <th>Numgerminations</th>
+<!--            <th>missingSeed</th>-->
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @germinations.each do |germination| %>
+        <tr>
+            <td><%= germination.seed.crossing.codeCross %>-<%= germination.seed.crossing.numRepeat%></td>
+            <td> 
+                <% @pictures.each do |picture| %>
+                <% if germination.seed.crossing.father_id  == picture.genetic_bank_id %>
+                <div class="image-rose-index">
+                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
+            <td> 
+                <% @pictures.each do |picture| %>
+                <% if germination.seed.crossing.mother_id  == picture.genetic_bank_id %>
+                <div class="image-rose-index">
+                    <%= image_tag picture.picture.url(), :class=>"img-thumbnail" %>
+                </div>
+                <%end%>
+                <%end%>
+            </td>
+            <td><%= germination.week %></td>
+            <td><%= germination.numGerminations %></td>
+<!--            <td>< germination.missingSeed %></td>-->
+            <td><%= link_to 'Show', germination %></td>
+            <td><%= link_to 'Edit', edit_germination_path(germination) %></td>
+            <td><%= link_to 'Destroy', germination, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

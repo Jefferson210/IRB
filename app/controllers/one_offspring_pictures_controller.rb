@@ -17,6 +17,12 @@ class OneOffspringPicturesController < ApplicationController
         end
     end
 
+    def destroy
+        @oneOffspring = OneOffspring.find(params[:one_offspring_id])
+        @picture = @oneOffspring.one_offspring_pictures.find(params[:id])
+        @picture.destroy
+        redirect_to one_offspring_path(@oneOffspring), notice: 'Picture Deleted'
+    end
 
 
     # Never trust parameters from the scary internet, only allow the white list through.

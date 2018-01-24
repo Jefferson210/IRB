@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20170402202915) do
     t.string   "production",         limit: 255
     t.string   "opening",            limit: 255
     t.text     "abnormality",        limit: 65535
-    t.text     "remarks",            limit: 65535
+    t.text     "remarks",       colorName     limit: 65535
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
   end

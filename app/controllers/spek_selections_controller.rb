@@ -6,6 +6,10 @@ class SpekSelectionsController < ApplicationController
     def index
         @spek_selections = SpekSelection.all
         @pictures = SpekSelectionsPicture.group(:spek_selection_id)
+        @spekSelectionsGrid = initialize_grid(SpekSelection,
+                        include:[:color])
+#                        group: ['spek_selections.code'])
+        @spekImagesPath = "/assets/images/spekSelections/"
     end
 
     # GET /spek_selections/1
@@ -21,7 +25,7 @@ class SpekSelectionsController < ApplicationController
     # GET /spek_selections/1/edit
     def edit
     end
-
+    
     # POST /spek_selections
     # POST /spek_selections.json
     def create
