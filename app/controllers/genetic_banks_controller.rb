@@ -1,6 +1,42 @@
 class GeneticBanksController < ApplicationController
     before_action :set_genetic_bank, only: [:show, :edit, :update, :destroy]
 
+    def geneticBankCodeBar
+        
+    end
+    
+    def barcode_output( geneticBank )
+        barcodeString = geneticBank.code 
+        barcode = Barby::Code128B.new(barcodeString)
+        data = barcode.to_image(height: 200, margin: 5).to_data_url
+    end 
+    
+    def generateBarCode
+        @barcode = [] 
+        @codeGeneticBanks = params[:geneticBank]
+        if @codeGeneticBanks != nil
+            @codeGeneticBanks.each do |geneticBankId|
+                @geneticBank = GeneticBank.find(geneticBankId)
+                @barcode << barcode_output(@geneticBank); 
+            end
+        end
+        respond_to do |format|
+            format.html         
+            format.pdf do 
+                render pdf: "PDF_#{'example'}",
+                template: 'genetic_banks/generateBarCode.pdf.erb',
+                layout:    'codeBar.pdf',
+                             show_as_html: params[:debug].present?,                     
+               outline: {   outline:           true,
+                            outline_depth:     50 },
+               margin:  {   top:               35, # default 10 (mm)
+                            bottom:            35,
+                            left:              35,
+                            right:             35 }
+            end
+        end
+    end
+    
     # GET /genetic_banks
     # GET /genetic_banks.json
     def index

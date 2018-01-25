@@ -48,6 +48,9 @@ Rails.application.routes.draw do
     
     # ruta para conocer padre y madre de un codigo
     get 'codeCrossParents/:text' => 'crossings#codeCrossParents'
+    
+    get 'generateBarCode' => 'genetic_banks#geneticBankCodeBar'
+    get 'geneticBankBarCodes'      => 'genetic_banks#generateBarCode'
 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".

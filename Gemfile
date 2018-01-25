@@ -75,8 +75,11 @@ gem 'wice_grid', '~> 3.6.0' #filtros en tablas(grid)
 gem 'font-awesome-sass',  '~> 4.3'
 gem 'bootstrap-datepicker-rails' #para uso de datePicker
 
-#group :development do
-#    gem 'capistrano', '~> 3.6'
-#    gem 'capistrano-rails', '~> 1.1'
-#    gem 'capistrano-bundler', '~> 1.1.2'
-#end
+gem 'wicked_pdf', '~> 1.1'    #para generar archivos PDF
+gem 'wkhtmltopdf-binary', '~> 0.12.3'  #para generar archivos PDF, convierte el html a pdf
+
+gem 'barby', '~> 0.6.2'     #generar codigos de barra
+gem 'chunky_png', '~> 1.3', '>= 1.3.5'   #lee y escribe imagenes PNG
+
+
+gem 'bootstrap-multiselect-rails4', '~> 0.0.1'    #multiselect bootstrap
