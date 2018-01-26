@@ -11,6 +11,22 @@
             k.one_offspring.germination.seed.crossing.codeCross+"-#{k.one_offspring.individual}"
         end
         
+        twoOffspring.column name: "Father.Img", html: {class: "image-rose-index"} do |fatherImg|
+            if @picturesParents.exists?(:genetic_bank_id => fatherImg.one_offspring.germination.seed.crossing.father_id)
+                arrayImage = @picturesParents.where(genetic_bank_id: fatherImg.one_offspring.germination.seed.crossing.father_id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        
+        twoOffspring.column name: "Mother.Img", html: {class: "image-rose-index"}  do |motherImg|
+            if @picturesParents.exists?(:genetic_bank_id => motherImg.one_offspring.germination.seed.crossing.mother_id)
+                arrayImage = @picturesParents.where(genetic_bank_id: motherImg.one_offspring.germination.seed.crossing.mother_id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        
         twoOffspring.column name: "Image", html: {class: "image-rose-index"} do |twoOffspringImg|
             if @pictures.exists?(:two_offspring_id => twoOffspringImg.id)
                 arrayImage = @pictures.where(two_offspring_id: twoOffspringImg.id).to_a

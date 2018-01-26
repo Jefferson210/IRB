@@ -12,13 +12,30 @@
             k.two_offspring.one_offspring.germination.seed.crossing.codeCross+"-#{k.two_offspring.one_offspring.individual}"
         end
         
+        threeOffspring.column name: "Father.Img", html: {class: "image-rose-index"} do |fatherImg|
+            if @picturesParents.exists?(:genetic_bank_id => fatherImg.two_offspring.one_offspring.germination.seed.crossing.father_id)
+                arrayImage = @picturesParents.where(genetic_bank_id: fatherImg.two_offspring.one_offspring.germination.seed.crossing.father_id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end
+        
+        threeOffspring.column name: "Mother.Img", html: {class: "image-rose-index"}  do |motherImg|
+            if @picturesParents.exists?(:genetic_bank_id => motherImg.two_offspring.one_offspring.germination.seed.crossing.mother_id)
+                arrayImage = @picturesParents.where(genetic_bank_id: motherImg.two_offspring.one_offspring.germination.seed.crossing.mother_id).to_a
+                pictureFileName = arrayImage[0][:picture_file_name]
+                image_tag(@geneticBankImagesPath+pictureFileName,:class => "img-thumbnail")
+            end
+        end 
+        
         threeOffspring.column name: "Image", html: {class: "image-rose-index"} do |threeOffspringImg|
             if @pictures.exists?(:three_offspring_id => threeOffspringImg.id)
                 arrayImage = @pictures.where(three_offspring_id: threeOffspringImg.id).to_a
                 pictureFileName = arrayImage[0][:picture_file_name]
                 image_tag(@threeOffspringsImgPath+pictureFileName,:class => "img-thumbnail")
             end
-        end
+        end       
+           
         threeOffspring.column name: "Color", attribute: "color"
         threeOffspring.column name: "Status", attribute: "status"
         threeOffspring.column name: "Headsize", attribute: "headSize"

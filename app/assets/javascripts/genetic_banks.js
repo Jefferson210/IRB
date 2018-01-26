@@ -13,6 +13,10 @@ $(document).on('turbolinks:render', function() {
 
 $(document).on('turbolinks:load', function(){
 
-    $('#geneticBank').multiselect();
+    $('#geneticBank').multiselect({
+        buttonWidth: '300px',
+        includeSelectAllOption: true,
+        enableFiltering: true
+    });
 });
     

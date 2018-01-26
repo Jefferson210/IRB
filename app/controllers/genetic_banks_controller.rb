@@ -1,10 +1,6 @@
 class GeneticBanksController < ApplicationController
     before_action :set_genetic_bank, only: [:show, :edit, :update, :destroy]
 
-    def geneticBankCodeBar
-        
-    end
-    
     def barcode_output( geneticBank )
         barcodeString = geneticBank.code 
         barcode = Barby::Code128B.new(barcodeString)
@@ -16,8 +12,10 @@ class GeneticBanksController < ApplicationController
         @codeGeneticBanks = params[:geneticBank]
         if @codeGeneticBanks != nil
             @codeGeneticBanks.each do |geneticBankId|
-                @geneticBank = GeneticBank.find(geneticBankId)
-                @barcode << barcode_output(@geneticBank); 
+                if geneticBankId != "multiselect-all"
+                    @geneticBank = GeneticBank.find(geneticBankId)
+                    @barcode << barcode_output(@geneticBank); 
+                end
             end
         end
         respond_to do |format|
@@ -29,9 +27,9 @@ class GeneticBanksController < ApplicationController
                              show_as_html: params[:debug].present?,                     
                outline: {   outline:           true,
                             outline_depth:     50 },
-               margin:  {   top:               35, # default 10 (mm)
-                            bottom:            35,
-                            left:              35,
+               margin:  {   top:               20, # default 10 (mm)
+                            bottom:            20,
+                            left:              55,
                             right:             35 }
             end
         end

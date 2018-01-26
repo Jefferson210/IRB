@@ -6,11 +6,11 @@ class TwoOffspringsController < ApplicationController
     def index
         @two_offsprings = TwoOffspring.all
         @pictures = TwoOffspringPicture.group(:two_offspring_id)
+        @picturesParents = GeneticBankPicture.group(:genetic_bank_id)
         @twoOffsprings = initialize_grid(TwoOffspring,
             include: [{one_offspring: :germination}])
-        @twoOffspringsImgPath = "/assets/images/twoOffspring/"
-        
-        
+        @geneticBankImagesPath = "/assets/images/geneticBank/"
+        @twoOffspringsImgPath = "/assets/images/twoOffspring/"      
     end
 
     # GET /two_offsprings/1
